@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <radialGradient id="g1" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#3c8cff" stop-opacity="0.55"></stop>
+      <stop offset="1" stop-color="#070a0f" stop-opacity="1"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"></rect>
+  <g opacity="0.85" stroke="rgba(255,255,255,0.20)" stroke-width="2">
+    <circle cx="300" cy="360" r="180" fill="rgba(255,255,255,0.04)"></circle>
+    <circle cx="700" cy="520" r="240" fill="rgba(255,255,255,0.03)"></circle>
+    <path d="M240 520 C 420 420, 520 700, 720 560 S 980 520, 1120 640" fill="none" stroke="rgba(0,194,209,0.55)" stroke-width="4"></path>
+    <path d="M120 220 C 320 160, 420 300, 560 260 S 820 240, 980 320" fill="none" stroke="rgba(60,140,255,0.65)" stroke-width="4"></path>
+  </g>
+  <text x="52" y="842" font-family="ui-sans-serif, system-ui" font-size="20" fill="rgba(255,255,255,0.55)">Abstract AI placeholder</text>
+</svg>

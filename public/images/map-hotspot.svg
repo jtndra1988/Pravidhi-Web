@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#070a0f"></rect>
+  <rect x="90" y="90" width="1020" height="720" rx="28" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.12)" stroke-width="2"></rect>
+  <g opacity="0.85">
+    <path d="M240 650 C 320 540, 360 420, 520 420 C 640 420, 660 300, 760 300 C 860 300, 940 420, 900 520 C 860 640, 740 700, 620 720 C 520 736, 340 740, 240 650 Z" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" stroke-width="2"></path>
+    <circle cx="520" cy="480" r="70" fill="rgba(255,64,64,0.18)"></circle>
+    <circle cx="520" cy="480" r="35" fill="rgba(255,64,64,0.28)"></circle>
+    <circle cx="760" cy="420" r="55" fill="rgba(60,140,255,0.18)"></circle>
+    <circle cx="820" cy="560" r="45" fill="rgba(0,194,209,0.16)"></circle>
+  </g>
+  <text x="140" y="830" font-family="ui-sans-serif, system-ui" font-size="20" fill="rgba(255,255,255,0.55)">Hotspot map placeholder</text>
+</svg>
