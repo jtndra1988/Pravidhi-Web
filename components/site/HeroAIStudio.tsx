@@ -1,118 +1,285 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Reveal } from "./Reveal"; // Assuming your reveal wrapper exists
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Reveal } from "./Reveal";
+
+type Tilt = { rx: number; ry: number; mx: number; my: number };
 
 export function HeroAIStudio() {
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const wrapRef = useRef<HTMLElement | null>(null);
+  const [tilt, setTilt] = useState<Tilt>({ rx: 0, ry: 0, mx: 50, my: 50 });
 
-  // 3D Tilt Effect logic
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - card.left;
-    const y = e.clientY - card.top;
-    const centerX = card.width / 2;
-    const centerY = card.height / 2;
-    const rotateX = (y - centerY) / 25;
-    const rotateY = (centerX - x) / 25;
+  // Deterministic “node” positions for the circuit layer (no runtime random flicker)
+  const nodes = useMemo(
+    () => [
+      { x: 8, y: 22, r: 3 },
+      { x: 18, y: 42, r: 2.5 },
+      { x: 26, y: 18, r: 2.5 },
+      { x: 38, y: 34, r: 3 },
+      { x: 52, y: 20, r: 2.5 },
+      { x: 64, y: 38, r: 3 },
+      { x: 72, y: 18, r: 2.5 },
+      { x: 84, y: 30, r: 3 },
+      { x: 90, y: 54, r: 2.5 },
+      { x: 66, y: 62, r: 2.5 },
+      { x: 46, y: 58, r: 3 },
+      { x: 24, y: 64, r: 2.5 },
+    ],
+    []
+  );
 
-    setRotate({ x: rotateX, y: rotateY });
+  const setVars = (xPct: number, yPct: number) => {
+    const el = wrapRef.current;
+    if (!el) return;
+    el.style.setProperty("--px", `${xPct}%`);
+    el.style.setProperty("--py", `${yPct}%`);
   };
 
-  const resetRotate = () => setRotate({ x: 0, y: 0 });
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const xPct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    const yPct = Math.max(0, Math.min(100, (y / rect.height) * 100));
+
+    // Slightly restrained “premium” tilt
+    const rx = ((yPct - 50) / 50) * 6; // -6..6
+    const ry = ((50 - xPct) / 50) * 8; // -8..8
+
+    setTilt({ rx, ry, mx: xPct, my: yPct });
+    setVars(xPct, yPct);
+  };
+
+  const resetTilt = () => {
+    setTilt({ rx: 0, ry: 0, mx: 50, my: 50 });
+    setVars(50, 50);
+  };
+
+  // Also drive subtle parallax in background using viewport mouse
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+
+    const onMove = (ev: MouseEvent) => {
+      const vw = window.innerWidth || 1;
+      const vh = window.innerHeight || 1;
+      const xPct = (ev.clientX / vw) * 100;
+      const yPct = (ev.clientY / vh) * 100;
+      el.style.setProperty("--vpx", `${xPct}%`);
+      el.style.setProperty("--vpy", `${yPct}%`);
+    };
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
+  }, []);
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center pt-32 pb-20 overflow-hidden">
-      <div className="readylaunch-bg" />
+    <section
+      ref={wrapRef as any}
+      className="pravidhi-hero"
+      aria-label="Pravidhi Softtech hero"
+    >
+      {/* BACKGROUND LAYERS */}
+      <div className="pravidhi-hero__bg" aria-hidden="true">
+        <div className="pravidhi-hero__mesh" />
+        <div className="pravidhi-hero__aurora" />
+        <div className="pravidhi-hero__noise" />
+        <div className="pravidhi-hero__grid" />
+        <div className="pravidhi-hero__scan" />
 
-      {/* Content Container */}
-      <div className="relative z-10 w-full max-w-5xl px-6 text-center">
+        <div className="pravidhi-hero__orb orb--a" />
+        <div className="pravidhi-hero__orb orb--b" />
+        <div className="pravidhi-hero__orb orb--c" />
+
+        {/* Circuit layer */}
+        <svg
+          className="pravidhi-hero__circuit"
+          viewBox="0 0 100 70"
+          preserveAspectRatio="none"
+        >
+          <path
+            className="circuit-line"
+            d="M8 22 L18 42 L38 34 L52 20 L64 38 L84 30 L90 54 L66 62 L46 58 L24 64"
+            fill="none"
+          />
+          <path
+            className="circuit-line circuit-line--alt"
+            d="M26 18 L38 34 L64 38 L72 18 L84 30"
+            fill="none"
+          />
+          {nodes.map((n, i) => (
+            <circle
+              key={i}
+              className="circuit-node"
+              cx={n.x}
+              cy={n.y}
+              r={n.r}
+            />
+          ))}
+        </svg>
+      </div>
+
+      {/* CONTENT */}
+      <div className="pravidhi-hero__content">
         <Reveal>
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-black/5 bg-white/40 backdrop-blur-md mb-8 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#1b59a7] animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0b1e3a]">
-              Trusted by 1.2k+ Teams
+          <div className="pravidhi-hero__badge">
+            <span className="pravidhi-hero__dot" />
+            <span className="pravidhi-hero__badgeText">
+              AI-Enabled Health Systems
             </span>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tight text-[#0b1e3a] leading-[1.05]">
-            Launch your AI <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1b59a7] to-[#7dd3fc]">
-              project faster.
+          <h1 className="pravidhi-hero__title">
+            Pravidhi Softtech
+            <span className="pravidhi-hero__titleAccent">
+              Building Intelligent Public Health Infrastructure
             </span>
           </h1>
 
-          <p className="mt-8 mx-auto max-w-2xl text-lg md:text-xl text-[#0b1e3a]/60 font-medium leading-relaxed">
-            Build a stunning landing page that communicates your value, captures leads, 
-            and converts—without writing a single line of code.
+          <p className="pravidhi-hero__subtitle">
+            Introducing <strong>ArogyaSara</strong> - An AI/ML-powered platform
+            for EHR, HMS, disease surveillance, hotspot detection, and
+            government-grade decision support.
           </p>
 
-          {/* CTAs */}
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
-            <button className="btn-shiny h-16 px-10 rounded-2xl bg-[#0b1e3a] text-white font-bold text-sm tracking-wide shadow-xl shadow-blue-900/10">
-              Start Free Trial
-            </button>
-            <button className="h-16 px-10 rounded-2xl bg-white border border-black/10 text-[#0b1e3a] font-bold text-sm tracking-wide hover:bg-gray-50 transition-colors">
-              Join Waitlist
-            </button>
+          <div className="pravidhi-hero__ctaRow">
+            {/* <a className="pravidhi-btn-secondary" href="#features">
+              Explore Capabilities
+            </a> */}
+          </div>
+
+          <div className="pravidhi-hero__miniGrid" role="list">
+            <div className="pravidhi-hero__miniCard" role="listitem">
+              <div className="miniK">AI Surveillance</div>
+              <div className="miniV">Hotspot signals in near real-time</div>
+            </div>
+            <div className="pravidhi-hero__miniCard" role="listitem">
+              <div className="miniK">State-scale HMS</div>
+              <div className="miniV">Facilities, beds, queues, inventory</div>
+            </div>
+            <div className="pravidhi-hero__miniCard" role="listitem">
+              <div className="miniK">EHR + Citizen Care</div>
+              <div className="miniV">Longitudinal records + workflows</div>
+            </div>
           </div>
         </Reveal>
 
-        {/* The Floating Glass Feature Image/Card */}
-        <Reveal delayMs={400}>
-          <div className="mt-24 perspective-[1500px]">
-            <div 
+        {/* PREMIUM DEVICE / SHOWCASE */}
+        <Reveal delayMs={240}>
+          <div className="pravidhi-hero__showcaseWrap">
+            <div
+              className="pravidhi-tilt"
               onMouseMove={handleMouseMove}
-              onMouseLeave={resetRotate}
-              className="relative mx-auto w-full max-w-6xl aspect-[16/9] glass-panel rounded-[40px] transition-transform duration-200 ease-out flex items-center justify-center p-4 md:p-12"
-              style={{ 
-                transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-                transformStyle: "preserve-3d"
-              }}
+              onMouseLeave={resetTilt}
+              style={
+                {
+                  ["--rx" as any]: `${tilt.rx}deg`,
+                  ["--ry" as any]: `${tilt.ry}deg`,
+                  ["--mx" as any]: `${tilt.mx}%`,
+                  ["--my" as any]: `${tilt.my}%`,
+                } as React.CSSProperties
+              }
             >
-              {/* This mimics the glossy product visual in ReadyLaunch */}
-              <div className="relative w-full h-full rounded-[32px] bg-white shadow-2xl overflow-hidden border border-black/5">
-                <div className="absolute top-0 inset-x-0 h-12 bg-gray-50 border-b border-black/5 flex items-center px-6 gap-2">
-                  <div className="w-2 h-2 rounded-full bg-red-400" />
-                  <div className="w-2 h-2 rounded-full bg-yellow-400" />
-                  <div className="w-2 h-2 rounded-full bg-green-400" />
+              <div className="pravidhi-device">
+                <div className="pravidhi-device__topbar">
+                  <div className="dots">
+                    <span className="d d1" />
+                    <span className="d d2" />
+                    <span className="d d3" />
+                  </div>
+                  <div className="url">arogyasara.gov/dashboard</div>
+                  <div className="pill">LIVE</div>
                 </div>
-                
-                {/* Abstract Product Visual */}
-                <div className="flex items-center justify-center h-full pt-12">
-                   <div className="w-48 h-48 rounded-full glossy-chrome animate-pulse opacity-20" />
+
+                <div className="pravidhi-device__body">
+                  <div className="leftnav">
+                    <div className="navBrand">ArogyaSara</div>
+                    <div className="navItem active">Command Center</div>
+                    <div className="navItem">Facilities</div>
+                    <div className="navItem">Surveillance</div>
+                    <div className="navItem">Telemedicine</div>
+                    <div className="navItem">Reports</div>
+                  </div>
+
+                  <div className="main">
+                    <div className="kpiRow">
+                      <div className="kpi">
+                        <div className="kLabel">Hotspot Risk</div>
+                        <div className="kValue">Moderate</div>
+                        <div className="kSub">AI confidence trending up</div>
+                      </div>
+                      <div className="kpi">
+                        <div className="kLabel">Admissions</div>
+                        <div className="kValue">+12.8%</div>
+                        <div className="kSub">Last 7 days</div>
+                      </div>
+                      <div className="kpi">
+                        <div className="kLabel">Bed Availability</div>
+                        <div className="kValue">74%</div>
+                        <div className="kSub">Statewide</div>
+                      </div>
+                    </div>
+
+                    <div className="panelRow">
+                      <div className="panel">
+                        <div className="pTitle">AI Signal Stream</div>
+                        <svg
+                          className="signal"
+                          viewBox="0 0 600 140"
+                          preserveAspectRatio="none"
+                        >
+                          <path
+                            className="signalLine"
+                            d="M0,90 C60,40 120,130 180,80 C240,35 300,120 360,70 C420,25 480,120 540,65 C570,40 585,55 600,50"
+                            fill="none"
+                          />
+                          <path
+                            className="signalGlow"
+                            d="M0,90 C60,40 120,130 180,80 C240,35 300,120 360,70 C420,25 480,120 540,65 C570,40 585,55 600,50"
+                            fill="none"
+                          />
+                        </svg>
+                        <div className="chips">
+                          <span className="chip">Outbreak early-warning</span>
+                          <span className="chip">Bed load forecast</span>
+                          <span className="chip">Supply anomaly</span>
+                        </div>
+                      </div>
+
+                      <div className="panel panel--map">
+                        <div className="pTitle">District Pulse</div>
+                        <div className="mapGrid">
+                          {Array.from({ length: 18 }).map((_, i) => (
+                            <span key={i} className="cell" />
+                          ))}
+                        </div>
+                        <div className="legend">
+                          <span className="lgDot" /> Emerging
+                          <span className="lgDot lgDot2" /> Stable
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                {/* Sheen + rim + scanline inside device */}
+                <div className="pravidhi-device__sheen" aria-hidden="true" />
+                <div className="pravidhi-device__rim" aria-hidden="true" />
+                <div className="pravidhi-device__scanline" aria-hidden="true" />
               </div>
 
-              {/* Decorative Floating Elements (Parallax) */}
-              <div 
-                className="absolute -top-12 -right-12 p-6 rounded-3xl bg-white/90 backdrop-blur-xl border border-white shadow-2xl hidden lg:block"
-                style={{ transform: "translateZ(80px)" }}
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">✓</div>
-                  <div className="text-left">
-                    <div className="text-xs font-bold">Launch Successful</div>
-                    <div className="text-[10px] text-gray-400">Deployed to Production</div>
-                  </div>
+              {/* Floating callout */}
+              <div className="pravidhi-floatCard" aria-hidden="true">
+                <div className="fcIcon">✓</div>
+                <div>
+                  <div className="fcT">Actionable Insight</div>
+                  <div className="fcS">AI flags a rising cluster</div>
                 </div>
               </div>
             </div>
           </div>
         </Reveal>
-      </div>
-
-      {/* Trust Logos (Grayscale) */}
-      <div className="mt-20 w-full max-w-4xl opacity-30 px-6">
-        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-center mb-10">Powering Modern Workflows</p>
-        <div className="flex flex-wrap justify-center items-center gap-12 text-2xl font-black italic">
-          <span>TASKOS</span>
-          <span>AETHER</span>
-          <span>LUMINA</span>
-          <span>QUANTUM</span>
-        </div>
       </div>
     </section>
   );
