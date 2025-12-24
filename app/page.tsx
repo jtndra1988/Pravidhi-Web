@@ -13,267 +13,522 @@ import { HeroAIStudio } from "@/components/site/HeroAIStudio";
 
 export default function HomePage() {
   return (
-    <main className="bg-soft text-[#0b1e3a]">
-      {/* FULL-SCREEN HERO */}
+    <main className="pravidhi-site text-[#0b1e3a]">
+      {/* HERO (keep as-is) */}
       <HeroAIStudio />
 
-      {/* INTRO */}
-      <Section>
-        <Reveal>
-          <div className="grid items-center gap-10 md:grid-cols-12">
-            <div className="space-y-4 md:col-span-6">
-              <Eyebrow>{home.intro.kicker}</Eyebrow>
-              <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-                {home.intro.titleSpaced}
-              </div>
-              <H2>{home.intro.title}</H2>
-              <P className="max-w-xl">{home.intro.body}</P>
-              <Button href={home.intro.cta.href} variant="secondary">
-                {home.intro.cta.label}
-              </Button>
-            </div>
-
-            <div className="md:col-span-6">
-              <div className="rounded-xl2 glass overflow-hidden">
-                <div className="p-4 md:p-6">
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-xl2 border border-[rgb(var(--border))] bg-[rgba(255,255,255,0.03)]">
-                    <Image
-                      src={home.intro.image}
-                      alt={home.intro.imageAlt}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </Section>
-
-      {/* FEATURES (anchor target) */}
-      <div id="features" />
-      <Section>
-        <Reveal>
-          <div className="space-y-4">
-            <Eyebrow>{home.featureTabs.kicker}</Eyebrow>
-            <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-              {home.featureTabs.titleSpaced}
-            </div>
-            <H2>{home.featureTabs.title}</H2>
-            <P className="max-w-xl">{home.featureTabs.body}</P>
-            <FeatureTabs
-              items={home.featureTabs.items.map((i) => ({
-                k: i.n,          // unique key used by tabs
-                n: i.n,          // keep numbering
-                title: i.title,
-                desc: i.blurb,   // FeatureTabs expects desc
-                img: i.image,    // FeatureTabs expects img
-                alt: i.alt,
-              }))}
-            />
-          </div>
-
-        </Reveal>
-      </Section>
-
-      {/* PLATFORM / MODULES GRID */}
-      <Section>
-        <Reveal>
-          <div className="space-y-4">
-            <Eyebrow>{home.platforms.kicker}</Eyebrow>
-            <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-              {home.platforms.titleSpaced}
-            </div>
-            <H2>{home.platforms.title}</H2>
-            <P className="max-w-3xl">{home.platforms.body}</P>
-            <Button href={home.platforms.cta.href} variant="secondary">
-              {home.platforms.cta.label}
-            </Button>
-          </div>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-4">
-            {home.platforms.items.map((p) => (
-              <Card key={p.tag} className="group">
-                <CardBody className="space-y-3">
-                  <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-                    {p.tag}
-                  </div>
-                  <H3>{p.title}</H3>
-                  <P className="text-sm">{p.blurb}</P>
-                  <div className="relative mt-3 aspect-[4/3] overflow-hidden rounded-xl border border-[rgb(var(--border))] bg-[rgba(255,255,255,0.03)]">
-                    <Image
-                      src={p.image}
-                      alt={`${p.tag} visual`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            ))}
-          </div>
-        </Reveal>
-      </Section>
-
-      {/* OUTCOMES STRIP */}
-      <Section className="py-12 md:py-14">
-        <div className="grid gap-4 md:grid-cols-4">
-          {home.outcomes.stats.map((s) => (
-            <Card key={s.label}>
-              <CardBody>
-                <div className="text-2xl font-semibold tracking-tight">{s.value}</div>
-                <div className="mt-1 text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-                  {s.label}
-                </div>
-                {s.note ? (
-                  <div className="mt-2 text-xs text-[rgba(var(--fg),0.55)]">{s.note}</div>
-                ) : null}
-              </CardBody>
-            </Card>
-          ))}
+      {/* ABOUT (non-box editorial) */}
+      <section id="about" className="pravidhi-section theme--violet">
+        <div className="pravidhi-section__bg" aria-hidden>
+          <div className="pravidhi-section__mesh" />
+          <div className="pravidhi-section__grid" />
+          <div className="pravidhi-section__noise" />
+          <div className="pravidhi-section__sweep" />
         </div>
-      </Section>
 
-      {/* TRUST / COMPLIANCE */}
-      <Section>
-        <Reveal>
-          <Card>
-            <CardBody className="space-y-4">
-              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                <div className="space-y-2">
-                  <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">Trust</div>
-                  <H2>{home.compliance.title}</H2>
-                  <P className="max-w-2xl">
-                    Replace these placeholders with your verified controls, certifications,
-                    and implementation policies.
-                  </P>
-                </div>
-                <Button href="/product#security" variant="secondary">
-                  Security & governance →
-                </Button>
-              </div>
-
-              <div className="grid gap-2 md:grid-cols-3">
-                {home.compliance.items.map((it) => (
-                  <div
-                    key={it}
-                    className="rounded-xl border border-[rgba(255,255,255,0.10)] bg-[rgba(255,255,255,0.03)] px-4 py-3 text-sm text-[rgba(var(--fg),0.78)]"
-                  >
-                    {it}
+        <div className="relative z-[1]">
+          <div className="pravidhi-container">
+            <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px">
+              <div className="grid gap-10 md:grid-cols-12 md:items-start">
+                <div className="md:col-span-6">
+                  <Eyebrow>About Pravidhi Softtech</Eyebrow>
+                  <div className="mt-3 text-xs text-spaced text-[rgba(11,30,58,0.55)]">
+                    ENGINEERING • AI • GOVERNMENT-GRADE DELIVERY
                   </div>
-                ))}
-              </div>
-            </CardBody>
-          </Card>
-        </Reveal>
-      </Section>
 
-      {/* TEAM */}
-      <Section>
-        <Reveal>
-          <div className="grid items-center gap-8 md:grid-cols-12">
-            <div className="space-y-3 md:col-span-8">
-              <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-                {home.team.titleSpaced}
-              </div>
-              <H2>{home.team.title}</H2>
-              <P className="max-w-3xl">{home.team.body}</P>
-            </div>
-            <div className="flex md:col-span-4 md:justify-end">
-              <Button href={home.team.cta.href} variant="secondary">
-                {home.team.cta.label}
-              </Button>
-            </div>
-          </div>
-        </Reveal>
-      </Section>
+                  <H2 className="mt-4">
+                    We build{" "}
+                    <span className="studio-gradient-text font-extrabold">trusted digital systems</span>{" "}
+                    that are secure, scalable, and governable.
+                  </H2>
 
-      {/* TESTIMONIALS */}
-      <Section>
-        <Reveal>
-          <div className="space-y-3">
-            <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-              {home.testimonials.titleSpaced}
-            </div>
-            <H2>What stakeholders say (placeholders)</H2>
-            <P className="max-w-2xl">
-              Replace with real program references, measurable outcomes, and procurement-friendly language.
-            </P>
-          </div>
+                  <P className="mt-4 max-w-xl">
+                    Pravidhi Softtech is a software development company focused on delivering
+                    reliable platforms for public-sector and enterprise programs—where availability,
+                    data governance, and measurable outcomes matter.
+                  </P>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {home.testimonials.items.map((t, idx) => (
-              <Card key={idx}>
-                <CardBody className="space-y-4">
-                  <p className="leading-relaxed text-[rgba(var(--fg),0.78)]">“{t.quote}”</p>
-                  <div className="text-sm">
-                    <div className="font-semibold">{t.name}</div>
-                    <div className="text-[rgba(var(--fg),0.65)]">
-                      {t.role} • {t.org}
+                  {/* Minimal, colorful “principles” (no cards) */}
+                  <div className="mt-8">
+                    <div className="pravidhi-rule" />
+                    <div className="pravidhi-lines">
+                      <div className="pravidhi-line">
+                        <span className="dot dot--blue" aria-hidden />
+                        <div>
+                          <div className="t">Delivery discipline</div>
+                          <div className="s">Milestones, acceptance criteria, and operational readiness.</div>
+                        </div>
+                      </div>
+
+                      <div className="pravidhi-line">
+                        <span className="dot dot--teal" aria-hidden />
+                        <div>
+                          <div className="t">Security-first architecture</div>
+                          <div className="s">Least-privilege access, auditability, controlled integrations.</div>
+                        </div>
+                      </div>
+
+                      <div className="pravidhi-line">
+                        <span className="dot dot--violet" aria-hidden />
+                        <div>
+                          <div className="t">Practical AI</div>
+                          <div className="s">Automation and insights tied to real operational KPIs.</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </CardBody>
-              </Card>
-            ))}
-          </div>
-        </Reveal>
-      </Section>
 
-      {/* INSIGHTS */}
-      <Section>
-        <Reveal>
-          <div className="flex items-end justify-between gap-4">
-            <div className="space-y-2">
-              <Eyebrow>{home.insights.kicker}</Eyebrow>
-              <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-                {home.insights.titleSpaced}
-              </div>
-            </div>
-            <Button href={home.insights.cta.href} variant="ghost">
-              {home.insights.cta.label} →
-            </Button>
-          </div>
+                  {/* Subtle colored tags (pills, not boxes) */}
+                  <div className="mt-7 flex flex-wrap gap-2">
+                    <span className="pravidhi-pill pill--blue">Public-sector systems</span>
+                    <span className="pravidhi-pill pill--teal">Secure data flows</span>
+                    <span className="pravidhi-pill pill--violet">AI enablement</span>
+                    <span className="pravidhi-pill pill--amber">Long-term maintainability</span>
+                  </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {home.insights.items.map((n) => (
-              <Card key={n.title} className="group">
-                <CardBody className="space-y-3">
-                  <div className="text-xs text-[rgba(var(--fg),0.60)]">{n.date}</div>
-                  <H3>{n.title}</H3>
-                  <P className="text-sm">{n.blurb}</P>
-                  <Link href={n.href} className="text-sm text-[rgba(var(--accent),0.95)] hover:underline">
-                    Read more →
-                  </Link>
-                </CardBody>
-              </Card>
-            ))}
-          </div>
-        </Reveal>
-      </Section>
+                  
+                </div>
 
-      {/* FINAL CTA (anchor target) */}
-      <div id="contact" />
-      <Section className="pt-6">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-xl2 border border-[rgba(255,255,255,0.10)] bg-[rgba(255,255,255,0.03)]">
-            <div className="absolute inset-0 opacity-60">
-              <Image src={home.finalCta.bg} alt="CTA background placeholder" fill className="object-cover" />
-            </div>
-            <div className="relative p-7 md:p-10">
-              <div className="text-xs text-spaced text-[rgba(var(--muted),0.95)]">
-                {home.finalCta.titleSpaced}
+                {/* Right: statement + numbers (no cards) */}
+                <div className="md:col-span-6">
+                  <div className="pravidhi-quote">
+                    <div className="pravidhi-quote__bar" aria-hidden />
+                    <div className="pravidhi-quote__k">Company focus</div>
+                    <div className="pravidhi-quote__t">
+                      Build systems that remain stable under load, evolve safely, and stay
+                      maintainable for internal teams.
+                    </div>
+                    <div className="pravidhi-quote__s">
+                      Clean architecture, disciplined delivery, and measurable outcomes.
+                    </div>
+                  </div>
+
+                  <div className="mt-8 pravil-kpis">
+                    <div className="k">
+                      <div className="n">01</div>
+                      <div className="l">Discover</div>
+                    </div>
+                    <div className="k">
+                      <div className="n">02</div>
+                      <div className="l">Design</div>
+                    </div>
+                    <div className="k">
+                      <div className="n">03</div>
+                      <div className="l">Build</div>
+                    </div>
+                    <div className="k">
+                      <div className="n">04</div>
+                      <div className="l">Operate</div>
+                    </div>
+                  </div>
+
+                  <div className="mt-7 pr-1">
+                    <div className="pravidhi-rule" />
+                    <div className="mt-5 space-y-4">
+                      <div className="pravidhi-micro">
+                        <div className="h">Ownership-friendly engineering</div>
+                        <div className="p">Documentation, runbooks, and handover-ready delivery.</div>
+                      </div>
+                      <div className="pravidhi-micro">
+                        <div className="h">Operational visibility</div>
+                        <div className="p">Monitoring and reliability targets built in, not added later.</div>
+                      </div>
+                      <div className="pravidhi-micro">
+                        <div className="h">Controlled change</div>
+                        <div className="p">Versioned contracts, safe rollouts, and governance-first upgrades.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="mt-3 max-w-3xl space-y-3">
-                <H2>{home.finalCta.title}</H2>
-                <Button href={home.finalCta.cta.href} size="lg">
-                  {home.finalCta.cta.label}
-                </Button>
-              </div>
-            </div>
+            </Reveal>
           </div>
-        </Reveal>
-      </Section>
+        </div>
+      </section>
+
+      {/* OUR TECHNOLOGY (non-box map) */}
+      <section id="technology" className="pravidhi-section theme--teal">
+        <div className="pravidhi-section__bg" aria-hidden>
+          <div className="pravidhi-section__mesh" />
+          <div className="pravidhi-section__grid" />
+          <div className="pravidhi-section__noise" />
+        </div>
+
+        <div className="relative z-[1]">
+          <div className="pravidhi-container">
+            <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px">
+              <div className="grid gap-10 md:grid-cols-12 md:items-start">
+                <div className="md:col-span-5">
+                  <Eyebrow>Our Technology</Eyebrow>
+                  <div className="mt-3 text-xs text-spaced text-[rgba(11,30,58,0.55)]">
+                    MODERN STACK • SECURITY-FIRST • OPS-READY
+                  </div>
+
+                  <H2 className="mt-4">
+                    Future-proof engineering that{" "}
+                    <span className="studio-gradient-text font-extrabold">ships clean</span>{" "}
+                    and stays maintainable.
+                  </H2>
+
+                  <P className="mt-4 max-w-xl">
+                    We use a modern, proven stack and disciplined practices so systems remain fast,
+                    secure, and evolvable for years—without rewrites.
+                  </P>
+
+                  <div className="mt-7">
+                    <div className="pravidhi-rule" />
+                    <div className="mt-5 space-y-4">
+                      <div className="pravidhi-micro">
+                        <div className="h">Security by design</div>
+                        <div className="p">Least-privilege, audit trails, controlled data boundaries.</div>
+                      </div>
+                      <div className="pravidhi-micro">
+                        <div className="h">Performance budgets</div>
+                        <div className="p">Latency/reliability targets included in delivery gates.</div>
+                      </div>
+                      <div className="pravidhi-micro">
+                        <div className="h">Ops-ready from day one</div>
+                        <div className="p">Metrics, logs, alerting, and upgrade pathways.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: “technology map” (rows + rules, no cards) */}
+                <div className="md:col-span-7">
+                  <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px" delayMs={120}>
+                    <div className="pravidhi-map">
+                      <div className="pravidhi-map__head">
+                        <div className="k">Technology map</div>
+                        <div className="t">A pragmatic stack, built for governance</div>
+                      </div>
+
+                      <div className="pravidhi-map__grid">
+                        <div className="pravidhi-mapItem">
+                          <div className="a a--blue" aria-hidden />
+                          <div className="meta">
+                            <div className="h">Frontend</div>
+                            <div className="p">Next.js • TypeScript • Design systems</div>
+                          </div>
+                        </div>
+
+                        <div className="pravidhi-mapItem">
+                          <div className="a a--teal" aria-hidden />
+                          <div className="meta">
+                            <div className="h">Backend</div>
+                            <div className="p">API architecture • services • integrations</div>
+                          </div>
+                        </div>
+
+                        <div className="pravidhi-mapItem">
+                          <div className="a a--violet" aria-hidden />
+                          <div className="meta">
+                            <div className="h">Data & AI</div>
+                            <div className="p">Pipelines • analytics • practical ML</div>
+                          </div>
+                        </div>
+
+                        <div className="pravidhi-mapItem">
+                          <div className="a a--amber" aria-hidden />
+                          <div className="meta">
+                            <div className="h">Security</div>
+                            <div className="p">Access control • auditability • policy enforcement</div>
+                          </div>
+                        </div>
+
+                        <div className="pravidhi-mapItem">
+                          <div className="a a--coral" aria-hidden />
+                          <div className="meta">
+                            <div className="h">Cloud & DevOps</div>
+                            <div className="p">CI/CD • containers • reliability engineering</div>
+                          </div>
+                        </div>
+
+                        <div className="pravidhi-mapItem">
+                          <div className="a a--slate" aria-hidden />
+                          <div className="meta">
+                            <div className="h">Observability</div>
+                            <div className="p">Metrics • logs • alerting • dashboards</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="pravidhi-map__tags">
+                        <span className="pravidhi-pill pill--blue">Architecture-first</span>
+                        <span className="pravidhi-pill pill--teal">Automation</span>
+                        <span className="pravidhi-pill pill--violet">Testing gates</span>
+                        <span className="pravidhi-pill pill--amber">Governance</span>
+                        <span className="pravidhi-pill pill--slate">Observability</span>
+                      </div>
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* DELIVERY (already non-box, now made more colorful + sharper typography) */}
+      <section id="deliver" className="pravidhi-section theme--amber">
+        <div className="pravidhi-section__bg" aria-hidden>
+          <div className="pravidhi-section__mesh" />
+          <div className="pravidhi-section__grid" />
+          <div className="pravidhi-section__noise" />
+          <div className="pravidhi-section__sweep" />
+        </div>
+
+        <div className="relative z-[1]">
+          <div className="pravidhi-container">
+            <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px">
+              <div className="grid gap-10 md:grid-cols-12 md:items-start">
+                <div className="md:col-span-5">
+                  <Eyebrow>Delivery</Eyebrow>
+                  <div className="mt-3 text-xs text-spaced text-[rgba(11,30,58,0.55)]">
+                    OUTCOMES • RELIABILITY • LONG-TERM OWNERSHIP
+                  </div>
+
+                  <H2 className="mt-4">
+                    From{" "}
+                    <span className="studio-gradient-text font-extrabold">launch</span>{" "}
+                    to{" "}
+                    <span className="studio-gradient-text font-extrabold">lasting</span>{" "}
+                    — with stability built-in.
+                  </H2>
+
+                  <P className="mt-4 max-w-xl">
+                    We deliver systems that remain stable under real-world load, evolve safely,
+                    and stay maintainable for internal teams—especially in regulated environments.
+                  </P>
+
+                  <div className="mt-8">
+                    <div className="pravidhi-rule" />
+                    <div className="pravidhi-lines mt-4">
+                      <div className="pravidhi-line">
+                        <span className="dot dot--blue" aria-hidden />
+                        <div>
+                          <div className="t">Dependable platforms</div>
+                          <div className="s">Performance budgets, reliability targets, clean architecture.</div>
+                        </div>
+                      </div>
+
+                      <div className="pravidhi-line">
+                        <span className="dot dot--coral" aria-hidden />
+                        <div>
+                          <div className="t">Controlled integrations</div>
+                          <div className="s">Versioned contracts, validation, safe rollouts.</div>
+                        </div>
+                      </div>
+
+                      <div className="pravidhi-line">
+                        <span className="dot dot--teal" aria-hidden />
+                        <div>
+                          <div className="t">Secure-by-default</div>
+                          <div className="s">Auditability and governance built into delivery.</div>
+                        </div>
+                      </div>
+
+                      <div className="pravidhi-line">
+                        <span className="dot dot--violet" aria-hidden />
+                        <div>
+                          <div className="t">Measurable AI enablement</div>
+                          <div className="s">Automation and insights tied to operational KPIs.</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 flex flex-wrap justify-center gap-6 text-center md:justify-start md:text-left">
+                    <Link href="/services" className="pravidhi-linkAccent">
+                      See delivery capabilities
+                    </Link>
+                    <Link href="#contact" className="pravidhi-linkMuted">
+                      Start a conversation
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="md:col-span-7">
+                  <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px" delayMs={120}>
+                    <div className="pravidhi-rail2">
+                      <div className="title">Outcome areas</div>
+
+                      <div className="item">
+                        <div className="k">Citizen-scale systems</div>
+                        <div className="v">High availability, clean flows, predictable performance.</div>
+                      </div>
+
+                      <div className="item">
+                        <div className="k">Workflow modernization</div>
+                        <div className="v">From manual processes to governed digital operations.</div>
+                      </div>
+
+                      <div className="item">
+                        <div className="k">Integrations that don’t break</div>
+                        <div className="v">Contracts, validation, observability, safe evolution.</div>
+                      </div>
+
+                      <div className="item">
+                        <div className="k">AI-assisted operations</div>
+                        <div className="v">Decision-support—human in control.</div>
+                      </div>
+
+                      <div className="pravidhi-marquee" aria-label="Domains">
+                        <div className="track">
+                          <span>Public Sector</span><span>Healthcare</span><span>Education</span>
+                          <span>Enterprise Systems</span><span>Cloud Platforms</span><span>Security</span>
+                          <span>Integrations</span><span>AI/ML</span><span>Observability</span>
+                        </div>
+                        <div className="track" aria-hidden>
+                          <span>Public Sector</span><span>Healthcare</span><span>Education</span>
+                          <span>Enterprise Systems</span><span>Cloud Platforms</span><span>Security</span>
+                          <span>Integrations</span><span>AI/ML</span><span>Observability</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ENGAGEMENT MODEL (minimal + modern) */}
+      <section id="engagement" className="pravidhi-section theme--coral">
+        <div className="pravidhi-section__bg" aria-hidden>
+          <div className="pravidhi-section__mesh" />
+          <div className="pravidhi-section__grid" />
+          <div className="pravidhi-section__noise" />
+        </div>
+
+        <div className="relative z-[1]">
+          <div className="pravidhi-container">
+            <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px">
+              <div className="grid gap-10 md:grid-cols-12 md:items-start">
+                <div className="md:col-span-6">
+                  <Eyebrow>Engagement model</Eyebrow>
+                  <div className="mt-3 text-xs text-spaced text-[rgba(11,30,58,0.55)]">
+                    BUILD • MODERNIZE • OPERATE
+                  </div>
+
+                  <H2 className="mt-4">
+                    An engagement built for{" "}
+                    <span className="studio-gradient-text font-extrabold">clarity</span>,
+                    timeline discipline, and ownership.
+                  </H2>
+
+                  <P className="mt-4 max-w-xl">
+                    Whether building from zero, upgrading legacy workflows, or stabilizing operations—
+                    delivery stays transparent, measurable, and maintainable.
+                  </P>
+
+                  <div className="mt-8">
+                    <div className="pravidhi-rule" />
+                    <div className="pravidhi-steps">
+                      <div className="row">
+                        <div className="num">01</div>
+                        <div className="body">
+                          <div className="h">Build</div>
+                          <div className="p">New platforms, portals, mobile apps, and workflows.</div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="num">02</div>
+                        <div className="body">
+                          <div className="h">Modernize</div>
+                          <div className="p">Refactoring, integrations, performance & security uplift.</div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="num">03</div>
+                        <div className="body">
+                          <div className="h">Operate</div>
+                          <div className="p">Monitoring, reliability, upgrades, continuous improvement.</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="md:col-span-6">
+                  <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px" delayMs={120}>
+                    <div className="pravidhi-worklist2">
+                      <div className="title">How we work with your team</div>
+
+                      <div className="item">
+                        <div className="k">Clear scope, clear milestones</div>
+                        <div className="v">Deliverables, acceptance criteria, and governance built-in.</div>
+                      </div>
+
+                      <div className="item">
+                        <div className="k">Weekly visibility</div>
+                        <div className="v">Progress, risks, and decisions—communicated without noise.</div>
+                      </div>
+
+                      <div className="item">
+                        <div className="k">Documentation-first</div>
+                        <div className="v">Runbooks, architecture notes, and handover-ready delivery.</div>
+                      </div>
+
+                      <div className="item">
+                        <div className="k">Measured quality</div>
+                        <div className="v">Testing gates, performance checks, reliability targets.</div>
+                      </div>
+
+                      <div className="mt-8 flex flex-wrap justify-center gap-6 text-center md:justify-start md:text-left">
+                        <Link href="#contact" className="pravidhi-btn-primary">
+                          Request a proposal
+                        </Link>
+                        <Link href="/services" className="pravidhi-btn-secondary">
+                          View service lines
+                        </Link>
+                      </div>
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT CTA (redesigned: not boxy, no hard borders) */}
+      <section id="contact" className="pravidhi-cta">
+        <div className="pravidhi-cta__bg" aria-hidden>
+          <div className="pravidhi-cta__mesh" />
+          <div className="pravidhi-cta__noise" />
+          <div className="pravidhi-cta__halo" />
+        </div>
+
+        <div className="relative z-[1]">
+          <div className="pravidhi-container">
+            <Reveal threshold={0.3} rootMargin="0px 0px -30% 0px">
+              <div className="pravidhi-cta__inner">
+                <div className="text-xs text-spaced text-[rgba(11,30,58,0.55)]">
+                  {home.finalCta.titleSpaced}
+                </div>
+
+                <div className="mt-4 max-w-3xl md:mx-auto">
+                  <H2>{home.finalCta.title}</H2>
+                  <P className="mt-4">
+                    Tell us what you are building. We’ll respond with a clear plan, timeline, and next steps.
+                  </P>
+
+                  <div className="mt-8 flex flex-wrap justify-center gap-6 text-center">
+                    <Button href={home.finalCta.cta.href} size="lg">
+                      {home.finalCta.cta.label}
+                    </Button>
+                    <Link href="/services" className="pravidhi-btn-secondary">
+                      View service lines
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

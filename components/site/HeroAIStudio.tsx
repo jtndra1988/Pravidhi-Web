@@ -140,7 +140,7 @@ export function HeroAIStudio() {
           <p className="pravidhi-hero__subtitle">
             Introducing <strong>ArogyaSara</strong> - An AI/ML-powered platform
             for EHR, HMS, disease surveillance, hotspot detection, and
-            government-grade decision support.
+            decision support.
           </p>
 
           <div className="pravidhi-hero__ctaRow">
@@ -188,7 +188,7 @@ export function HeroAIStudio() {
                     <span className="d d2" />
                     <span className="d d3" />
                   </div>
-                  <div className="url">arogyasara.gov/dashboard</div>
+                  <div className="url">arogyasara.com/dashboard</div>
                   <div className="pill">LIVE</div>
                 </div>
 

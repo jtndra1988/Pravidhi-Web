@@ -14,14 +14,14 @@ export const site = {
   accent: "teal",
   nav: [
     { label: "Home", href: "/" },
+    { label: "About Us", href: "/company" },
     { label: "Product", href: "/product" },
     { label: "Services", href: "/services" },
     { label: "Solutions", href: "/solutions" },
-    { label: "Company", href: "/company" },
-    { label: "Contact", href: "/contact" }
+    // { label: "Contact", href: "/contact" }
   ] satisfies NavItem[],
   ctas: {
-    primary: { label: "Request a Government Demo", href: "/contact" },
+    primary: { label: "Contact Us", href: "/contact" },
     secondary: { label: "View Product Modules", href: "/product#modules" }
   } satisfies { primary: CTA; secondary: CTA },
   footer: {
@@ -38,7 +38,7 @@ export const site = {
 
 export const home = {
   hero: {
-    topLineSpaced: "B U I L D I N G  G O V E R N M E N T - G R A D E  D I G I T A L  H E A L T H",
+    topLineSpaced: "B U I L D I N G  D I G I T A L  H E A L T H",
     headline: "Unlock statewide health outcomes through AI-powered platforms.",
     subhead:
       "Pravidhi Softtech builds secure, scalable software for Indian State Governments and public hospitals—combining modern engineering with explainable AI for monitoring, operations, and care delivery.",
@@ -57,7 +57,7 @@ export const home = {
 
   intro: {
     kicker: "Introduction",
-    titleSpaced: "T R A N S F O R M I N G  P U B L I C  H E A L T H  D E L I V E R Y",
+    titleSpaced: "T R A N S F O R M I N G   P U B L I C   H E A L T H   D E L I V E R Y",
     title: "Transform public health delivery with systems designed for scale and governance.",
     body:
       "We combine UX clarity, audit-ready architecture, and AI that explains itself—so officials and clinicians can act with confidence.",
