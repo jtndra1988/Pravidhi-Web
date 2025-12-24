@@ -10,7 +10,7 @@ import { Eyebrow, H2, H3, P } from "@/components/ui/Typography";
 import { FeatureTabs } from "@/components/sections/FeatureTabs";
 import { AIAmbientBackground } from "@/components/site/AIAmbientBackground";
 import { HeroAIStudio } from "@/components/site/HeroAIStudio";
-
+import TechnologySection from "@/components/site/TechnologyMapInteractive";
 export default function HomePage() {
   return (
     <main className="pravidhi-site text-[#0b1e3a]">
@@ -31,7 +31,11 @@ export default function HomePage() {
             <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px">
               <div className="grid gap-10 md:grid-cols-12 md:items-start">
                 <div className="md:col-span-6">
-                  <Eyebrow>About Pravidhi Softtech</Eyebrow>
+                  <div className="eco-tech__eyebrow">
+                                  <span className="eco-tech__dot" aria-hidden />
+                                   <Eyebrow>About Pravidhi Softtech</Eyebrow>
+                                </div>
+                  {/* <Eyebrow>About Pravidhi Softtech</Eyebrow> */}
                   <div className="mt-3 text-xs text-spaced text-[rgba(11,30,58,0.55)]">
                     ENGINEERING • AI • GOVERNMENT-GRADE DELIVERY
                   </div>
@@ -44,7 +48,7 @@ export default function HomePage() {
 
                   <P className="mt-4 max-w-xl">
                     Pravidhi Softtech is a software development company focused on delivering
-                    reliable platforms for public-sector and enterprise programs—where availability,
+                    reliable platforms for public-sector and enterprise programs where availability,
                     data governance, and measurable outcomes matter.
                   </P>
 
@@ -86,188 +90,51 @@ export default function HomePage() {
                     <span className="pravidhi-pill pill--amber">Long-term maintainability</span>
                   </div>
 
-                  
+
                 </div>
 
                 {/* Right: statement + numbers (no cards) */}
                 <div className="md:col-span-6">
-                  <div className="pravidhi-quote">
-                    <div className="pravidhi-quote__bar" aria-hidden />
-                    <div className="pravidhi-quote__k">Company focus</div>
-                    <div className="pravidhi-quote__t">
-                      Build systems that remain stable under load, evolve safely, and stay
-                      maintainable for internal teams.
-                    </div>
-                    <div className="pravidhi-quote__s">
-                      Clean architecture, disciplined delivery, and measurable outcomes.
-                    </div>
-                  </div>
+                  <div className="pravidhi-narrative">
+                    <div className="pravidhi-narrative__bar" aria-hidden />
 
-                  <div className="mt-8 pravil-kpis">
-                    <div className="k">
-                      <div className="n">01</div>
-                      <div className="l">Discover</div>
-                    </div>
-                    <div className="k">
-                      <div className="n">02</div>
-                      <div className="l">Design</div>
-                    </div>
-                    <div className="k">
-                      <div className="n">03</div>
-                      <div className="l">Build</div>
-                    </div>
-                    <div className="k">
-                      <div className="n">04</div>
-                      <div className="l">Operate</div>
-                    </div>
-                  </div>
+                    <div className="pravidhi-narrative__k">How we think</div>
 
-                  <div className="mt-7 pr-1">
-                    <div className="pravidhi-rule" />
-                    <div className="mt-5 space-y-4">
-                      <div className="pravidhi-micro">
-                        <div className="h">Ownership-friendly engineering</div>
-                        <div className="p">Documentation, runbooks, and handover-ready delivery.</div>
-                      </div>
-                      <div className="pravidhi-micro">
-                        <div className="h">Operational visibility</div>
-                        <div className="p">Monitoring and reliability targets built in, not added later.</div>
-                      </div>
-                      <div className="pravidhi-micro">
-                        <div className="h">Controlled change</div>
-                        <div className="p">Versioned contracts, safe rollouts, and governance-first upgrades.</div>
-                      </div>
+                    <div className="pravidhi-narrative__t">
+                      We don’t build “apps”. We build long-lived digital systems.
+                    </div>
+
+                    <p className="mt-4 max-w-xl">
+                      For government and enterprise programs, the real challenge is not launching it is sustaining.
+                      That means architecture that stays predictable under load, security that is designed into the
+                      workflow, and integrations that evolve without breaking dependent services.
+                    </p>
+
+                    <p className="mt-4 max-w-xl">
+                      Our delivery is engineered for ownership. You get documentation-first execution, clear interfaces,
+                      and operational visibility from day one so your internal teams can run, extend, and govern the
+                      platform confidently over time.
+                    </p>
+
+                    <div className="pravidhi-narrative__sig">
+                      <span className="chip1">Discover → Design → Build → Operate</span>
+                      <span className="sep" aria-hidden>•</span>
+                      <span className="chip2">Security-first</span>
+                      <span className="sep" aria-hidden>•</span>
+                      <span className="chip4">Maintainable by teams</span>
                     </div>
                   </div>
                 </div>
+
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* OUR TECHNOLOGY (non-box map) */}
-      <section id="technology" className="pravidhi-section theme--teal">
-        <div className="pravidhi-section__bg" aria-hidden>
-          <div className="pravidhi-section__mesh" />
-          <div className="pravidhi-section__grid" />
-          <div className="pravidhi-section__noise" />
-        </div>
+{/* OUR TECHNOLOGY (minimal + modern + less info) */}
 
-        <div className="relative z-[1]">
-          <div className="pravidhi-container">
-            <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px">
-              <div className="grid gap-10 md:grid-cols-12 md:items-start">
-                <div className="md:col-span-5">
-                  <Eyebrow>Our Technology</Eyebrow>
-                  <div className="mt-3 text-xs text-spaced text-[rgba(11,30,58,0.55)]">
-                    MODERN STACK • SECURITY-FIRST • OPS-READY
-                  </div>
-
-                  <H2 className="mt-4">
-                    Future-proof engineering that{" "}
-                    <span className="studio-gradient-text font-extrabold">ships clean</span>{" "}
-                    and stays maintainable.
-                  </H2>
-
-                  <P className="mt-4 max-w-xl">
-                    We use a modern, proven stack and disciplined practices so systems remain fast,
-                    secure, and evolvable for years—without rewrites.
-                  </P>
-
-                  <div className="mt-7">
-                    <div className="pravidhi-rule" />
-                    <div className="mt-5 space-y-4">
-                      <div className="pravidhi-micro">
-                        <div className="h">Security by design</div>
-                        <div className="p">Least-privilege, audit trails, controlled data boundaries.</div>
-                      </div>
-                      <div className="pravidhi-micro">
-                        <div className="h">Performance budgets</div>
-                        <div className="p">Latency/reliability targets included in delivery gates.</div>
-                      </div>
-                      <div className="pravidhi-micro">
-                        <div className="h">Ops-ready from day one</div>
-                        <div className="p">Metrics, logs, alerting, and upgrade pathways.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: “technology map” (rows + rules, no cards) */}
-                <div className="md:col-span-7">
-                  <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px" delayMs={120}>
-                    <div className="pravidhi-map">
-                      <div className="pravidhi-map__head">
-                        <div className="k">Technology map</div>
-                        <div className="t">A pragmatic stack, built for governance</div>
-                      </div>
-
-                      <div className="pravidhi-map__grid">
-                        <div className="pravidhi-mapItem">
-                          <div className="a a--blue" aria-hidden />
-                          <div className="meta">
-                            <div className="h">Frontend</div>
-                            <div className="p">Next.js • TypeScript • Design systems</div>
-                          </div>
-                        </div>
-
-                        <div className="pravidhi-mapItem">
-                          <div className="a a--teal" aria-hidden />
-                          <div className="meta">
-                            <div className="h">Backend</div>
-                            <div className="p">API architecture • services • integrations</div>
-                          </div>
-                        </div>
-
-                        <div className="pravidhi-mapItem">
-                          <div className="a a--violet" aria-hidden />
-                          <div className="meta">
-                            <div className="h">Data & AI</div>
-                            <div className="p">Pipelines • analytics • practical ML</div>
-                          </div>
-                        </div>
-
-                        <div className="pravidhi-mapItem">
-                          <div className="a a--amber" aria-hidden />
-                          <div className="meta">
-                            <div className="h">Security</div>
-                            <div className="p">Access control • auditability • policy enforcement</div>
-                          </div>
-                        </div>
-
-                        <div className="pravidhi-mapItem">
-                          <div className="a a--coral" aria-hidden />
-                          <div className="meta">
-                            <div className="h">Cloud & DevOps</div>
-                            <div className="p">CI/CD • containers • reliability engineering</div>
-                          </div>
-                        </div>
-
-                        <div className="pravidhi-mapItem">
-                          <div className="a a--slate" aria-hidden />
-                          <div className="meta">
-                            <div className="h">Observability</div>
-                            <div className="p">Metrics • logs • alerting • dashboards</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="pravidhi-map__tags">
-                        <span className="pravidhi-pill pill--blue">Architecture-first</span>
-                        <span className="pravidhi-pill pill--teal">Automation</span>
-                        <span className="pravidhi-pill pill--violet">Testing gates</span>
-                        <span className="pravidhi-pill pill--amber">Governance</span>
-                        <span className="pravidhi-pill pill--slate">Observability</span>
-                      </div>
-                    </div>
-                  </Reveal>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+    <TechnologySection/>
 
       {/* DELIVERY (already non-box, now made more colorful + sharper typography) */}
       <section id="deliver" className="pravidhi-section theme--amber">
@@ -293,12 +160,12 @@ export default function HomePage() {
                     <span className="studio-gradient-text font-extrabold">launch</span>{" "}
                     to{" "}
                     <span className="studio-gradient-text font-extrabold">lasting</span>{" "}
-                    — with stability built-in.
+                    with stability built-in.
                   </H2>
 
                   <P className="mt-4 max-w-xl">
                     We deliver systems that remain stable under real-world load, evolve safely,
-                    and stay maintainable for internal teams—especially in regulated environments.
+                    and stay maintainable for internal teams especially in regulated environments.
                   </P>
 
                   <div className="mt-8">
@@ -379,11 +246,11 @@ export default function HomePage() {
                           <span>Enterprise Systems</span><span>Cloud Platforms</span><span>Security</span>
                           <span>Integrations</span><span>AI/ML</span><span>Observability</span>
                         </div>
-                        <div className="track" aria-hidden>
+                        {/* <div className="track" aria-hidden>
                           <span>Public Sector</span><span>Healthcare</span><span>Education</span>
                           <span>Enterprise Systems</span><span>Cloud Platforms</span><span>Security</span>
                           <span>Integrations</span><span>AI/ML</span><span>Observability</span>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </Reveal>
@@ -531,4 +398,4 @@ export default function HomePage() {
       </section>
     </main>
   );
-}
+} 
