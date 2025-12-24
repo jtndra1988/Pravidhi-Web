@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
+import { H2 } from "../ui/Typography";
 
 type Tilt = { rx: number; ry: number; mx: number; my: number };
 
@@ -131,10 +132,13 @@ export function HeroAIStudio() {
           </div>
 
           <h1 className="pravidhi-hero__title">
-            Pravidhi Softtech
-            <span className="pravidhi-hero__titleAccent">
+            Pravidhi SoftTech
+            <H2 className="mt-4">
+                              <span className="studio-gradient-text font-extrabold">Building Intelligent Public Health Infrastructure</span>
+                            </H2>
+            {/* <span className="pravidhi-hero__titleAccent">
               Building Intelligent Public Health Infrastructure
-            </span>
+            </span> */}
           </h1>
 
           <p className="pravidhi-hero__subtitle">

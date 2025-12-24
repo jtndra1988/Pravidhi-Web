@@ -703,7 +703,7 @@ input::placeholder, textarea::placeholder {
 .pravidhi-hero__titleAccent {
   display: block;
   margin-top: 10px;
-  font-weight: 900;
+  font-weight: 500;
   background: linear-gradient(90deg, #1b59a7 0%, #0b1e3a 52%, #1b59a7 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1235,13 +1235,13 @@ input::placeholder, textarea::placeholder {
   display: inline-flex;
   align-items: center;
 
-  height: 42px;
+  height: 30px;
   padding: 0 12px;
   border-radius: 999px;
 
   color: rgba(11, 30, 58, 0.68);
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 500;
+  font-size: 16px;
   letter-spacing: 0.01em;
   text-decoration: none;
 
@@ -2463,7 +2463,7 @@ input::placeholder, textarea::placeholder {
 /* Dots (subtle but colorful) */
 .dot {
   width: 10px; height: 10px; border-radius: 999px;
-  margin-top: 6px;
+  margin-top: 13px;
   box-shadow: 0 0 0 7px rgba(27,89,167,0.08);
 }
 .dot--blue   { background: rgba(27,89,167,0.95); box-shadow: 0 0 0 7px rgba(27,89,167,0.10); }
@@ -2479,7 +2479,7 @@ input::placeholder, textarea::placeholder {
   padding: 8px 10px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
   color: rgba(11,30,58,0.72);
   background: rgba(255,255,255,0.70);
   border: 1px solid rgba(11,30,58,0.10);
@@ -3353,6 +3353,7 @@ input::placeholder, textarea::placeholder {
   padding: 8px 12px;
   border-radius: 999px;
   box-shadow: 0 10px 28px rgba(11,30,58,0.06);
+  
 }
 
 .eco-lines{ display:grid; gap:14px; }
@@ -3362,7 +3363,20 @@ input::placeholder, textarea::placeholder {
   align-items:flex-start;
   padding: 12px 12px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.76);
+  background:
+    radial-gradient(420px 220px at 15% 20%, rgba(139,92,246,0.22), transparent 62%),
+    linear-gradient(135deg, rgba(139,92,246,0.08), rgba(255,255,255,0.78));
+  border: 1px solid rgba(11,30,58,0.08);
+}
+.eco-line-green{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding: 12px 12px;
+  border-radius: 16px;
+  background:
+    radial-gradient(420px 220px at 15% 20%, rgba(20,184,166,0.20), transparent 62%),
+    linear-gradient(135deg, rgba(20,184,166,0.08), rgba(255,255,255,0.78));
   border: 1px solid rgba(11,30,58,0.08);
 }
 .eco-bullet{
@@ -3370,18 +3384,30 @@ input::placeholder, textarea::placeholder {
   margin-top: 4px;
   background: rgba(27,89,167,0.85);
   box-shadow: 0 0 0 6px rgba(27,89,167,0.10);
+  
 }
 .eco-line .t{
   font-weight: 900;
   color:#0b1e3a;
   font-size: 13px;
-}
+  
+  }
 .eco-line .s{
   font-size: 12px;
   margin-top: 2px;
   color: rgba(11,30,58,0.58);
 }
-
+.eco-line-green .t{
+  font-weight: 900;
+  color:#0b1e3a;
+  font-size: 13px;
+  
+  }
+.eco-line-green .s{
+  font-size: 12px;
+  margin-top: 2px;
+  color: rgba(11,30,58,0.58);
+}
 /* ====== Map Card ====== */
 .eco-map{
   position: relative;
@@ -3648,4 +3674,873 @@ input::placeholder, textarea::placeholder {
 
 @media (prefers-reduced-motion: reduce){
   .eco-node, .eco-node::before { animation: none !important; }
+}
+/* =========================
+   MOBILE FIX: replace floating cards with dots + swipe cards
+   ========================= */
+
+/* Hide mobile-only UI on desktop by default */
+.eco-dot,
+.eco-mstrip { display: none; }
+
+/* Mobile breakpoint */
+@media (max-width: 760px){
+
+  /* Map itself: slightly taller to breathe */
+  .eco-map{
+    aspect-ratio: 4 / 5;
+    border-radius: 22px;
+  }
+
+  /* Core: smaller and centered nicely */
+  .eco-core{
+    width: 72%;
+    min-width: unset;
+    padding: 14px 14px;
+    border-radius: 20px;
+  }
+
+  /* Hide the desktop floating cards (they cause overlap) */
+  .eco-node--desktop{ display: none; }
+
+  /* Hide HUD on mobile (swipe cards already provide detail) */
+  .eco-hud{ display: none; }
+
+  /* Show mobile dots (tap targets) */
+  .eco-dot{
+    display: block;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.8);
+    box-shadow: 0 12px 24px rgba(11,30,58,0.12);
+    cursor: pointer;
+    z-index: 5;
+  }
+  .eco-dot--active{
+    width: 14px;
+    height: 14px;
+    box-shadow:
+      0 0 0 6px rgba(27,89,167,0.10),
+      0 14px 28px rgba(11,30,58,0.16);
+  }
+
+  /* Dot tones */
+  .eco-dot--blue{ background: rgba(27,89,167,0.95); ;margin-top: 15px;}
+  .eco-dot--indigo{ background: rgba(37,99,235,0.95); ;margin-top: 15px;}
+  .eco-dot--teal{ background: rgba(13,148,136,0.95); ;margin-top: 15px;}
+  .eco-dot--violet{ background: rgba(109,40,217,0.95);margin-top: 15px; }
+  .eco-dot--amber{ background: rgba(180,83,9,0.95);margin-top: 15px; }
+  .eco-dot--slate{ background: rgba(11,30,58,0.75); ;margin-top: 15px;}
+
+  /* Mobile swipe cards */
+  .eco-mstrip{
+    display: flex;
+    gap: 12px;
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 6;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .eco-mstrip::-webkit-scrollbar{ height: 0px; }
+
+  .eco-mcard{
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+    border-radius: 18px;
+    padding: 12px 12px;
+    border: 1px solid rgba(11,30,58,0.10);
+    box-shadow: 0 16px 44px rgba(11,30,58,0.10);
+    background: rgba(255,255,255,0.80);
+    text-align: left;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .eco-mcard--active{
+    border-color: rgba(27,89,167,0.34);
+    box-shadow: 0 20px 60px rgba(27,89,167,0.16);
+    transform: translateY(-1px);
+  }
+
+  .eco-mcard__row{
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .eco-mcard__icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.55);
+    flex: 0 0 auto;
+  }
+  .eco-mcard__t{
+    font-weight: 950;
+    color: #0b1e3a;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+  .eco-mcard__s{
+    margin-top: 3px;
+    font-size: 11px;
+    color: rgba(11,30,58,0.62);
+    line-height: 1.35;
+  }
+
+  .eco-mcard__chips{
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .eco-mchip{
+    font-size: 11px;
+    font-weight: 900;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.62);
+    border: 1px solid rgba(255,255,255,0.60);
+    color: rgba(11,30,58,0.72);
+  }
+
+  /* Mobile card tones (match your node tones) */
+  .eco-mcard--blue{
+    background:
+      radial-gradient(420px 220px at 20% 20%, rgba(27,89,167,0.22), transparent 62%),
+      rgba(255,255,255,0.82);
+  }
+  .eco-mcard--blue .eco-mcard__icon{ background: rgba(27,89,167,0.14); border-color: rgba(27,89,167,0.22); color:#1b59a7; }
+
+  .eco-mcard--indigo{
+    background:
+      radial-gradient(420px 220px at 20% 20%, rgba(59,130,246,0.18), transparent 62%),
+      rgba(255,255,255,0.82);
+  }
+  .eco-mcard--indigo .eco-mcard__icon{ background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.20); color: rgba(37,99,235,0.95); }
+
+  .eco-mcard--teal{
+    background:
+      radial-gradient(420px 220px at 20% 20%, rgba(20,184,166,0.20), transparent 62%),
+      rgba(255,255,255,0.82);
+  }
+  .eco-mcard--teal .eco-mcard__icon{ background: rgba(20,184,166,0.12); border-color: rgba(20,184,166,0.20); color: rgba(13,148,136,0.98); }
+
+  .eco-mcard--violet{
+    background:
+      radial-gradient(420px 220px at 20% 20%, rgba(139,92,246,0.22), transparent 62%),
+      rgba(255,255,255,0.82);
+  }
+  .eco-mcard--violet .eco-mcard__icon{ background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.20); color: rgba(109,40,217,0.95); }
+
+  .eco-mcard--amber{
+    background:
+      radial-gradient(420px 220px at 20% 20%, rgba(245,158,11,0.22), transparent 62%),
+      rgba(255,255,255,0.82);
+  }
+  .eco-mcard--amber .eco-mcard__icon{ background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.20); color: rgba(180,83,9,0.95); }
+
+  .eco-mcard--slate{
+    background:
+      radial-gradient(420px 220px at 20% 20%, rgba(190,195,203,0.55), transparent 62%),
+      rgba(255,255,255,0.82);
+  }
+  .eco-mcard--slate .eco-mcard__icon{ background: rgba(11,30,58,0.08); border-color: rgba(11,30,58,0.14); color:#0b1e3a; }
+
+  /* Optional: move the top floating chip out of the way on mobile */
+  .eco-float{ top: 12px; right: 12px; font-size: 11px; padding: 7px 9px; }
+}
+/* =========================
+   ABOUT LEFT: Big color-shifting globe + scattered compact cards
+   ========================= */
+
+.aboutg{
+  position: relative;
+  height: 100%;
+  min-height: 640px;
+  border-radius: 28px;
+  border: 1px solid rgba(11,30,58,0.10);
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 18px 52px rgba(11,30,58,0.10);
+  overflow: hidden;
+}
+
+/* Background */
+.aboutg__bg{ position:absolute; inset:0; pointer-events:none; }
+.aboutg__mesh{
+  position:absolute; inset:-25%;
+  background:
+    radial-gradient(560px 420px at 30% 30%, rgba(27,89,167,0.12), transparent 62%),
+    radial-gradient(560px 420px at 70% 70%, rgba(190,195,203,0.26), transparent 62%);
+  opacity: 0.95;
+}
+.aboutg__grid{
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(11,30,58,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,30,58,0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(820px 520px at 50% 55%, #000 0%, transparent 72%);
+  opacity: 0.85;
+}
+.aboutg__noise{
+  position:absolute; inset:0;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* Label */
+.aboutg__label{
+  position:absolute;
+  left: 18px;
+  top: 18px;
+  width: min(360px, calc(100% - 36px));
+  padding: 12px 12px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(11,30,58,0.10);
+  box-shadow: 0 14px 38px rgba(11,30,58,0.08);
+  z-index: 5;
+}
+.aboutg__label .k{
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(11,30,58,0.58);
+}
+.aboutg__label .t{
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 950;
+  color: rgba(11,30,58,0.92);
+  letter-spacing: -0.02em;
+}
+.aboutg__label .s{
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 750;
+  color: rgba(11,30,58,0.58);
+  line-height: 1.6;
+}
+
+/* Globe stage (full) */
+.aboutg__stage{
+  position:absolute;
+  inset:0;
+  z-index: 1;
+}
+.aboutg__canvas{
+  position:absolute;
+  inset:0;
+  width: 100%;
+  height: 100%;
+  display:block;
+}
+
+/* Rings emphasizing big globe */
+.aboutg__ring{
+  left: 50%;
+  top: 54%;
+  width: 78%;
+  height: 78%;
+  transform: translate(-50%,-50%);
+  border-radius: 999px;
+  border: 1px solid rgba(11,30,58,0.08);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.62) inset;
+  pointer-events:none;
+  opacity: 0.85;
+}
+.aboutg__ring--inner{
+  width: 62%;
+  height: 62%;
+  opacity: 0.45;
+}
+
+/* Connector lines */
+
+
+/* Compact scattered cards */
+.aboutg__card{
+  position:absolute;
+  transform: translate(-50%,-50%);
+  width: clamp(200px, 34%, 250px); /* NOT too wide */
+  padding: 10px 11px;
+  border-radius: 18px;
+  border: 1px solid rgba(11,30,58,0.10);
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 16px 44px rgba(11,30,58,0.08);
+  display:flex;
+  gap: 10px;
+  align-items:flex-start;
+  z-index: 4;
+  animation: aboutgFloat 8.2s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes aboutgFloat{
+  0%,100%{ transform: translate(-50%,-50%) translateY(0); }
+  50%{ transform: translate(-50%,-50%) translateY(-6px); }
+}
+
+.aboutg__card .ic{
+  width: 40px; height: 40px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  border: 1px solid rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.55);
+  flex: 0 0 auto;
+}
+.aboutg__card .ct{
+  font-size: 12px;
+  font-weight: 950;
+  color: rgba(11,30,58,0.92);
+  line-height: 1.2;
+}
+.aboutg__card .cs{
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 750;
+  color: rgba(11,30,58,0.58);
+  line-height: 1.4;
+}
+@media (max-width: 1100px){
+  .aboutg__card{ width: clamp(190px, 36%, 240px); }
+}
+@keyframes aboutgFloat{
+  0%,100%{ transform: translate(-50%,-50%) translateY(0); }
+  50%{ transform: translate(-50%,-50%) translateY(-4px); }
+}
+/* Tones */
+.aboutg__card--blue{
+  background: radial-gradient(420px 220px at 20% 20%, rgba(27,89,167,0.18), transparent 62%), rgba(255,255,255,0.74);
+}
+.aboutg__card--blue .ic{
+  background: rgba(27,89,167,0.14);
+  border-color: rgba(27,89,167,0.22);
+  color:#1b59a7;
+}
+
+.aboutg__card--teal{
+  background: radial-gradient(420px 220px at 20% 20%, rgba(20,184,166,0.16), transparent 62%), rgba(255,255,255,0.74);
+}
+.aboutg__card--teal .ic{
+  background: rgba(20,184,166,0.12);
+  border-color: rgba(20,184,166,0.20);
+  color: rgba(13,148,136,0.98);
+}
+
+.aboutg__card--violet{
+  background: radial-gradient(420px 220px at 20% 20%, rgba(139,92,246,0.16), transparent 62%), rgba(255,255,255,0.74);
+}
+.aboutg__card--violet .ic{
+  background: rgba(139,92,246,0.12);
+  border-color: rgba(139,92,246,0.20);
+  color: rgba(109,40,217,0.95);
+}
+
+.aboutg__card--amber{
+  background: radial-gradient(420px 220px at 20% 20%, rgba(245,158,11,0.16), transparent 62%), rgba(255,255,255,0.74);
+}
+.aboutg__card--amber .ic{
+  background: rgba(245,158,11,0.12);
+  border-color: rgba(245,158,11,0.20);
+  color: rgba(180,83,9,0.95);
+}
+
+.aboutg__card--slate{
+  background: radial-gradient(420px 220px at 20% 20%, rgba(190,195,203,0.55), transparent 62%), rgba(255,255,255,0.74);
+}
+.aboutg__card--slate .ic{
+  background: rgba(11,30,58,0.08);
+  border-color: rgba(11,30,58,0.14);
+  color:#0b1e3a;
+}
+
+/* Mobile: prevent overlaps — stack cards at bottom and keep globe visible */
+@media (max-width: 900px){
+  .aboutg{ min-height: 560px; }
+  .aboutg__card{
+    position: static;
+    transform: none;
+    width: 100%;
+    animation: none;
+  }
+  .aboutg__links{ display:none; }
+  .aboutg{
+  padding: 18px;        /* creates breathing room so cards + shadows don't clip */
+  overflow: hidden;     /* keep clean edges */
+}
+  /* Put stacked cards into a bottom container feel */
+  .aboutg{
+    display:flex;
+    flex-direction: column;
+  }
+  .aboutg__stage{ position:absolute; inset:0; }
+  .aboutg__label{ position: relative; margin: 14px 14px 0; left:auto; top:auto; width:auto; }
+  .aboutg__ring{ width: 88%; height: 88%; }
+  /* stack cards under the globe */
+  .aboutg__card{
+    margin: 10px 14px 0;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .aboutg__link{ animation: none !important; }
+  .aboutg__card{ animation: none !important; }
+}
+/* =========================
+   DELIVERY ORBIT (left panel animation)
+   Matches About/Technology visual language
+   ========================= */
+
+.del-orbit{
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid rgba(11,30,58,0.10);
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 18px 52px rgba(11,30,58,0.10);
+  overflow: hidden;
+  height: 560px;
+}
+
+@media (max-width: 900px){
+  .del-orbit{ height: 440px; border-radius: 22px; }
+}
+
+.del-orbit__bg{
+  position:absolute; inset:-25%;
+  background:
+    radial-gradient(520px 360px at 30% 30%, rgba(27,89,167,0.12), transparent 62%),
+    radial-gradient(520px 360px at 70% 70%, rgba(190,195,203,0.26), transparent 62%);
+  opacity: 0.95;
+}
+
+.del-orbit__svg{
+  position:absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display:block;
+}
+
+.del-orbit__rings{
+  opacity: 0.95;
+}
+
+.del-orbit__dash{
+  transform-origin: 50px 52px;
+  animation: delRotate 18s linear infinite;
+}
+
+.del-orbit__nodes{
+  transform-origin: 50px 52px;
+}
+
+.del-orbit__nodes--outer{ animation: delRotate 16s linear infinite; }
+.del-orbit__nodes--mid{ animation: delRotate 22s linear infinite reverse; opacity: 0.92; }
+.del-orbit__nodes--inner{ animation: delRotate 28s linear infinite; opacity: 0.85; }
+
+@keyframes delRotate{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
+
+.del-orbit__pulse{
+  transform-origin: 50px 52px;
+  animation: delPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes delPulse{
+  0%,100%{ opacity: 0.18; transform: scale(0.98); }
+  50%{ opacity: 0.45; transform: scale(1.03); }
+}
+
+/* chips (subtle, fits inside) */
+.del-orbit__chip{
+  position:absolute;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(11,30,58,0.10);
+  box-shadow: 0 14px 38px rgba(11,30,58,0.08);
+  font-size: 12px;
+  font-weight: 850;
+  color: rgba(11,30,58,0.78);
+  letter-spacing: -0.01em;
+  backdrop-filter: blur(8px);
+}
+
+.del-orbit__chip--tl{ left: 18px; top: 18px; }
+.del-orbit__chip--tr{ right: 18px; top: 18px; }
+.del-orbit__chip--r{ right: 18px; top: 50%; transform: translateY(-50%); }
+.del-orbit__chip--bl{ left: 18px; bottom: 18px; }
+.del-orbit__chip--b{ left: 50%; bottom: 18px; transform: translateX(-50%); }
+
+@media (prefers-reduced-motion: reduce){
+  .del-orbit__dash,
+  .del-orbit__nodes--outer,
+  .del-orbit__nodes--mid,
+  .del-orbit__nodes--inner,
+  .del-orbit__pulse{
+    animation: none !important;
+  }
+}
+/* =========================
+   DELIVERY PIPELINE (left animation)
+   ========================= */
+
+.del-pipe{
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid rgba(11,30,58,0.10);
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 18px 52px rgba(11,30,58,0.10);
+  overflow: hidden;
+  height: 560px;
+}
+
+@media (max-width: 900px){
+  .del-pipe{ height: 440px; border-radius: 22px; }
+}
+
+.del-pipe__bg{
+  position:absolute; inset:-25%;
+  background:
+    radial-gradient(520px 360px at 30% 30%, rgba(27,89,167,0.12), transparent 62%),
+    radial-gradient(520px 360px at 70% 70%, rgba(190,195,203,0.26), transparent 62%);
+  opacity: 0.95;
+}
+
+.del-pipe__svg{
+  position:absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display:block;
+}
+
+.del-pipe__dash{
+  stroke-dasharray: 6 12;
+  animation: delPipeDash 6.0s linear infinite;
+  opacity: 0.95;
+}
+
+.del-pipe__dash2{
+  stroke-dasharray: 5 14;
+  animation: delPipeDash 7.6s linear infinite reverse;
+  opacity: 0.85;
+}
+
+@keyframes delPipeDash{
+  0%{ stroke-dashoffset: 0; }
+  100%{ stroke-dashoffset: -140; }
+}
+
+.del-pipe__sweep{
+  stroke-dasharray: 20 180;
+  animation: delPipeSweep 4.8s ease-in-out infinite;
+}
+
+@keyframes delPipeSweep{
+  0%{ stroke-dashoffset: 0; opacity: 0.12; }
+  55%{ opacity: 0.24; }
+  100%{ stroke-dashoffset: -220; opacity: 0.12; }
+}
+
+/* chips */
+.del-pipe__chip{
+  position:absolute;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(11,30,58,0.10);
+  box-shadow: 0 14px 38px rgba(11,30,58,0.08);
+  font-size: 12px;
+  font-weight: 850;
+  color: rgba(11,30,58,0.78);
+  letter-spacing: -0.01em;
+  backdrop-filter: blur(8px);
+}
+
+/* positioned so they don't collide with the paths */
+.del-pipe__chip--a{ left: 18px; top: 18px; }
+.del-pipe__chip--b{ right: 18px; top: 18px; }
+.del-pipe__chip--c{ right: 18px; top: 50%; transform: translateY(-50%); }
+.del-pipe__chip--d{ left: 18px; bottom: 18px; }
+.del-pipe__chip--e{ left: 50%; bottom: 18px; transform: translateX(-50%); }
+
+@media (prefers-reduced-motion: reduce){
+  .del-pipe__dash,
+  .del-pipe__dash2,
+  .del-pipe__sweep{
+    animation: none !important;
+  }
+  /* Packets are SMIL motion; browsers that honor reduced-motion still show static.
+     If you want, we can provide a JS toggle to disable animateMotion entirely. */
+}
+/* =========================
+   DELIVERY: Release Train + Stage Gates (left visual)
+   ========================= */
+
+.del-train{
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid rgba(11,30,58,0.10);
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 18px 52px rgba(11,30,58,0.10);
+  overflow: hidden;
+  height: 560px;
+}
+
+@media (max-width: 900px){
+  .del-train{ height: 440px; border-radius: 22px; }
+}
+
+.del-train__bg{
+  position:absolute; inset:-25%;
+  background:
+    radial-gradient(520px 360px at 30% 30%, rgba(27,89,167,0.12), transparent 62%),
+    radial-gradient(520px 360px at 70% 70%, rgba(190,195,203,0.26), transparent 62%);
+  opacity: 0.95;
+}
+
+.del-train__svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.del-train__dash{
+  animation: delTrainDash 6.8s linear infinite;
+}
+@keyframes delTrainDash{
+  0%{ stroke-dashoffset: 0; }
+  100%{ stroke-dashoffset: -160; }
+}
+
+.del-train__loopDash{
+  animation: delLoopDash 10.4s linear infinite;
+  opacity: 0.85;
+}
+@keyframes delLoopDash{
+  0%{ stroke-dashoffset: 0; }
+  100%{ stroke-dashoffset: -220; }
+}
+
+/* Stations */
+.del-st .del-st__halo{
+  fill: rgba(27,89,167,0.00);
+}
+.del-st .del-st__ring{
+  fill: rgba(255,255,255,0.70);
+  stroke: rgba(11,30,58,0.14);
+  stroke-width: 0.5;
+}
+.del-st .del-st__core{
+  fill: rgba(11,30,58,0.26);
+}
+.del-st .del-st__check{
+  stroke: rgba(27,89,167,0.0);
+  opacity: 0;
+}
+.del-st .del-st__txt{
+  font-size: 2.4px;
+  font-weight: 800;
+  fill: rgba(11,30,58,0.58);
+  letter-spacing: 0.02em;
+}
+
+/* Passed state */
+.del-st.is-passed .del-st__core{
+  fill: rgba(27,89,167,0.62);
+}
+.del-st.is-passed .del-st__check{
+  stroke: rgba(27,89,167,0.82);
+  opacity: 1;
+}
+
+/* Ping (gate moment) */
+.del-st.is-ping .del-st__halo{
+  fill: rgba(27,89,167,0.12);
+  animation: delStationPing 0.65s ease-out 1;
+}
+@keyframes delStationPing{
+  0%{ transform: scale(0.92); opacity: 0.10; }
+  55%{ transform: scale(1.18); opacity: 0.22; }
+  100%{ transform: scale(1.35); opacity: 0.0; }
+}
+
+/* Capsule */
+.del-cap{
+  transform-origin: 0 0;
+}
+
+/* Reduced motion: stop dash animations (capsule will be static via JS) */
+@media (prefers-reduced-motion: reduce){
+  .del-train__dash,
+  .del-train__loopDash{
+    animation: none !important;
+  }
+}
+/* =========================
+   DELIVERY LIFECYCLE CONTROL LOOP (fills panel)
+   ========================= */
+
+.del-life{
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid rgba(11,30,58,0.10);
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 18px 52px rgba(11,30,58,0.10);
+  overflow: hidden;
+  height: 560px;
+}
+
+@media (max-width: 900px){
+  .del-life{ height: 440px; border-radius: 22px; }
+}
+
+.del-life__bg{
+  position:absolute; inset:-25%;
+  background:
+    radial-gradient(560px 420px at 30% 30%, rgba(27,89,167,0.12), transparent 62%),
+    radial-gradient(560px 420px at 70% 70%, rgba(190,195,203,0.26), transparent 62%);
+  opacity: 0.95;
+}
+
+.del-life__svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* motion (subtle, professional) */
+.del-life__dash{
+  animation: dlDash 7.4s linear infinite;
+}
+@keyframes dlDash{
+  0%{ stroke-dashoffset: 0; }
+  100%{ stroke-dashoffset: -180; }
+}
+.del-life__dash2{
+  animation: dlDash2 8.8s linear infinite reverse;
+  opacity: 0.85;
+}
+@keyframes dlDash2{
+  0%{ stroke-dashoffset: 0; }
+  100%{ stroke-dashoffset: -210; }
+}
+.del-life__dash3{
+  animation: dlDash3 10.6s linear infinite;
+  opacity: 0.75;
+}
+@keyframes dlDash3{
+  0%{ stroke-dashoffset: 0; }
+  100%{ stroke-dashoffset: -260; }
+}
+
+/* stations */
+.dl-st__halo{ fill: rgba(27,89,167,0.00); }
+.dl-st__ring{
+  fill: rgba(255,255,255,0.72);
+  stroke: rgba(11,30,58,0.14);
+  stroke-width: 0.55;
+}
+.dl-st__core{ fill: rgba(11,30,58,0.26); }
+.dl-st__check{
+  stroke: rgba(27,89,167,0.0);
+  stroke-width: 0.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+}
+.dl-st__txt{
+  font-size: 2.55px;
+  font-weight: 850;
+  fill: rgba(11,30,58,0.58);
+  letter-spacing: 0.02em;
+}
+
+.dl-st.is-passed .dl-st__core{ fill: rgba(27,89,167,0.62); }
+.dl-st.is-passed .dl-st__check{ stroke: rgba(27,89,167,0.82); opacity: 1; }
+
+.dl-st.is-ping .dl-st__halo{
+  fill: rgba(27,89,167,0.12);
+  animation: dlPing 0.62s ease-out 1;
+}
+@keyframes dlPing{
+  0%{ transform: scale(0.92); opacity: 0.12; }
+  55%{ transform: scale(1.18); opacity: 0.22; }
+  100%{ transform: scale(1.35); opacity: 0.0; }
+}
+
+/* center label */
+.del-life__center .del-life__k{
+  font-size: 3.0px;
+  font-weight: 950;
+  letter-spacing: 0.22em;
+  fill: rgba(11,30,58,0.52);
+}
+.del-life__center .del-life__s{
+  font-size: 2.6px;
+  font-weight: 750;
+  fill: rgba(11,30,58,0.48);
+}
+
+/* HUD panels */
+.del-life__hud{
+  position:absolute;
+  padding: 10px 12px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(11,30,58,0.10);
+  box-shadow: 0 14px 38px rgba(11,30,58,0.08);
+  backdrop-filter: blur(8px);
+  max-width: 210px;
+  z-index: 3;
+}
+.del-life__hud .k{
+  font-size: 12px;
+  font-weight: 950;
+  color: rgba(11,30,58,0.82);
+}
+.del-life__hud .v{
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 750;
+  color: rgba(11,30,58,0.56);
+  line-height: 1.45;
+}
+
+.del-life__hud--tl{ left: 16px; top: 16px; }
+.del-life__hud--tr{ right: 16px; top: 16px; }
+.del-life__hud--br{ right: 16px; bottom: 16px; }
+
+/* Mobile: keep it clean */
+@media (max-width: 900px){
+  .del-life__hud{ display:none; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .del-life__dash,
+  .del-life__dash2,
+  .del-life__dash3{
+    animation: none !important;
+  }
 }

@@ -11,7 +11,7 @@ import {
     ChevronRight,
 } from "lucide-react";
 import { Eyebrow } from "../ui/Typography";
-
+import { Reveal } from "@/components/site/Reveal";
 type StackNode = {
     key: string;
     title: string;
@@ -23,7 +23,7 @@ type StackNode = {
     tone: "blue" | "slate" | "indigo" | "teal" | "violet" | "amber";
 };
 
-export default function PravidhiEcosystemStack() {
+export default function TechnologySection() {
     const nodes: StackNode[] = useMemo(
         () => [
             {
@@ -114,6 +114,7 @@ export default function PravidhiEcosystemStack() {
 
     return (
         <section id="technology" className="eco-tech">
+            <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px">
             {/* Background */}
             <div className="eco-tech__bg" aria-hidden>
                 <div className="eco-tech__grid" />
@@ -146,22 +147,22 @@ export default function PravidhiEcosystemStack() {
 
                             <div className="eco-tech__list">
                                 <div className="eco-pillrow">
-                                    <span className="eco-pill">Architecture-first</span>
-                                    <span className="eco-pill">Security by default</span>
-                                    <span className="eco-pill">Observability built-in</span>
+                                    <span className="pravidhi-pill pill--blue">Architecture-first</span>
+                                    <span className="pravidhi-pill pill--teal">Security by default</span>
+                                    <span className="pravidhi-pill pill--violet">Observability built-in</span>
                                 </div>
 
                                 <div className="eco-lines">
                                     <div className="eco-line">
-                                        <span className="eco-bullet" aria-hidden />
+                                        <span className="dot dot--blue" aria-hidden />
                                         <div>
                                             <div className="t">Modular foundations</div>
                                             <div className="s">Clear interfaces, versioned contracts, clean boundaries.</div>
                                         </div>
                                     </div>
 
-                                    <div className="eco-line">
-                                        <span className="eco-bullet" aria-hidden />
+                                    <div className="eco-line-green">
+                                        <span className="dot dot--teal" aria-hidden />
                                         <div>
                                             <div className="t">AI-ready pipelines</div>
                                             <div className="s">Data quality, lineage, evaluation, and lifecycle management.</div>
@@ -169,7 +170,7 @@ export default function PravidhiEcosystemStack() {
                                     </div>
 
                                     <div className="eco-line">
-                                        <span className="eco-bullet" aria-hidden />
+                                        <span className="dot dot--violet" aria-hidden />
                                         <div>
                                             <div className="t">Operate with confidence</div>
                                             <div className="s">Monitoring, audit trails, performance budgets, reliability targets.</div>
@@ -237,43 +238,99 @@ export default function PravidhiEcosystemStack() {
                             </div>
 
                             {/* Nodes */}
-                            {nodes.map((n, idx) => {
-                                const isActive = idx === active;
-                                const Icon = n.Icon;
+                            {/* Nodes (DESKTOP: colorful floating cards) */}
+{nodes.map((n, idx) => {
+  const isActive = idx === active;
+  const Icon = n.Icon;
 
-                                return (
-                                    <button
-                                        key={n.key}
-                                        type="button"
-                                        className={
-                                            (idx === active ? "eco-node eco-node--active" : "eco-node") + ` eco-node--${n.tone}`
-                                        }
-                                        style={{ left: `${n.px}%`, top: `${n.py}%` } as React.CSSProperties}
-                                        onMouseEnter={() => setActive(idx)}
-                                        onFocus={() => setActive(idx)}
-                                        onClick={() => setActive(idx)}
-                                        aria-label={n.title}
-                                    >
-                                        <span className="eco-node__icon" aria-hidden>
-                                            <Icon size={18} strokeWidth={2.5} />
-                                        </span>
-                                        <span className="eco-node__text">
-                                            <span className="eco-node__t">{n.title}</span>
-                                            <span className="eco-node__s">{n.tagline}</span>
-                                        </span>
-                                    </button>
-                                );
-                            })}
+  return (
+    <button
+      key={n.key}
+      type="button"
+      className={
+        (isActive ? "eco-node eco-node--active" : "eco-node") +
+        ` eco-node--${n.tone} eco-node--desktop`
+      }
+      style={{ left: `${n.px}%`, top: `${n.py}%` } as React.CSSProperties}
+      onMouseEnter={() => setActive(idx)}
+      onFocus={() => setActive(idx)}
+      onClick={() => setActive(idx)}
+      aria-label={n.title}
+    >
+      <span className="eco-node__icon" aria-hidden>
+        <Icon size={18} strokeWidth={2.5} />
+      </span>
+      <span className="eco-node__text">
+        <span className="eco-node__t">{n.title}</span>
+        <span className="eco-node__s">{n.tagline}</span>
+      </span>
+    </button>
+  );
+})}
+
+{/* Nodes (MOBILE: small dots on map — no overlap) */}
+{nodes.map((n, idx) => (
+  <button
+    key={`${n.key}-dot`}
+    type="button"
+    className={
+      (idx === active ? "eco-dot eco-dot--active" : "eco-dot") + ` eco-dot--${n.tone}`
+    }
+    style={{ left: `${n.px}%`, top: `${n.py}%` } as React.CSSProperties}
+    onClick={() => setActive(idx)}
+    aria-label={`Select ${n.title}`}
+  />
+))}
+
+{/* MOBILE: swipeable colorful cards (clean, no clumps) */}
+<div className="eco-mstrip" aria-label="Technology stack cards">
+  {nodes.map((n, idx) => {
+    const Icon = n.Icon;
+    const isActive = idx === active;
+
+    return (
+      <button
+        key={`${n.key}-mcard`}
+        type="button"
+        className={
+          (isActive ? "eco-mcard eco-mcard--active" : "eco-mcard") + ` eco-mcard--${n.tone}`
+        }
+        onClick={() => setActive(idx)}
+        aria-label={n.title}
+      >
+        <div className="eco-mcard__row">
+          <span className="eco-mcard__icon" aria-hidden>
+            <Icon size={18} strokeWidth={2.5} />
+          </span>
+          <div className="eco-mcard__text">
+            <div className="eco-mcard__t">{n.title}</div>
+            <div className="eco-mcard__s">{n.tagline}</div>
+          </div>
+        </div>
+
+        <div className="eco-mcard__chips">
+          {n.bullets.map((b) => (
+            <span key={b} className="eco-mchip">
+              {b}
+            </span>
+          ))}
+        </div>
+      </button>
+    );
+  })}
+</div>
+
 
                             {/* HUD panel (minimal detail, changes with active node) */}
 
 
                             {/* small floating metric chip */}
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
+            </Reveal>
         </section>
     );
 }
