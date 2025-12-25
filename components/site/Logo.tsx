@@ -1,14 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Logo() {
   return (
     <Link href="/" className="group inline-flex items-center gap-2" aria-label="ZypoSoft Home">
-      <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-[rgba(var(--accent),0.12)] ring-1 ring-[rgba(var(--accent),0.25)]">
-        <span className="h-3 w-3 rounded-full bg-[rgba(var(--accent),0.85)]" />
-      </span>
-      <span className="text-sm font-semibold tracking-tight">
-        ZypoSoft <span className="text-[rgba(var(--fg),0.72)]"></span>
-      </span>
+      {/* Updated Dimensions:
+         1. h-20 (80px) makes it significantly larger.
+         2. w-auto ensures the rectangle shape is preserved.
+         3. object-contain ensures it doesn't get cut off.
+      */}
+      <Image 
+        src="/icons/Zyposoft.svg" 
+        alt="ZypoSoft Logo" 
+        width={200} 
+        height={120} 
+        className="h-16 w-auto object-contain" 
+        priority
+      />
     </Link>
   );
 }
