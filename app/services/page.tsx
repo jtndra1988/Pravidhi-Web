@@ -662,39 +662,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="zyposoft-section theme--amber">
-        <div className="zyposoft-section__bg" aria-hidden>
-          <div className="zyposoft-section__mesh" />
-          <div className="zyposoft-section__grid" />
-          <div className="zyposoft-section__noise" />
-          <div className="zyposoft-section__sweep" />
-        </div>
-
-        <div className="relative z-[1]">
-          <div className="zyposoft-container">
-            <div className="grid gap-10 md:grid-cols-12 md:items-start">
-              <div className="md:col-span-5">
-                <Reveal>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(27,89,167,0.14)] bg-[rgba(27,89,167,0.06)] px-3 py-2">
-                    <Eyebrow>FAQ</Eyebrow>
-                  </div>
-                  <H2 className="mt-4">Common questions</H2>
-                  <P className="mt-4 max-w-xl">
-                    Short answers that clarify scope, collaboration, delivery approach, and post-launch support.
-                  </P>
-                </Reveal>
-              </div>
-
-              <div className="md:col-span-7">
-                <Reveal>
-                  <FAQList items={SERVICES.faq} />
-                </Reveal>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       
     </main>
