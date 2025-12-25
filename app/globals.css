@@ -467,11 +467,11 @@ input::placeholder, textarea::placeholder {
   @apply h-12 w-12 rounded-2xl flex items-center justify-center bg-white border border-black/5 shadow-sm;
 }
 /* =========================
-   PRAVIDHI PREMIUM HERO (LIGHT)
+   ZypoSoft PREMIUM HERO (LIGHT)
    Brand: #1b59a7 #0b1e3a #bec3cb
    ========================= */
 
-.pravidhi-hero {
+.zyposoft-hero {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -482,13 +482,13 @@ input::placeholder, textarea::placeholder {
     linear-gradient(#ffffff, #fbfcfe);
 }
 
-.pravidhi-hero__bg {
+.zyposoft-hero__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.pravidhi-hero__mesh {
+.zyposoft-hero__mesh {
   position: absolute;
   inset: 0;
   background-image:
@@ -498,7 +498,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.85;
 }
 
-.pravidhi-hero__aurora {
+.zyposoft-hero__aurora {
   position: absolute;
   inset: -35%;
   background:
@@ -518,7 +518,7 @@ input::placeholder, textarea::placeholder {
   100% { transform: translate3d(2%, 1%, 0) rotate(7deg) scale(1.12); }
 }
 
-.pravidhi-hero__noise {
+.zyposoft-hero__noise {
   position: absolute;
   inset: 0;
   opacity: 0.06;
@@ -526,7 +526,7 @@ input::placeholder, textarea::placeholder {
   mix-blend-mode: multiply;
 }
 
-.pravidhi-hero__grid {
+.zyposoft-hero__grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -537,7 +537,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.72;
 }
 
-.pravidhi-hero__scan {
+.zyposoft-hero__scan {
   position: absolute;
   inset: -18%;
   background: linear-gradient(90deg, transparent 0%, rgba(27, 89, 167, 0.08) 50%, transparent 100%);
@@ -553,7 +553,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Floating orbs with parallax anchor */
-.pravidhi-hero__orb {
+.zyposoft-hero__orb {
   position: absolute;
   width: 620px;
   height: 620px;
@@ -596,7 +596,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Circuit SVG */
-.pravidhi-hero__circuit {
+.zyposoft-hero__circuit {
   position: absolute;
   inset: 0;
   opacity: 0.9;
@@ -638,7 +638,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Layout */
-.pravidhi-hero__content {
+.zyposoft-hero__content {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -651,7 +651,7 @@ input::placeholder, textarea::placeholder {
 }
 
 @media (min-width: 980px) {
-  .pravidhi-hero__content {
+  .zyposoft-hero__content {
     grid-template-columns: 1.05fr 0.95fr;
     align-items: center;
     gap: 46px;
@@ -660,7 +660,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Badge */
-.pravidhi-hero__badge {
+.zyposoft-hero__badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -671,7 +671,7 @@ input::placeholder, textarea::placeholder {
   box-shadow: 0 12px 30px rgba(11, 30, 58, 0.06);
   backdrop-filter: blur(10px);
 }
-.pravidhi-hero__dot {
+.zyposoft-hero__dot {
   width: 10px;
   height: 10px;
   border-radius: 999px;
@@ -683,7 +683,7 @@ input::placeholder, textarea::placeholder {
   0%, 100% { transform: scale(1); opacity: 0.9; }
   50% { transform: scale(1.12); opacity: 1; }
 }
-.pravidhi-hero__badgeText {
+.zyposoft-hero__badgeText {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.22em;
@@ -692,7 +692,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Headline */
-.pravidhi-hero__title {
+.zyposoft-hero__title {
   margin-top: 18px;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -700,7 +700,7 @@ input::placeholder, textarea::placeholder {
   color: rgba(11, 30, 58, 0.98);
   font-size: clamp(42px, 5.4vw, 74px);
 }
-.pravidhi-hero__titleAccent {
+.zyposoft-hero__titleAccent {
   display: block;
   margin-top: 10px;
   font-weight: 500;
@@ -710,7 +710,7 @@ input::placeholder, textarea::placeholder {
   color: transparent;
 }
 
-.pravidhi-hero__subtitle {
+.zyposoft-hero__subtitle {
   margin-top: 16px;
   max-width: 720px;
   font-size: 18px;
@@ -719,7 +719,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* CTAs */
-.pravidhi-hero__ctaRow {
+.zyposoft-hero__ctaRow {
   margin-top: 22px;
   display: flex;
   flex-wrap: wrap;
@@ -727,7 +727,7 @@ input::placeholder, textarea::placeholder {
   align-items: center;
 }
 
-.pravidhi-btn-primary {
+.zyposoft-btn-primary {
   height: 52px;
   display: inline-flex;
   align-items: center;
@@ -743,7 +743,7 @@ input::placeholder, textarea::placeholder {
   position: relative;
   overflow: hidden;
 }
-.pravidhi-btn-primary::after {
+.zyposoft-btn-primary::after {
   content: "";
   position: absolute;
   inset: -70%;
@@ -758,7 +758,7 @@ input::placeholder, textarea::placeholder {
   100% { transform: translateX(-22%) translateY(-22%); opacity: 0.35; }
 }
 
-.pravidhi-btn-secondary {
+.zyposoft-btn-secondary {
   height: 52px;
   display: inline-flex;
   align-items: center;
@@ -775,32 +775,73 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Mini cards */
-.pravidhi-hero__miniGrid {
+.zyposoft-hero__miniGrid {
   margin-top: 18px;
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr;
 }
 @media (min-width: 640px) {
-  .pravidhi-hero__miniGrid {
+  .zyposoft-hero__miniGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-.pravidhi-hero__miniCard {
+.zyposoft-hero__miniCard_V {
   border-radius: 16px;
-  background: rgba(255,255,255,0.72);
+  background: radial-gradient(420px 220px at 15% 20%, rgba(139, 92, 246, 0.22), transparent 62%), linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(255, 255, 255, 0.78));
   border: 1px solid rgba(11, 30, 58, 0.10);
   box-shadow: 0 12px 30px rgba(11, 30, 58, 0.05);
   padding: 12px 12px;
 }
-.pravidhi-hero__miniCard .miniK {
+.zyposoft-hero__miniCard_V .miniK {
   font-size: 11px;
   font-weight: 900;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(11, 30, 58, 0.70);
 }
-.pravidhi-hero__miniCard .miniV {
+.zyposoft-hero__miniCard_V .miniV {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(11, 30, 58, 0.60);
+}
+.zyposoft-hero__miniCard_O {
+  border-radius: 16px;
+  background: radial-gradient(420px 220px at 20% 20%, rgba(245, 158, 11, 0.16), transparent 62%),
+    linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(255, 255, 255, 0.74));
+  border: 1px solid rgba(11, 30, 58, 0.10);
+  box-shadow: 0 12px 30px rgba(11, 30, 58, 0.05);
+  padding: 12px 12px;
+}
+.zyposoft-hero__miniCard_O .miniK {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(11, 30, 58, 0.70);
+}
+.zyposoft-hero__miniCard_O .miniV {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(11, 30, 58, 0.60);
+}
+.zyposoft-hero__miniCard_G {
+  border-radius: 16px;
+  background: radial-gradient(420px 220px at 15% 20%, rgba(20, 184, 166, 0.20), transparent 62%), linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(255, 255, 255, 0.78));
+  border: 1px solid rgba(11, 30, 58, 0.10);
+  box-shadow: 0 12px 30px rgba(11, 30, 58, 0.05);
+  padding: 12px 12px;
+}
+.zyposoft-hero__miniCard_G .miniK {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(11, 30, 58, 0.70);
+}
+.zyposoft-hero__miniCard_G .miniV {
   margin-top: 6px;
   font-size: 13px;
   line-height: 1.45;
@@ -808,19 +849,19 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Showcase / tilt */
-.pravidhi-hero__showcaseWrap {
+.zyposoft-hero__showcaseWrap {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.pravidhi-tilt {
+.zyposoft-tilt {
   position: relative;
   width: min(560px, 100%);
   perspective: 1200px;
 }
 
-.pravidhi-device {
+.zyposoft-device {
   position: relative;
   transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transform-style: preserve-3d;
@@ -836,7 +877,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Device topbar */
-.pravidhi-device__topbar {
+.zyposoft-device__topbar {
   height: 54px;
   display: flex;
   align-items: center;
@@ -845,12 +886,12 @@ input::placeholder, textarea::placeholder {
   background: linear-gradient(#ffffff, #f6f8fb);
   border-bottom: 1px solid rgba(11, 30, 58, 0.08);
 }
-.pravidhi-device__topbar .dots { display: flex; gap: 6px; }
-.pravidhi-device__topbar .d { width: 9px; height: 9px; border-radius: 999px; opacity: 0.9; }
-.pravidhi-device__topbar .d1 { background: #ef4444; }
-.pravidhi-device__topbar .d2 { background: #f59e0b; }
-.pravidhi-device__topbar .d3 { background: #22c55e; }
-.pravidhi-device__topbar .url {
+.zyposoft-device__topbar .dots { display: flex; gap: 6px; }
+.zyposoft-device__topbar .d { width: 9px; height: 9px; border-radius: 999px; opacity: 0.9; }
+.zyposoft-device__topbar .d1 { background: #ef4444; }
+.zyposoft-device__topbar .d2 { background: #f59e0b; }
+.zyposoft-device__topbar .d3 { background: #22c55e; }
+.zyposoft-device__topbar .url {
   flex: 1;
   font-size: 12px;
   color: rgba(11, 30, 58, 0.60);
@@ -859,7 +900,7 @@ input::placeholder, textarea::placeholder {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.pravidhi-device__topbar .pill {
+.zyposoft-device__topbar .pill {
   font-size: 11px;
   font-weight: 900;
   letter-spacing: 0.18em;
@@ -871,7 +912,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Device body */
-.pravidhi-device__body {
+.zyposoft-device__body {
   display: grid;
   grid-template-columns: 155px 1fr;
   min-height: 360px;
@@ -1068,7 +1109,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Sheen, rim, scanline inside device */
-.pravidhi-device__sheen {
+.zyposoft-device__sheen {
   position: absolute;
   inset: -2px;
   border-radius: 26px;
@@ -1078,9 +1119,9 @@ input::placeholder, textarea::placeholder {
   transition: opacity 160ms ease;
   pointer-events: none;
 }
-.pravidhi-tilt:hover .pravidhi-device__sheen { opacity: 0.55; }
+.zyposoft-tilt:hover .zyposoft-device__sheen { opacity: 0.55; }
 
-.pravidhi-device__rim {
+.zyposoft-device__rim {
   position: absolute;
   inset: 0;
   border-radius: 26px;
@@ -1090,7 +1131,7 @@ input::placeholder, textarea::placeholder {
   pointer-events: none;
 }
 
-.pravidhi-device__scanline {
+.zyposoft-device__scanline {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
@@ -1110,7 +1151,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Floating callout */
-.pravidhi-floatCard {
+.zyposoft-floatCard {
   position: absolute;
   right: -14px;
   top: -18px;
@@ -1140,50 +1181,50 @@ input::placeholder, textarea::placeholder {
 
 /* Responsive tweaks for small screens */
 @media (max-width: 520px) {
-  .pravidhi-device__body { grid-template-columns: 1fr; }
+  .zyposoft-device__body { grid-template-columns: 1fr; }
   .leftnav { display: none; }
   .kpiRow { grid-template-columns: 1fr; }
   .panelRow { grid-template-columns: 1fr; }
-  .pravidhi-floatCard { display: none; }
+  .zyposoft-floatCard { display: none; }
 }
 
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .pravidhi-hero__aurora,
-  .pravidhi-hero__scan,
+  .zyposoft-hero__aurora,
+  .zyposoft-hero__scan,
   .orb--a, .orb--b, .orb--c,
   .circuit-line,
   .circuit-node,
   .signalGlow,
-  .pravidhi-device__scanline,
-  .pravidhi-btn-primary::after {
+  .zyposoft-device__scanline,
+  .zyposoft-btn-primary::after {
     animation: none !important;
   }
-  .pravidhi-device {
+  .zyposoft-device {
     transition: none !important;
     transform: none !important;
   }
 }
 /* =========================
-   Pravidhi Minimal Premium Navbar (Light)
+   zyposoft Minimal Premium Navbar (Light)
    Matches the hero language: airy, editorial, hairline borders.
    ========================= */
 
-.pravidhi-navWrap {
+.zyposoft-navWrap {
   position: fixed;  /* 1. Changes behavior to overlay on top of content */
   top: 8px;
   width: 100%;      /* 2. Ensures the wrapper spans the full width */
   z-index: 80;
 }
 
-.pravidhi-navContainer {
+.zyposoft-navContainer {
   width: 100%;
   max-width: 1420px; /* align with hero container */
   margin: 0 auto;
   padding: 0 16px;
 }
 
-.pravidhi-navBar {
+.zyposoft-navBar {
   height: 64px;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -1203,13 +1244,13 @@ input::placeholder, textarea::placeholder {
   backdrop-filter: blur(14px);
 }
 
-.pravidhi-navLeft {
+.zyposoft-navLeft {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.pravidhi-navLogo {
+.zyposoft-navLogo {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1217,7 +1258,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Links (center) */
-.pravidhi-navLinks {
+.zyposoft-navLinks {
   display: none;
   align-items: center;
   justify-content: center;
@@ -1225,12 +1266,12 @@ input::placeholder, textarea::placeholder {
 }
 
 @media (min-width: 900px) {
-  .pravidhi-navLinks {
+  .zyposoft-navLinks {
     display: flex;
   }
 }
 
-.pravidhi-navLink {
+.zyposoft-navLink {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -1248,20 +1289,20 @@ input::placeholder, textarea::placeholder {
   transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
-.pravidhi-navLink:hover {
+.zyposoft-navLink:hover {
   background: rgba(27, 89, 167, 0.08);
   color: rgba(11, 30, 58, 0.92);
   transform: translateY(-1px);
 }
 
-.pravidhi-navLink.is-active {
+.zyposoft-navLink.is-active {
   color: rgba(11, 30, 58, 0.92);
   background: rgba(27, 89, 167, 0.10);
   border: 1px solid rgba(27, 89, 167, 0.16);
 }
 
 /* Subtle “designer” underline accent (only for active) */
-.pravidhi-navLink.is-active::after {
+.zyposoft-navLink.is-active::after {
   content: "";
   position: absolute;
   left: 14px;
@@ -1274,7 +1315,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Right side */
-.pravidhi-navRight {
+.zyposoft-navRight {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1282,7 +1323,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* CTA: minimal, confident, matches hero buttons */
-.pravidhi-navBtn {
+.zyposoft-navBtn {
   height: 44px !important;
   border-radius: 16px !important;
 
@@ -1296,7 +1337,7 @@ input::placeholder, textarea::placeholder {
   transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
-.pravidhi-navBtn:hover {
+.zyposoft-navBtn:hover {
   transform: translateY(-1px);
   box-shadow: 0 22px 60px rgba(11, 30, 58, 0.18) !important;
 }
@@ -1328,17 +1369,17 @@ input::placeholder, textarea::placeholder {
 .pravil-navBurger .line.open.b { transform: translateY(-4px) rotate(-45deg); }
 
 /* Mobile dropdown panel */
-.pravidhi-navMobile {
+.zyposoft-navMobile {
   overflow: hidden;
   max-height: 0;
   transition: max-height 260ms ease;
 }
 
-.pravidhi-navMobile.open {
+.zyposoft-navMobile.open {
   max-height: 520px;
 }
 
-.pravidhi-navMobilePanel {
+.zyposoft-navMobilePanel {
   margin-top: 10px;
   border-radius: 22px;
   padding: 10px;
@@ -1349,7 +1390,7 @@ input::placeholder, textarea::placeholder {
   backdrop-filter: blur(14px);
 }
 
-.pravidhi-navMobileLink {
+.zyposoft-navMobileLink {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1365,20 +1406,20 @@ input::placeholder, textarea::placeholder {
   transition: background 160ms ease, color 160ms ease;
 }
 
-.pravidhi-navMobileLink:hover {
+.zyposoft-navMobileLink:hover {
   background: rgba(27, 89, 167, 0.08);
   color: rgba(11, 30, 58, 0.92);
 }
 
-.pravidhi-navMobileLink.is-active {
+.zyposoft-navMobileLink.is-active {
   background: rgba(27, 89, 167, 0.10);
   border: 1px solid rgba(27, 89, 167, 0.16);
   color: rgba(11, 30, 58, 0.92);
 }
 
 /* Focus */
-.pravidhi-navBar :focus-visible,
-.pravidhi-navMobilePanel :focus-visible {
+.zyposoft-navBar :focus-visible,
+.zyposoft-navMobilePanel :focus-visible {
   outline: 2px solid rgba(27, 89, 167, 0.55);
   outline-offset: 2px;
   border-radius: 14px;
@@ -1386,19 +1427,19 @@ input::placeholder, textarea::placeholder {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .pravidhi-navLink,
-  .pravidhi-navBtn,
+  .zyposoft-navLink,
+  .zyposoft-navBtn,
   .pravil-navBurger .line,
-  .pravidhi-navMobile {
+  .zyposoft-navMobile {
     transition: none !important;
   }
 }
 /* =========================
-   PRAVIDHI — ABOUT / INTRO (Company)
+   zyposoft — ABOUT / INTRO (Company)
    Matches the hero: light premium, mesh/noise/grid, minimal motion.
    ========================= */
 
-.pravidhi-about {
+.zyposoft-about {
   position: relative;
   overflow: hidden;
   padding-top: 60px;
@@ -1406,13 +1447,13 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Background layers */
-.pravidhi-about__bg {
+.zyposoft-about__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.pravidhi-about__mesh {
+.zyposoft-about__mesh {
   position: absolute;
   inset: 0;
   background-image:
@@ -1422,7 +1463,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.9;
 }
 
-.pravidhi-about__grid {
+.zyposoft-about__grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -1433,7 +1474,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.65;
 }
 
-.pravidhi-about__noise {
+.zyposoft-about__noise {
   position: absolute;
   inset: 0;
   opacity: 0.05;
@@ -1442,7 +1483,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Orbs (subtle, slow) */
-.pravidhi-about__orb {
+.zyposoft-about__orb {
   position: absolute;
   width: 560px;
   height: 560px;
@@ -1451,13 +1492,13 @@ input::placeholder, textarea::placeholder {
   opacity: 0.75;
   transform: translateZ(0);
 }
-.pravidhi-about__orb.orb--a {
+.zyposoft-about__orb.orb--a {
   left: -220px;
   top: -240px;
   background: radial-gradient(circle at 30% 30%, rgba(27, 89, 167, 0.18), rgba(27, 89, 167, 0) 62%);
   animation: pravil-about-float 14s ease-in-out infinite;
 }
-.pravidhi-about__orb.orb--b {
+.zyposoft-about__orb.orb--b {
   right: -260px;
   bottom: -280px;
   background: radial-gradient(circle at 60% 40%, rgba(11, 30, 58, 0.12), rgba(11, 30, 58, 0) 64%);
@@ -1469,21 +1510,21 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Left mini cards */
-.pravidhi-about__mini {
+.zyposoft-about__mini {
   border-radius: 16px;
   background: rgba(255,255,255,0.74);
   border: 1px solid rgba(11, 30, 58, 0.10);
   box-shadow: 0 12px 30px rgba(11, 30, 58, 0.05);
   padding: 12px 12px;
 }
-.pravidhi-about__mini .k {
+.zyposoft-about__mini .k {
   font-size: 11px;
   font-weight: 900;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(11, 30, 58, 0.66);
 }
-.pravidhi-about__mini .v {
+.zyposoft-about__mini .v {
   margin-top: 6px;
   font-size: 13px;
   line-height: 1.45;
@@ -1491,13 +1532,13 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Metrics */
-.pravidhi-about__metric .n {
+.zyposoft-about__metric .n {
   font-size: 22px;
   font-weight: 950;
   letter-spacing: -0.02em;
   color: rgba(11, 30, 58, 0.92);
 }
-.pravidhi-about__metric .l {
+.zyposoft-about__metric .l {
   margin-top: 4px;
   font-size: 12px;
   font-weight: 800;
@@ -1505,7 +1546,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Capability canvas (right card) */
-.pravidhi-about__canvas {
+.zyposoft-about__canvas {
   position: relative;
   border-radius: 28px;
   background: rgba(255,255,255,0.76);
@@ -1518,7 +1559,7 @@ input::placeholder, textarea::placeholder {
   padding: 18px;
 }
 
-.pravidhi-about__canvasSheen {
+.zyposoft-about__canvasSheen {
   position: absolute;
   inset: -2px;
   border-radius: 30px;
@@ -1527,7 +1568,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.55;
 }
 
-.pravidhi-about__canvasScan {
+.zyposoft-about__canvasScan {
   position: absolute;
   inset: -20%;
   background: linear-gradient(90deg, transparent 0%, rgba(27, 89, 167, 0.08) 50%, transparent 100%);
@@ -1542,21 +1583,21 @@ input::placeholder, textarea::placeholder {
   100% { transform: translateX(40%) skewX(-10deg); }
 }
 
-.pravidhi-about__canvasHeader .tag {
+.zyposoft-about__canvasHeader .tag {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(11, 30, 58, 0.62);
 }
-.pravidhi-about__canvasHeader .title {
+.zyposoft-about__canvasHeader .title {
   margin-top: 8px;
   font-size: 18px;
   font-weight: 950;
   color: rgba(11, 30, 58, 0.92);
   letter-spacing: -0.02em;
 }
-.pravidhi-about__canvasHeader .sub {
+.zyposoft-about__canvasHeader .sub {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 700;
@@ -1564,12 +1605,12 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Steps */
-.pravidhi-about__steps {
+.zyposoft-about__steps {
   margin-top: 14px;
   display: grid;
   gap: 10px;
 }
-.pravidhi-about__steps .step {
+.zyposoft-about__steps .step {
   display: grid;
   grid-template-columns: 18px 1fr;
   gap: 10px;
@@ -1578,7 +1619,7 @@ input::placeholder, textarea::placeholder {
   background: rgba(255,255,255,0.66);
   border: 1px solid rgba(11, 30, 58, 0.08);
 }
-.pravidhi-about__steps .dot {
+.zyposoft-about__steps .dot {
   width: 10px;
   height: 10px;
   margin-top: 15px;
@@ -1586,7 +1627,7 @@ input::placeholder, textarea::placeholder {
   background: rgba(27, 89, 167, 0.92);
   box-shadow: 0 0 0 6px rgba(27, 89, 167, 0.10);
 }
-.pravidhi-about__steps .dot2 {
+.zyposoft-about__steps .dot2 {
   width: 10px;
   height: 10px;
   margin-top: 15px;
@@ -1594,7 +1635,7 @@ input::placeholder, textarea::placeholder {
   background: rgba(225, 36, 36, 0.92);
   box-shadow: 0 0 0 6px rgba(27, 89, 167, 0.10);
 }
-.pravidhi-about__steps .dot3 {
+.zyposoft-about__steps .dot3 {
   width: 10px;
   height: 10px;
   margin-top: 15px;
@@ -1602,7 +1643,7 @@ input::placeholder, textarea::placeholder {
   background: rgba(197, 194, 13, 0.92);
   box-shadow: 0 0 0 6px rgba(27, 89, 167, 0.10);
 }
-.pravidhi-about__steps .dot4 {
+.zyposoft-about__steps .dot4 {
   width: 10px;
   height: 10px;
   margin-top: 15px;
@@ -1610,12 +1651,12 @@ input::placeholder, textarea::placeholder {
   background: rgba(194, 11, 226, 0.622);
   box-shadow: 0 0 0 6px rgba(27, 89, 167, 0.10);
 }
-.pravidhi-about__steps .h {
+.zyposoft-about__steps .h {
   font-size: 13px;
   font-weight: 950;
   color: rgba(11, 30, 58, 0.90);
 }
-.pravidhi-about__steps .p {
+.zyposoft-about__steps .p {
   margin-top: 4px;
   font-size: 12px;
   font-weight: 700;
@@ -1624,7 +1665,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Chips row */
-.pravidhi-about__chips {
+.zyposoft-about__chips {
   margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
@@ -1632,12 +1673,12 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Footer */
-.pravidhi-about__footer {
+.zyposoft-about__footer {
   margin-top: 14px;
   display: grid;
   gap: 8px;
 }
-.pravidhi-about__footer .pill {
+.zyposoft-about__footer .pill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1649,14 +1690,14 @@ input::placeholder, textarea::placeholder {
   font-size: 12px;
   font-weight: 900;
 }
-.pravidhi-about__footer .pill .b {
+.zyposoft-about__footer .pill .b {
   width: 10px;
   height: 10px;
   border-radius: 999px;
   background: rgba(27, 89, 167, 0.95);
   box-shadow: 0 0 0 6px rgba(27, 89, 167, 0.10);
 }
-.pravidhi-about__footer .note {
+.zyposoft-about__footer .note {
   font-size: 12px;
   font-weight: 800;
   color: rgba(11, 30, 58, 0.52);
@@ -1664,14 +1705,14 @@ input::placeholder, textarea::placeholder {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .pravidhi-about__canvasScan,
-  .pravidhi-about__orb.orb--a,
-  .pravidhi-about__orb.orb--b {
+  .zyposoft-about__canvasScan,
+  .zyposoft-about__orb.orb--a,
+  .zyposoft-about__orb.orb--b {
     animation: none !important;
   }
 }
 /* Shared container to match Hero's content width/padding exactly */
-.pravidhi-container {
+.zyposoft-container {
   width: 100%;
   max-width: 1420px;
   margin: 0 auto;
@@ -1680,19 +1721,19 @@ input::placeholder, textarea::placeholder {
 }
 
 @media (min-width: 980px) {
-  .pravidhi-container {
+  .zyposoft-container {
     padding-left: 28px;
     padding-right: 28px;
   }
 }
 /* Colorful mini cards (still light + sophisticated) */
-.pravidhi-about__mini {
+.zyposoft-about__mini {
   position: relative;
   overflow: hidden;
 }
 
 /* soft gradient tint */
-.pravidhi-about__mini::before {
+.zyposoft-about__mini::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -1702,7 +1743,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* subtle “sheen” for premium look */
-.pravidhi-about__mini::after {
+.zyposoft-about__mini::after {
   content: "";
   position: absolute;
   inset: -40%;
@@ -1717,46 +1758,46 @@ input::placeholder, textarea::placeholder {
   pointer-events: none;
 }
 
-.pravidhi-about__mini .k,
-.pravidhi-about__mini .v {
+.zyposoft-about__mini .k,
+.zyposoft-about__mini .v {
   position: relative;
   z-index: 1;
 }
 
 /* Delivery: brand blue */
-.pravidhi-about__mini.mini--delivery {
+.zyposoft-about__mini.mini--delivery {
   border: 1px solid rgba(27, 89, 167, 0.20);
   box-shadow:
     0 16px 40px rgba(27, 89, 167, 0.10),
     0 2px 0 rgba(255, 255, 255, 0.70) inset;
 }
-.pravidhi-about__mini.mini--delivery::before {
+.zyposoft-about__mini.mini--delivery::before {
   background:
     radial-gradient(circle at 20% 20%, rgba(141, 15, 214, 0.22), transparent 55%),
     linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.62));
 }
 
 /* Security: deep navy */
-.pravidhi-about__mini.mini--security {
+.zyposoft-about__mini.mini--security {
   border: 1px solid rgba(11, 30, 58, 0.16);
   box-shadow:
     0 16px 40px rgba(11, 30, 58, 0.10),
     0 2px 0 rgba(255, 255, 255, 0.70) inset;
 }
-.pravidhi-about__mini.mini--security::before {
+.zyposoft-about__mini.mini--security::before {
   background:
     radial-gradient(circle at 25% 25%, rgba(20, 212, 177, 0.14), transparent 58%),
     linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.62));
 }
 
 /* AI: cool accent (uses your #bec3cb as soft tech tint + blue highlight) */
-.pravidhi-about__mini.mini--ai {
+.zyposoft-about__mini.mini--ai {
   border: 1px solid rgba(190, 195, 203, 0.55);
   box-shadow:
     0 16px 40px rgba(11, 30, 58, 0.06),
     0 2px 0 rgba(255, 255, 255, 0.70) inset;
 }
-.pravidhi-about__mini.mini--ai::before {
+.zyposoft-about__mini.mini--ai::before {
   background:
     radial-gradient(circle at 20% 20%, rgba(190, 195, 203, 0.38), transparent 60%),
     radial-gradient(circle at 70% 20%, rgba(27, 89, 167, 0.14), transparent 55%),
@@ -1764,35 +1805,35 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Optional hover (very subtle) */
-.pravidhi-about__mini:hover {
+.zyposoft-about__mini:hover {
   transform: translateY(-1px);
   transition: transform 160ms ease;
 }
 /* =========================
-   PRAVIDHI — OUR TECHNOLOGY
+   zyposoft — OUR TECHNOLOGY
    Premium light canvas, matching hero/about language.
    ========================= */
 
-.pravidhi-tech {
+.zyposoft-tech {
   position: relative;
   overflow: hidden;
   padding: 72px 0;
 }
 
 @media (min-width: 980px) {
-  .pravidhi-tech {
+  .zyposoft-tech {
     padding: 92px 0;
   }
 }
 
 /* Background layers */
-.pravidhi-tech__bg {
+.zyposoft-tech__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.pravidhi-tech__mesh {
+.zyposoft-tech__mesh {
   position: absolute;
   inset: 0;
   background-image:
@@ -1802,7 +1843,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.95;
 }
 
-.pravidhi-tech__grid {
+.zyposoft-tech__grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -1813,7 +1854,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.62;
 }
 
-.pravidhi-tech__noise {
+.zyposoft-tech__noise {
   position: absolute;
   inset: 0;
   opacity: 0.05;
@@ -1821,7 +1862,7 @@ input::placeholder, textarea::placeholder {
   mix-blend-mode: multiply;
 }
 
-.pravidhi-tech__scan {
+.zyposoft-tech__scan {
   position: absolute;
   inset: -18%;
   background: linear-gradient(90deg, transparent 0%, rgba(27, 89, 167, 0.07) 50%, transparent 100%);
@@ -1837,7 +1878,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Orbs */
-.pravidhi-tech__orb {
+.zyposoft-tech__orb {
   position: absolute;
   width: 620px;
   height: 620px;
@@ -1846,13 +1887,13 @@ input::placeholder, textarea::placeholder {
   opacity: 0.70;
   transform: translateZ(0);
 }
-.pravidhi-tech__orb.orb--a {
+.zyposoft-tech__orb.orb--a {
   left: -260px;
   top: -260px;
   background: radial-gradient(circle at 35% 35%, rgba(27, 89, 167, 0.18), rgba(27, 89, 167, 0) 62%);
   animation: pravil-tech-float 14s ease-in-out infinite;
 }
-.pravidhi-tech__orb.orb--b {
+.zyposoft-tech__orb.orb--b {
   right: -300px;
   bottom: -320px;
   background: radial-gradient(circle at 60% 40%, rgba(11, 30, 58, 0.12), rgba(11, 30, 58, 0) 64%);
@@ -1864,7 +1905,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Principles */
-.pravidhi-tech__principle {
+.zyposoft-tech__principle {
   display: grid;
   grid-template-columns: 22px 1fr;
   gap: 10px;
@@ -1878,7 +1919,7 @@ input::placeholder, textarea::placeholder {
   box-shadow: 0 14px 30px rgba(11, 30, 58, 0.05);
 }
 
-.pravidhi-tech__principle .tick {
+.zyposoft-tech__principle .tick {
   width: 18px;
   height: 18px;
   border-radius: 999px;
@@ -1893,12 +1934,12 @@ input::placeholder, textarea::placeholder {
   font-size: 12px;
 }
 
-.pravidhi-tech__principle .t {
+.zyposoft-tech__principle .t {
   font-size: 13px;
   font-weight: 950;
   color: rgba(11, 30, 58, 0.92);
 }
-.pravidhi-tech__principle .s {
+.zyposoft-tech__principle .s {
   margin-top: 4px;
   font-size: 12px;
   font-weight: 700;
@@ -1907,7 +1948,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Canvas */
-.pravidhi-tech__canvas {
+.zyposoft-tech__canvas {
   position: relative;
   border-radius: 28px;
   background: rgba(255,255,255,0.76);
@@ -1920,7 +1961,7 @@ input::placeholder, textarea::placeholder {
   padding: 18px;
 }
 
-.pravidhi-tech__canvasSheen {
+.zyposoft-tech__canvasSheen {
   position: absolute;
   inset: -2px;
   border-radius: 30px;
@@ -1929,7 +1970,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.58;
 }
 
-.pravidhi-tech__canvasRim {
+.zyposoft-tech__canvasRim {
   position: absolute;
   inset: 0;
   border-radius: 28px;
@@ -1939,21 +1980,21 @@ input::placeholder, textarea::placeholder {
     0 0 0 12px rgba(27, 89, 167, 0.04);
 }
 
-.pravidhi-tech__canvasHead .tag {
+.zyposoft-tech__canvasHead .tag {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(11, 30, 58, 0.62);
 }
-.pravidhi-tech__canvasHead .title {
+.zyposoft-tech__canvasHead .title {
   margin-top: 8px;
   font-size: 18px;
   font-weight: 950;
   color: rgba(11, 30, 58, 0.92);
   letter-spacing: -0.02em;
 }
-.pravidhi-tech__canvasHead .sub {
+.zyposoft-tech__canvasHead .sub {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 700;
@@ -1961,7 +2002,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Tech cards grid */
-.pravidhi-tech__gridCards {
+.zyposoft-tech__gridCards {
   margin-top: 14px;
   display: grid;
   gap: 10px;
@@ -1969,7 +2010,7 @@ input::placeholder, textarea::placeholder {
 }
 
 @media (min-width: 720px) {
-  .pravidhi-tech__gridCards {
+  .zyposoft-tech__gridCards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -2053,13 +2094,13 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Chips */
-.pravidhi-tech__chips {
+.zyposoft-tech__chips {
   margin-top: 14px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-.pravidhi-tech__chips .chip {
+.zyposoft-tech__chips .chip {
   padding: 8px 10px;
   border-radius: 999px;
   font-size: 12px;
@@ -2072,9 +2113,9 @@ input::placeholder, textarea::placeholder {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .pravidhi-tech__scan,
-  .pravidhi-tech__orb.orb--a,
-  .pravidhi-tech__orb.orb--b {
+  .zyposoft-tech__scan,
+  .zyposoft-tech__orb.orb--a,
+  .zyposoft-tech__orb.orb--b {
     animation: none !important;
   }
 }
@@ -2084,7 +2125,7 @@ input::placeholder, textarea::placeholder {
    ========================= */
 
 /* Shared line item (no card) */
-.pravidhi-lineItem {
+.zyposoft-lineItem {
   display: grid;
   grid-template-columns: 18px 1fr;
   gap: 12px;
@@ -2093,7 +2134,7 @@ input::placeholder, textarea::placeholder {
   border-bottom: 1px solid rgba(11, 30, 58, 0.08);
 }
 
-.pravidhi-lineItem .dot {
+.zyposoft-lineItem .dot {
   width: 10px;
   height: 10px;
   border-radius: 999px;
@@ -2102,13 +2143,13 @@ input::placeholder, textarea::placeholder {
   box-shadow: 0 0 0 7px rgba(27, 89, 167, 0.10);
 }
 
-.pravidhi-lineItem .t {
+.zyposoft-lineItem .t {
   font-size: 13px;
   font-weight: 950;
   color: rgba(11, 30, 58, 0.90);
 }
 
-.pravidhi-lineItem .s {
+.zyposoft-lineItem .s {
   margin-top: 4px;
   font-size: 12px;
   font-weight: 700;
@@ -2117,14 +2158,14 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Links */
-.pravidhi-linkAccent {
+.zyposoft-linkAccent {
   font-weight: 950;
   color: rgba(27, 89, 167, 0.95);
   text-decoration: none;
   position: relative;
   padding-bottom: 4px;
 }
-.pravidhi-linkAccent::after {
+.zyposoft-linkAccent::after {
   content: "";
   position: absolute;
   left: 0;
@@ -2135,24 +2176,24 @@ input::placeholder, textarea::placeholder {
   background: linear-gradient(90deg, rgba(27,89,167,0.15), rgba(27,89,167,0.85), rgba(27,89,167,0.15));
   opacity: 0.9;
 }
-.pravidhi-linkMuted {
+.zyposoft-linkMuted {
   font-weight: 900;
   color: rgba(11, 30, 58, 0.60);
   text-decoration: none;
 }
 
 /* ========== DELIVER ========== */
-.pravidhi-deliver {
+.zyposoft-deliver {
   position: relative;
   overflow: hidden;
   padding: 78px 0;
 }
 @media (min-width: 980px) {
-  .pravidhi-deliver { padding: 96px 0; }
+  .zyposoft-deliver { padding: 96px 0; }
 }
 
-.pravidhi-deliver__bg { position: absolute; inset: 0; pointer-events: none; }
-.pravidhi-deliver__mesh {
+.zyposoft-deliver__bg { position: absolute; inset: 0; pointer-events: none; }
+.zyposoft-deliver__mesh {
   position: absolute; inset: 0;
   background-image:
     radial-gradient(at 0% 20%, rgba(27,89,167,0.10) 0, transparent 55%),
@@ -2160,7 +2201,7 @@ input::placeholder, textarea::placeholder {
     radial-gradient(at 55% 100%, rgba(190,195,203,0.14) 0, transparent 60%);
   opacity: 0.95;
 }
-.pravidhi-deliver__grid {
+.zyposoft-deliver__grid {
   position: absolute; inset: 0;
   background-image:
     linear-gradient(to right, rgba(11,30,58,0.038) 1px, transparent 1px),
@@ -2169,12 +2210,12 @@ input::placeholder, textarea::placeholder {
   mask-image: radial-gradient(900px 520px at 52% 40%, #000 0%, transparent 76%);
   opacity: 0.60;
 }
-.pravidhi-deliver__noise {
+.zyposoft-deliver__noise {
   position: absolute; inset: 0; opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
 }
-.pravidhi-deliver__sweep {
+.zyposoft-deliver__sweep {
   position: absolute; inset: -20%;
   background: linear-gradient(90deg, transparent 0%, rgba(27,89,167,0.07) 50%, transparent 100%);
   transform: translateX(-40%) skewX(-10deg);
@@ -2188,12 +2229,12 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Right rail: typographic, not boxy */
-.pravidhi-rail {
+.zyposoft-rail {
   padding-top: 4px;
   border-left: 1px solid rgba(11,30,58,0.12);
   padding-left: 18px;
 }
-.pravidhi-rail__title {
+.zyposoft-rail__title {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
@@ -2201,17 +2242,17 @@ input::placeholder, textarea::placeholder {
   color: rgba(11,30,58,0.60);
   margin-bottom: 14px;
 }
-.pravidhi-rail__item {
+.zyposoft-rail__item {
   padding: 14px 0;
   border-bottom: 1px solid rgba(11,30,58,0.08);
 }
-.pravidhi-rail__item .k {
+.zyposoft-rail__item .k {
   font-size: 18px;
   font-weight: 950;
   letter-spacing: -0.02em;
   color: rgba(11,30,58,0.92);
 }
-.pravidhi-rail__item .v {
+.zyposoft-rail__item .v {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 750;
@@ -2220,21 +2261,21 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Marquee: typography only (no cards) */
-.pravidhi-marquee {
+.zyposoft-marquee {
   margin-top: 18px;
   border-top: 1px solid rgba(11,30,58,0.08);
   padding-top: 12px;
   overflow: hidden;
   mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
 }
-.pravidhi-marquee .track {
+.zyposoft-marquee .track {
   display: inline-flex;
   gap: 18px;
   align-items: center;
   white-space: nowrap;
   animation: prav-marquee 22s linear infinite;
 }
-.pravidhi-marquee span {
+.zyposoft-marquee span {
   font-size: 12px;
   font-weight: 900;
   color: rgba(11,30,58,0.62);
@@ -2246,17 +2287,17 @@ input::placeholder, textarea::placeholder {
 }
 
 /* ========== ENGAGE ========== */
-.pravidhi-engage {
+.zyposoft-engage {
   position: relative;
   overflow: hidden;
   padding: 78px 0;
 }
 @media (min-width: 980px) {
-  .pravidhi-engage { padding: 96px 0; }
+  .zyposoft-engage { padding: 96px 0; }
 }
 
-.pravidhi-engage__bg { position: absolute; inset: 0; pointer-events: none; }
-.pravidhi-engage__mesh {
+.zyposoft-engage__bg { position: absolute; inset: 0; pointer-events: none; }
+.zyposoft-engage__mesh {
   position: absolute; inset: 0;
   background-image:
     radial-gradient(at 10% 0%, rgba(190,195,203,0.18) 0, transparent 55%),
@@ -2264,7 +2305,7 @@ input::placeholder, textarea::placeholder {
     radial-gradient(at 50% 100%, rgba(11,30,58,0.06) 0, transparent 60%);
   opacity: 0.9;
 }
-.pravidhi-engage__grid {
+.zyposoft-engage__grid {
   position: absolute; inset: 0;
   background-image:
     linear-gradient(to right, rgba(11,30,58,0.036) 1px, transparent 1px),
@@ -2273,36 +2314,36 @@ input::placeholder, textarea::placeholder {
   mask-image: radial-gradient(920px 520px at 50% 45%, #000 0%, transparent 78%);
   opacity: 0.55;
 }
-.pravidhi-engage__noise {
+.zyposoft-engage__noise {
   position: absolute; inset: 0; opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
 }
 
 /* Big typographic stack (not cards) */
-.pravidhi-stack {
+.zyposoft-stack {
   border-top: 1px solid rgba(11,30,58,0.10);
 }
-.pravidhi-stack .row {
+.zyposoft-stack .row {
   display: grid;
   grid-template-columns: 62px 1fr;
   gap: 14px;
   padding: 18px 0;
   border-bottom: 1px solid rgba(11,30,58,0.10);
 }
-.pravidhi-stack .num {
+.zyposoft-stack .num {
   font-size: 12px;
   font-weight: 950;
   letter-spacing: 0.22em;
   color: rgba(11,30,58,0.55);
 }
-.pravidhi-stack .h {
+.zyposoft-stack .h {
   font-size: 20px;
   font-weight: 950;
   letter-spacing: -0.02em;
   color: rgba(11,30,58,0.92);
 }
-.pravidhi-stack .p {
+.zyposoft-stack .p {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 750;
@@ -2311,12 +2352,12 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Worklist with a refined vertical accent (no card container) */
-.pravidhi-worklist {
+.zyposoft-worklist {
   position: relative;
   padding-left: 18px;
   border-left: 1px solid rgba(27,89,167,0.20);
 }
-.pravidhi-worklist::before {
+.zyposoft-worklist::before {
   content: "";
   position: absolute;
   left: -1px;
@@ -2328,7 +2369,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.9;
 }
 
-.pravidhi-worklist .title {
+.zyposoft-worklist .title {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
@@ -2337,18 +2378,18 @@ input::placeholder, textarea::placeholder {
   margin-bottom: 16px;
 }
 
-.pravidhi-worklist .item {
+.zyposoft-worklist .item {
   padding: 14px 0;
   border-bottom: 1px solid rgba(11,30,58,0.08);
 }
 
-.pravidhi-worklist .k {
+.zyposoft-worklist .k {
   font-size: 16px;
   font-weight: 950;
   color: rgba(11,30,58,0.90);
   letter-spacing: -0.01em;
 }
-.pravidhi-worklist .v {
+.zyposoft-worklist .v {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 750;
@@ -2358,18 +2399,18 @@ input::placeholder, textarea::placeholder {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .pravidhi-deliver__sweep,
-  .pravidhi-marquee .track {
+  .zyposoft-deliver__sweep,
+  .zyposoft-marquee .track {
     animation: none !important;
   }
 }
 /* =========================
-   PRAVIDHI — Minimal Editorial System (Non-Box)
+   zyposoft — Minimal Editorial System (Non-Box)
    Colorful, subtle, future-proof.
    Append at end of globals.css
    ========================= */
 
-.pravidhi-site {
+.zyposoft-site {
   background:
     radial-gradient(1100px 650px at 10% 5%, rgba(27,89,167,0.06), transparent 60%),
     radial-gradient(900px 520px at 90% 12%, rgba(141,15,214,0.05), transparent 60%),
@@ -2378,15 +2419,15 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Section base */
-.pravidhi-section {
+.zyposoft-section {
   position: relative;
   overflow: hidden;
   padding: 84px 0;
 }
-@media (min-width: 980px) { .pravidhi-section { padding: 104px 0; } }
+@media (min-width: 980px) { .zyposoft-section { padding: 104px 0; } }
 
-.pravidhi-section__bg { position: absolute; inset: 0; pointer-events: none; }
-.pravidhi-section__mesh {
+.zyposoft-section__bg { position: absolute; inset: 0; pointer-events: none; }
+.zyposoft-section__mesh {
   position: absolute; inset: 0;
   background-image:
     radial-gradient(at 0% 12%, var(--t1, rgba(27,89,167,0.08)) 0, transparent 55%),
@@ -2394,7 +2435,7 @@ input::placeholder, textarea::placeholder {
     radial-gradient(at 55% 100%, var(--t3, rgba(190,195,203,0.12)) 0, transparent 62%);
   opacity: 0.95;
 }
-.pravidhi-section__grid {
+.zyposoft-section__grid {
   position: absolute; inset: 0;
   background-image:
     linear-gradient(to right, rgba(11,30,58,0.035) 1px, transparent 1px),
@@ -2403,12 +2444,12 @@ input::placeholder, textarea::placeholder {
   mask-image: radial-gradient(920px 520px at 52% 40%, #000 0%, transparent 78%);
   opacity: 0.55;
 }
-.pravidhi-section__noise {
+.zyposoft-section__noise {
   position: absolute; inset: 0; opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
 }
-.pravidhi-section__sweep {
+.zyposoft-section__sweep {
   position: absolute; inset: -24%;
   background: linear-gradient(90deg, transparent 0%, rgba(27,89,167,0.06) 50%, transparent 100%);
   transform: translateX(-42%) skewX(-10deg);
@@ -2421,7 +2462,7 @@ input::placeholder, textarea::placeholder {
   100% { transform: translateX(42%) skewX(-10deg); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .pravidhi-section__sweep { animation: none !important; }
+  .zyposoft-section__sweep { animation: none !important; }
 }
 
 /* Theme tints (subtle color variety) */
@@ -2431,15 +2472,15 @@ input::placeholder, textarea::placeholder {
 .theme--coral  { --t1: rgba(225,36,36,0.06); --t2: rgba(27,89,167,0.06); --t3: rgba(190,195,203,0.14); }
 
 /* Minimal separators */
-.pravidhi-rule {
+.zyposoft-rule {
   height: 1px;
   width: 100%;
   background: linear-gradient(90deg, transparent, rgba(11,30,58,0.14), transparent);
 }
 
 /* Lines (no cards) */
-.pravidhi-lines { display: grid; gap: 12px; }
-.pravidhi-line {
+.zyposoft-lines { display: grid; gap: 12px; }
+.zyposoft-line {
   display: grid;
   grid-template-columns: 18px 1fr;
   gap: 12px;
@@ -2447,12 +2488,12 @@ input::placeholder, textarea::placeholder {
   padding: 10px 0;
   border-bottom: 1px solid rgba(11,30,58,0.08);
 }
-.pravidhi-line .t {
+.zyposoft-line .t {
   font-size: 13px;
   font-weight: 950;
   color: rgba(11,30,58,0.90);
 }
-.pravidhi-line .s {
+.zyposoft-line .s {
   margin-top: 4px;
   font-size: 12px;
   font-weight: 750;
@@ -2466,14 +2507,21 @@ input::placeholder, textarea::placeholder {
   margin-top: 13px;
   box-shadow: 0 0 0 7px rgba(27,89,167,0.08);
 }
+.dotT {
+  width: 10px; height: 10px; border-radius: 999px;
+  margin-top: 1px;
+  box-shadow: 0 0 0 7px rgba(27,89,167,0.08);
+}
 .dot--blue   { background: rgba(27,89,167,0.95); box-shadow: 0 0 0 7px rgba(27,89,167,0.10); }
 .dot--teal   { background: rgba(20,212,177,0.92); box-shadow: 0 0 0 7px rgba(20,212,177,0.10); }
 .dot--violet { background: rgba(141,15,214,0.86); box-shadow: 0 0 0 7px rgba(141,15,214,0.10); }
 .dot--amber  { background: rgba(197,194,13,0.86); box-shadow: 0 0 0 7px rgba(197,194,13,0.10); }
 .dot--coral  { background: rgba(225,36,36,0.86); box-shadow: 0 0 0 7px rgba(225,36,36,0.10); }
+.dot--indigo { background: rgba(37,99,235,0.95); box-shadow: 0 0 0 7px rgba(37,99,235,0.10); }
+.dot--slate  { background: rgba(11,30,58,0.75); box-shadow: 0 0 0 7px rgba(11,30,58,0.10); }
 
 /* Pills (not boxy; subtle tinted) */
-.pravidhi-pill {
+.zyposoft-pill {
   display: inline-flex;
   align-items: center;
   padding: 8px 10px;
@@ -2493,25 +2541,25 @@ input::placeholder, textarea::placeholder {
 .pill--slate  { border-color: rgba(11,30,58,0.12); background: rgba(11,30,58,0.03); }
 
 /* Quote block (editorial, not a card) */
-.pravidhi-quote {
+.zyposoft-quote {
   position: relative;
   padding-left: 18px;
 }
-.pravidhi-quote__bar {
+.zyposoft-quote__bar {
   position: absolute;
   left: 0; top: 4px; bottom: 4px;
   width: 2px;
   border-radius: 999px;
   background: linear-gradient(180deg, rgba(27,89,167,0.0), rgba(27,89,167,0.6), rgba(141,15,214,0.0));
 }
-.pravidhi-quote__k {
+.zyposoft-quote__k {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(11,30,58,0.60);
 }
-.pravidhi-quote__t {
+.zyposoft-quote__t {
   margin-top: 10px;
   font-size: 18px;
   font-weight: 950;
@@ -2519,7 +2567,7 @@ input::placeholder, textarea::placeholder {
   color: rgba(11,30,58,0.92);
   line-height: 1.35;
 }
-.pravidhi-quote__s {
+.zyposoft-quote__s {
   margin-top: 8px;
   font-size: 13px;
   font-weight: 750;
@@ -2528,12 +2576,12 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Micro paragraphs */
-.pravidhi-micro .h {
+.zyposoft-micro .h {
   font-size: 13px;
   font-weight: 950;
   color: rgba(11,30,58,0.90);
 }
-.pravidhi-micro .p {
+.zyposoft-micro .p {
   margin-top: 6px;
   font-size: 12px;
   font-weight: 750;
@@ -2564,50 +2612,50 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Technology map (rows; no cards) */
-.pravidhi-map {
+.zyposoft-map {
   border-left: 1px solid rgba(11,30,58,0.12);
   padding-left: 18px;
 }
-.pravidhi-map__head .k {
+.zyposoft-map__head .k {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(11,30,58,0.60);
 }
-.pravidhi-map__head .t {
+.zyposoft-map__head .t {
   margin-top: 10px;
   font-size: 18px;
   font-weight: 950;
   letter-spacing: -0.02em;
   color: rgba(11,30,58,0.92);
 }
-.pravidhi-map__grid {
+.zyposoft-map__grid {
   margin-top: 16px;
   display: grid;
   gap: 0;
 }
-.pravidhi-mapItem {
+.zyposoft-mapItem {
   display: grid;
   grid-template-columns: 10px 1fr;
   gap: 14px;
   padding: 14px 0;
   border-bottom: 1px solid rgba(11,30,58,0.08);
 }
-.pravidhi-mapItem .meta .h {
+.zyposoft-mapItem .meta .h {
   font-size: 16px;
   font-weight: 950;
   color: rgba(11,30,58,0.90);
   letter-spacing: -0.01em;
 }
-.pravidhi-mapItem .meta .p {
+.zyposoft-mapItem .meta .p {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 750;
   color: rgba(11,30,58,0.60);
   line-height: 1.55;
 }
-.pravidhi-mapItem .a {
+.zyposoft-mapItem .a {
   width: 6px;
   border-radius: 999px;
   background: rgba(11,30,58,0.20);
@@ -2620,14 +2668,14 @@ input::placeholder, textarea::placeholder {
 .a--coral  { background: rgba(225,36,36,0.55); }
 .a--slate  { background: rgba(11,30,58,0.35); }
 
-.pravidhi-map__tags { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.zyposoft-map__tags { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* Delivery rail variant (no box) */
-.pravidhi-rail2 {
+.zyposoft-rail2 {
   border-left: 1px solid rgba(11,30,58,0.12);
   padding-left: 18px;
 }
-.pravidhi-rail2 .title {
+.zyposoft-rail2 .title {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
@@ -2635,17 +2683,17 @@ input::placeholder, textarea::placeholder {
   color: rgba(11,30,58,0.60);
   margin-bottom: 14px;
 }
-.pravidhi-rail2 .item {
+.zyposoft-rail2 .item {
   padding: 14px 0;
   border-bottom: 1px solid rgba(11,30,58,0.08);
 }
-.pravidhi-rail2 .k {
+.zyposoft-rail2 .k {
   font-size: 18px;
   font-weight: 950;
   letter-spacing: -0.02em;
   color: rgba(11,30,58,0.92);
 }
-.pravidhi-rail2 .v {
+.zyposoft-rail2 .v {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 750;
@@ -2654,27 +2702,27 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Engagement steps (non-box) */
-.pravidhi-steps { margin-top: 10px; }
-.pravidhi-steps .row {
+.zyposoft-steps { margin-top: 10px; }
+.zyposoft-steps .row {
   display: grid;
   grid-template-columns: 62px 1fr;
   gap: 14px;
   padding: 18px 0;
   border-bottom: 1px solid rgba(11,30,58,0.10);
 }
-.pravidhi-steps .num {
+.zyposoft-steps .num {
   font-size: 12px;
   font-weight: 950;
   letter-spacing: 0.22em;
   color: rgba(11,30,58,0.55);
 }
-.pravidhi-steps .h {
+.zyposoft-steps .h {
   font-size: 20px;
   font-weight: 950;
   letter-spacing: -0.02em;
   color: rgba(11,30,58,0.92);
 }
-.pravidhi-steps .p {
+.zyposoft-steps .p {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 750;
@@ -2683,12 +2731,12 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Engagement worklist (vertical accent, no card) */
-.pravidhi-worklist2 {
+.zyposoft-worklist2 {
   position: relative;
   padding-left: 18px;
   border-left: 1px solid rgba(225,36,36,0.18);
 }
-.pravidhi-worklist2::before {
+.zyposoft-worklist2::before {
   content: "";
   position: absolute;
   left: -1px;
@@ -2699,7 +2747,7 @@ input::placeholder, textarea::placeholder {
   background: linear-gradient(180deg, rgba(225,36,36,0.0), rgba(225,36,36,0.35), rgba(27,89,167,0.0));
   opacity: 0.95;
 }
-.pravidhi-worklist2 .title {
+.zyposoft-worklist2 .title {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
@@ -2707,17 +2755,17 @@ input::placeholder, textarea::placeholder {
   color: rgba(11,30,58,0.60);
   margin-bottom: 16px;
 }
-.pravidhi-worklist2 .item {
+.zyposoft-worklist2 .item {
   padding: 14px 0;
   border-bottom: 1px solid rgba(11,30,58,0.08);
 }
-.pravidhi-worklist2 .k {
+.zyposoft-worklist2 .k {
   font-size: 16px;
   font-weight: 950;
   color: rgba(11,30,58,0.90);
   letter-spacing: -0.01em;
 }
-.pravidhi-worklist2 .v {
+.zyposoft-worklist2 .v {
   margin-top: 6px;
   font-size: 13px;
   font-weight: 750;
@@ -2726,13 +2774,13 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Contact CTA (not boxy) */
-.pravidhi-cta {
+.zyposoft-cta {
   position: relative;
   overflow: hidden;
   padding: 96px 0 110px;
 }
-.pravidhi-cta__bg { position: absolute; inset: 0; pointer-events: none; }
-.pravidhi-cta__mesh {
+.zyposoft-cta__bg { position: absolute; inset: 0; pointer-events: none; }
+.zyposoft-cta__mesh {
   position: absolute; inset: 0;
   background-image:
     radial-gradient(at 12% 10%, rgba(27,89,167,0.10) 0, transparent 60%),
@@ -2741,12 +2789,12 @@ input::placeholder, textarea::placeholder {
     linear-gradient(#ffffff, #fbfcfe);
   opacity: 1;
 }
-.pravidhi-cta__noise {
+.zyposoft-cta__noise {
   position: absolute; inset: 0; opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
 }
-.pravidhi-cta__halo {
+.zyposoft-cta__halo {
   position: absolute;
   inset: -30%;
   background: conic-gradient(from 210deg at 55% 42%,
@@ -2759,38 +2807,38 @@ input::placeholder, textarea::placeholder {
   filter: blur(32px);
   opacity: 0.55;
 }
-.pravidhi-cta__inner {
+.zyposoft-cta__inner {
   text-align: center;
   padding-top: 18px;
 }
 
 /* Keep existing marquee + link styles you already have */
 /* =========================
-   PRAVIDHI — Footer (Minimal, subtle-color, non-box)
+   zyposoft — Footer (Minimal, subtle-color, non-box)
    Matches editorial sections + hero palette
    ========================= */
 
-.pravidhi-footer {
+.zyposoft-footer {
   position: relative;
   overflow: hidden;
   background: transparent;
 }
 
 /* top hairline rule (not dark-theme) */
-.pravidhi-footer__rule {
+.zyposoft-footer__rule {
   height: 1px;
   width: 100%;
   background: linear-gradient(90deg, transparent, rgba(11,30,58,0.14), transparent);
 }
 
 /* background layers */
-.pravidhi-footer__bg {
+.zyposoft-footer__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.pravidhi-footer__mesh {
+.zyposoft-footer__mesh {
   position: absolute;
   inset: 0;
   background-image:
@@ -2801,7 +2849,7 @@ input::placeholder, textarea::placeholder {
   opacity: 1;
 }
 
-.pravidhi-footer__grid {
+.zyposoft-footer__grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -2812,7 +2860,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.55;
 }
 
-.pravidhi-footer__noise {
+.zyposoft-footer__noise {
   position: absolute;
   inset: 0;
   opacity: 0.05;
@@ -2820,7 +2868,7 @@ input::placeholder, textarea::placeholder {
   mix-blend-mode: multiply;
 }
 
-.pravidhi-footer__halo {
+.zyposoft-footer__halo {
   position: absolute;
   inset: -30%;
   background: conic-gradient(from 210deg at 55% 42%,
@@ -2835,7 +2883,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Brand dot */
-.pravidhi-footer__dot {
+.zyposoft-footer__dot {
   width: 10px;
   height: 10px;
   border-radius: 999px;
@@ -2846,7 +2894,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Kicker */
-.pravidhi-footer__kicker {
+.zyposoft-footer__kicker {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
@@ -2855,7 +2903,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Links */
-.pravidhi-footer__link {
+.zyposoft-footer__link {
   color: rgba(11, 30, 58, 0.70);
   text-decoration: none;
   font-weight: 750;
@@ -2864,11 +2912,11 @@ input::placeholder, textarea::placeholder {
   transition: color 160ms ease;
 }
 
-.pravidhi-footer__link:hover {
+.zyposoft-footer__link:hover {
   color: rgba(27, 89, 167, 0.95);
 }
 
-.pravidhi-footer__link::after {
+.zyposoft-footer__link::after {
   content: "";
   position: absolute;
   left: 0;
@@ -2889,13 +2937,13 @@ input::placeholder, textarea::placeholder {
   transition: opacity 160ms ease, transform 160ms ease;
 }
 
-.pravidhi-footer__link:hover::after {
+.zyposoft-footer__link:hover::after {
   opacity: 0.95;
   transform: translateY(0);
 }
 
 /* Subtle brand rail */
-.pravidhi-footer__rail {
+.zyposoft-footer__rail {
   height: 2px;
   width: 220px;
   border-radius: 999px;
@@ -2910,7 +2958,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* Micro-links row */
-.pravidhi-footer__micro {
+.zyposoft-footer__micro {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -2919,20 +2967,20 @@ input::placeholder, textarea::placeholder {
   color: rgba(11, 30, 58, 0.52);
 }
 
-.pravidhi-footer__microLink {
+.zyposoft-footer__microLink {
   color: rgba(11, 30, 58, 0.58);
   text-decoration: none;
 }
-.pravidhi-footer__microLink:hover {
+.zyposoft-footer__microLink:hover {
   color: rgba(27, 89, 167, 0.92);
 }
 
-.pravidhi-footer__micro .sep {
+.zyposoft-footer__micro .sep {
   opacity: 0.55;
 }
 
 /* Bottom rule */
-.pravidhi-footer__bottomRule {
+.zyposoft-footer__bottomRule {
   margin-top: 28px;
   height: 1px;
   width: 100%;
@@ -2941,17 +2989,17 @@ input::placeholder, textarea::placeholder {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .pravidhi-footer__halo {
+  .zyposoft-footer__halo {
     display: none;
   }
 }
 /* Editorial narrative (replaces quote + kpis + micro pointers) */
-.pravidhi-narrative {
+.zyposoft-narrative {
   position: relative;
   padding-left: 18px;
 }
 
-.pravidhi-narrative__bar {
+.zyposoft-narrative__bar {
   position: absolute;
   left: 0;
   top: 6px;
@@ -2969,7 +3017,7 @@ input::placeholder, textarea::placeholder {
   opacity: 0.95;
 }
 
-.pravidhi-narrative__k {
+.zyposoft-narrative__k {
   font-size: 11px;
   font-weight: 950;
   letter-spacing: 0.22em;
@@ -2977,7 +3025,7 @@ input::placeholder, textarea::placeholder {
   color: rgba(11, 30, 58, 0.60);
 }
 
-.pravidhi-narrative__t {
+.zyposoft-narrative__t {
   margin-top: 10px;
   font-size: 20px;
   font-weight: 950;
@@ -2986,7 +3034,7 @@ input::placeholder, textarea::placeholder {
   line-height: 1.25;
 }
 
-.pravidhi-narrative__p {
+.zyposoft-narrative__p {
   margin-top: 12px;
   font-size: 13px;
   font-weight: 750;
@@ -2996,7 +3044,7 @@ input::placeholder, textarea::placeholder {
 }
 
 /* “Signature strip” — not boxy, just refined typography */
-.pravidhi-narrative__sig {
+.zyposoft-narrative__sig {
   margin-top: 18px;
   padding-top: 14px;
   border-top: 1px solid rgba(11, 30, 58, 0.10);
@@ -3007,14 +3055,14 @@ input::placeholder, textarea::placeholder {
   color: rgba(11, 30, 58, 0.60);
 }
 
-.pravidhi-narrative__sig .chip {
+.zyposoft-narrative__sig .chip {
   font-size: 12px;
   font-weight: 900;
   color: rgba(11, 30, 58, 0.72);
   letter-spacing: 0.01em;
 }
 
-.pravidhi-narrative__sig .sep {
+.zyposoft-narrative__sig .sep {
   opacity: 0.5;
 }
 
@@ -3230,7 +3278,7 @@ input::placeholder, textarea::placeholder {
   .techm__railSheen, .techm__dot, .techm__sweep { animation: none !important; }
 }
 /* =========================
-   PRAVIDHI ECOSYSTEM STACK (Animated Constellation)
+   zyposoft ECOSYSTEM STACK (Animated Constellation)
    Light, minimal, premium — matches current theme
    ========================= */
 
@@ -3379,6 +3427,17 @@ input::placeholder, textarea::placeholder {
     linear-gradient(135deg, rgba(20,184,166,0.08), rgba(255,255,255,0.78));
   border: 1px solid rgba(11,30,58,0.08);
 }
+.eco-line-orange{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding: 12px 12px;
+  border-radius: 16px;
+  background:
+    radial-gradient(420px 220px at 20% 20%, rgba(245, 158, 11, 0.16), transparent 62%),
+    linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(255, 255, 255, 0.74));
+  border: 1px solid rgba(11,30,58,0.08);
+}
 .eco-bullet{
   width:10px;height:10px;border-radius:999px;
   margin-top: 4px;
@@ -3408,10 +3467,22 @@ input::placeholder, textarea::placeholder {
   margin-top: 2px;
   color: rgba(11,30,58,0.58);
 }
+.eco-line-orange .t{
+  font-weight: 900;
+  color:#0b1e3a;
+  font-size: 13px;
+  
+  }
+.eco-line-orange .s{
+  font-size: 12px;
+  margin-top: 2px;
+  color: rgba(11,30,58,0.58);
+}
 /* ====== Map Card ====== */
 .eco-map{
   position: relative;
   width: 100%;
+  min-width: 670px;
   max-width: 740px;
   margin: 0 auto;
   aspect-ratio: 1 / 1;
@@ -3865,7 +3936,7 @@ input::placeholder, textarea::placeholder {
 .aboutg{
   position: relative;
   height: 100%;
-  min-height: 640px;
+  min-height: 665px;
   border-radius: 28px;
   border: 1px solid rgba(11,30,58,0.10);
   background: rgba(255,255,255,0.74);
@@ -4399,6 +4470,10 @@ input::placeholder, textarea::placeholder {
    DELIVERY LIFECYCLE CONTROL LOOP (fills panel)
    ========================= */
 
+/* =========================
+   DELIVERY LIFECYCLE (Modern ring)
+   ========================= */
+
 .del-life{
   position: relative;
   border-radius: 28px;
@@ -4416,8 +4491,9 @@ input::placeholder, textarea::placeholder {
 .del-life__bg{
   position:absolute; inset:-25%;
   background:
-    radial-gradient(560px 420px at 30% 30%, rgba(27,89,167,0.12), transparent 62%),
-    radial-gradient(560px 420px at 70% 70%, rgba(190,195,203,0.26), transparent 62%);
+    radial-gradient(560px 420px at 30% 26%, rgba(27,89,167,0.13), transparent 62%),
+    radial-gradient(560px 420px at 70% 72%, rgba(190,195,203,0.28), transparent 62%),
+    radial-gradient(420px 300px at 56% 40%, rgba(20,212,177,0.10), transparent 64%);
   opacity: 0.95;
 }
 
@@ -4429,29 +4505,13 @@ input::placeholder, textarea::placeholder {
   display:block;
 }
 
-/* motion (subtle, professional) */
+/* subtle micro dash motion */
 .del-life__dash{
-  animation: dlDash 7.4s linear infinite;
+  animation: dlDash 9.6s linear infinite;
 }
 @keyframes dlDash{
   0%{ stroke-dashoffset: 0; }
-  100%{ stroke-dashoffset: -180; }
-}
-.del-life__dash2{
-  animation: dlDash2 8.8s linear infinite reverse;
-  opacity: 0.85;
-}
-@keyframes dlDash2{
-  0%{ stroke-dashoffset: 0; }
-  100%{ stroke-dashoffset: -210; }
-}
-.del-life__dash3{
-  animation: dlDash3 10.6s linear infinite;
-  opacity: 0.75;
-}
-@keyframes dlDash3{
-  0%{ stroke-dashoffset: 0; }
-  100%{ stroke-dashoffset: -260; }
+  100%{ stroke-dashoffset: -320; }
 }
 
 /* stations */
@@ -4475,13 +4535,14 @@ input::placeholder, textarea::placeholder {
   fill: rgba(11,30,58,0.58);
   letter-spacing: 0.02em;
 }
+.dl-st.is-active .dl-st__txt{ fill: rgba(11,30,58,0.72); }
 
 .dl-st.is-passed .dl-st__core{ fill: rgba(27,89,167,0.62); }
 .dl-st.is-passed .dl-st__check{ stroke: rgba(27,89,167,0.82); opacity: 1; }
 
 .dl-st.is-ping .dl-st__halo{
   fill: rgba(27,89,167,0.12);
-  animation: dlPing 0.62s ease-out 1;
+  animation: dlPing 0.56s ease-out 1;
 }
 @keyframes dlPing{
   0%{ transform: scale(0.92); opacity: 0.12; }
@@ -4489,37 +4550,52 @@ input::placeholder, textarea::placeholder {
   100%{ transform: scale(1.35); opacity: 0.0; }
 }
 
-/* center label */
-.del-life__center .del-life__k{
-  font-size: 3.0px;
+/* center typography */
+.del-life__coreK{
+  font-size: 3.1px;
   font-weight: 950;
-  letter-spacing: 0.22em;
-  fill: rgba(11,30,58,0.52);
+  letter-spacing: 0.28em;
+  fill: rgba(11,30,58,0.68);
 }
-.del-life__center .del-life__s{
-  font-size: 2.6px;
-  font-weight: 750;
-  fill: rgba(11,30,58,0.48);
+.del-life__coreT{
+  font-size: 2.85px;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+  fill: rgba(11,30,58,0.86);
+}
+.del-life__phaseTxt{
+  font-size: 1.95px;
+  font-weight: 900;
+  fill: rgba(11,30,58,0.78);
+}
+.del-life__meterTxt{
+  font-size: 1.85px;
+  font-weight: 850;
+  fill: rgba(11,30,58,0.64);
 }
 
-/* HUD panels */
-.del-life__hud{
+/* Notes (match the minimal premium UI language) */
+.del-life__note{
   position:absolute;
-  padding: 10px 12px;
+  display:grid;
+  grid-template-columns: 18px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.64);
   border: 1px solid rgba(11,30,58,0.10);
-  box-shadow: 0 14px 38px rgba(11,30,58,0.08);
-  backdrop-filter: blur(8px);
-  max-width: 210px;
+  box-shadow: 0 14px 38px rgba(11,30,58,0.07);
+  backdrop-filter: blur(10px);
+  max-width: 270px;
   z-index: 3;
 }
-.del-life__hud .k{
+.del-life__note .t{
   font-size: 12px;
   font-weight: 950;
-  color: rgba(11,30,58,0.82);
+  color: rgba(11,30,58,0.88);
 }
-.del-life__hud .v{
+.del-life__note .s{
   margin-top: 4px;
   font-size: 12px;
   font-weight: 750;
@@ -4527,20 +4603,446 @@ input::placeholder, textarea::placeholder {
   line-height: 1.45;
 }
 
-.del-life__hud--tl{ left: 16px; top: 16px; }
-.del-life__hud--tr{ right: 16px; top: 16px; }
-.del-life__hud--br{ right: 16px; bottom: 16px; }
+/* connector line (subtle) */
+.del-life__note::after{
+  content:"";
+  position:absolute;
+  height: 1px;
+  width: 72px;
+  background: linear-gradient(90deg, rgba(11,30,58,0.00), rgba(11,30,58,0.18), rgba(11,30,58,0.00));
+  opacity: 0.50;
+}
+.del-life__note--tl::after{ left: 100%; top: 50%; transform: translateY(-50%) rotate(8deg); }
+.del-life__note--tr::after{ right: 100%; top: 54%; transform: translateY(-50%) rotate(-8deg); }
+.del-life__note--br::after{ right: 100%; top: 46%; transform: translateY(-50%) rotate(-16deg); }
 
-/* Mobile: keep it clean */
+.del-life__dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin-top: 13px;
+  box-shadow: 0 0 0 7px rgba(11,30,58,0.06);
+}
+.del-life__dot--blue{ background: rgba(27,89,167,0.95); box-shadow: 0 0 0 7px rgba(27,89,167,0.10); }
+.del-life__dot--teal{ background: rgba(20,212,177,0.92); box-shadow: 0 0 0 7px rgba(20,212,177,0.10); }
+.del-life__dot--violet{ background: rgba(141,15,214,0.86); box-shadow: 0 0 0 7px rgba(141,15,214,0.10); }
+
+.del-life__note--tl{ left: 16px; top: 30px; }
+.del-life__note--tr{ right: 16px; top: 20px; }
+.del-life__note--br{ right: 450px; bottom: 20px; }
+
+/* Tilt on hover (premium) */
+.del-life__note{
+  transform: translateY(0) rotate(0deg);
+  transform-origin: 50% 60%;
+  transition:
+    transform 260ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 260ms cubic-bezier(.2,.8,.2,1),
+    border-color 260ms ease,
+    background 260ms ease;
+  will-change: transform;
+  background: radial-gradient(420px 220px at 20% 20%, rgba(245, 158, 11, 0.16), transparent 62%), rgba(255, 255, 255, 0.74);
+}
+.del-life__note1{
+  transform: translateY(0) rotate(0deg);
+  transform-origin: 50% 60%;
+  transition:
+    transform 260ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 260ms cubic-bezier(.2,.8,.2,1),
+    border-color 260ms ease,
+    background 260ms ease;
+  will-change: transform;
+  background: radial-gradient(420px 220px at 20% 20%, rgba(139, 92, 246, 0.16), transparent 62%), rgba(255, 255, 255, 0.74);
+}
+.del-life__note2{
+  transform: translateY(0) rotate(0deg);
+  transform-origin: 50% 60%;
+  transition:
+    transform 260ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 260ms cubic-bezier(.2,.8,.2,1),
+    border-color 260ms ease,
+    background 260ms ease;
+  will-change: transform;
+  background: radial-gradient(420px 220px at 20% 20%, rgba(20, 184, 166, 0.16), transparent 62%), rgba(255, 255, 255, 0.74);
+}
+.del-life__note--tl{ --tilt: -1.2deg; --lift: -6px; }
+.del-life__note--tr{ --tilt:  1.2deg; --lift: -6px; }
+.del-life__note--br{ --tilt:  1.0deg; --lift: -6px; }
+
+.del-life__note:hover{
+  transform: translateY(var(--lift, -6px)) rotate(var(--tilt, 1deg));
+  box-shadow: 0 22px 60px rgba(11,30,58,0.14);
+  border-color: rgba(11,30,58,0.14);
+  background: rgba(255,255,255,0.78);
+}
+.del-life__note::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  pointer-events:none;
+  opacity: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.80),
+    rgba(255,255,255,0.05) 45%,
+    rgba(255,255,255,0.00)
+  );
+  transition: opacity 260ms ease;
+}
+.del-life__note:hover::before{ opacity: 0.55; }
+
+/* Mobile: hide notes */
 @media (max-width: 900px){
-  .del-life__hud{ display:none; }
+  .del-life__note{ display:none; }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .del-life__dash,
-  .del-life__dash2,
-  .del-life__dash3{
-    animation: none !important;
-  }
+  .del-life__dash{ animation: none !important; }
+  .del-life__note{ transition: none !important; }
+  .del-life__note:hover{ transform: none !important; }
+}
+/* =========================
+   PRODUCT ENGINEERING — Card Flow Visual (designer-aligned)
+   ========================= */
+
+.pe-cards{
+  position: relative;
+  border-radius: 28px;
+  border: 1px solid rgba(11,30,58,0.10);
+  background: rgba(255,255,255,0.74);
+  box-shadow: 0 18px 52px rgba(11,30,58,0.10);
+  overflow: hidden;
+  height: 630px;
+}
+.pe-card,
+.pe-cardLite {
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(11,30,58,0.10);
+  box-shadow: 0 14px 38px rgba(11,30,58,0.08);
+  backdrop-filter: blur(8px);
+}
+
+/* If the “cards” are SVG rects (common in your visuals) */
+.pe-stack__frame {
+  fill: rgba(255,255,255,0.74);
+  stroke: rgba(11,30,58,0.10);
+  stroke-width: 0.55;
+}
+
+.pe-layer rect {
+  fill: rgba(255,255,255,0.72);
+  stroke: rgba(11,30,58,0.10);
+  stroke-width: 0.45;
+}
+
+.pe-legend rect {
+  fill: rgba(255,255,255,0.72);
+  stroke: rgba(11,30,58,0.10);
+  stroke-width: 0.45;
+}
+
+/* Optional: keep text/controls consistent with the same “card language” */
+.pe-layer text,
+.pe-legend text {
+  fill: rgba(11,30,58,0.70);
+  font-weight: 800;
+}
+
+.pe-layer circle {
+  fill: rgba(11,30,58,0.22);
+}
+@media (max-width: 900px){
+  .pe-cards{ height: 440px; border-radius: 22px; }
+}
+
+.pe-cards__bg{
+  position:absolute; inset:-25%;
+  background:
+    radial-gradient(560px 420px at 25% 28%, rgba(27,89,167,0.10), transparent 62%),
+    radial-gradient(560px 420px at 75% 72%, rgba(20,212,177,0.08), transparent 62%),
+    radial-gradient(520px 380px at 55% 45%, rgba(190,195,203,0.22), transparent 62%);
+  opacity: 0.95;
+}
+
+.pe-cards__wrap{
+  position:absolute;
+  inset:0;
+  padding: 22px;
+}
+
+.pe-cards__head{
+  position:absolute;
+  left: 22px;
+  top: 18px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.70);
+  border: 1px solid rgba(11,30,58,0.10);
+  box-shadow: 0 12px 26px rgba(11,30,58,0.06);
+  backdrop-filter: blur(8px);
+  z-index: 4;
+}
+.pe-cards__headDot{
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: rgba(27,89,167,0.78);
+  box-shadow: 0 0 0 6px rgba(27,89,167,0.08);
+}
+.pe-cards__headTxt{
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(11,30,58,0.60);
+}
+
+/* grid layout: clean, predictable, not random */
+.pe-cards__grid{
+  position:absolute;
+  inset: 70px 22px 70px 22px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  z-index: 3;
+}
+.pe-cardSlot--signals{ grid-column: 1; grid-row: 1; }
+.pe-cardSlot--features{ grid-column: 2; grid-row: 1; }
+.pe-cardSlot--train{ grid-column: 1 / 3; grid-row: 2; }
+.pe-cardSlot--eval{ grid-column: 1; grid-row: 3; }
+.pe-cardSlot--release{ grid-column: 2; grid-row: 3; }
+
+/* card base matches your UI (same language as del-life hud cards) */
+.pe-card{
+  position: relative;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(11,30,58,0.10);
+  box-shadow: 0 14px 40px rgba(11,30,58,0.10), 0 2px 0 rgba(255,255,255,0.70) inset;
+  backdrop-filter: blur(10px);
+  padding: 16px 16px 14px;
+  min-height: 118px;
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
+  will-change: transform;
+   overflow: hidden;
+}
+/* Product Engineering card tones (match TechnologyMap cards) */
+.pe-card.pe-tone--blue{
+  background:
+    radial-gradient(420px 220px at 15% 20%, rgba(27,89,167,0.24), transparent 62%),
+    linear-gradient(135deg, rgba(27,89,167,0.10), rgba(255,255,255,0.78));
+}
+.pe-card.pe-tone--indigo{
+  background:
+    radial-gradient(420px 220px at 15% 20%, rgba(59,130,246,0.18), transparent 62%),
+    radial-gradient(420px 220px at 85% 80%, rgba(11,30,58,0.12), transparent 62%),
+    linear-gradient(135deg, rgba(59,130,246,0.08), rgba(255,255,255,0.78));
+}
+.pe-card.pe-tone--teal{
+  background:
+    radial-gradient(420px 220px at 15% 20%, rgba(20,184,166,0.20), transparent 62%),
+    linear-gradient(135deg, rgba(20,184,166,0.08), rgba(255,255,255,0.78));
+}
+.pe-card.pe-tone--violet{
+  background:
+    radial-gradient(420px 220px at 15% 20%, rgba(139,92,246,0.22), transparent 62%),
+    linear-gradient(135deg, rgba(139,92,246,0.08), rgba(255,255,255,0.78));
+}
+.pe-card.pe-tone--slate{
+  background:
+    radial-gradient(420px 220px at 15% 20%, rgba(190,195,203,0.50), transparent 62%),
+    linear-gradient(135deg, rgba(11,30,58,0.06), rgba(255,255,255,0.78));
+}
+
+/* Optional: active glow per tone (feels more “designed” when the animation hops) */
+.pe-card.pe-tone--indigo.is-active{
+  border-color: rgba(59,130,246,0.20);
+  box-shadow: 0 22px 56px rgba(11,30,58,0.12), 0 0 0 10px rgba(59,130,246,0.05);
+}
+.pe-card.pe-tone--teal.is-active{
+  border-color: rgba(20,184,166,0.20);
+  box-shadow: 0 22px 56px rgba(11,30,58,0.12), 0 0 0 10px rgba(20,184,166,0.05);
+}
+.pe-card.pe-tone--violet.is-active{
+  border-color: rgba(139,92,246,0.20);
+  box-shadow: 0 22px 56px rgba(11,30,58,0.12), 0 0 0 10px rgba(139,92,246,0.05);
+}
+.pe-card.pe-tone--slate.is-active{
+  border-color: rgba(11,30,58,0.14);
+  box-shadow: 0 22px 56px rgba(11,30,58,0.12), 0 0 0 10px rgba(190,195,203,0.20);
+}
+.pe-card--hero{
+  min-height: 170px;
+  padding: 18px 18px 16px;
+}
+
+/* subtle, premium hover lift (tilt uses existing tilt-card vars) */
+.pe-card:hover{
+  box-shadow: 0 18px 52px rgba(11,30,58,0.12), 0 2px 0 rgba(255,255,255,0.70) inset;
+}
+
+/* active state (like "passed" feel in delivery) */
+.pe-card.is-active{
+  border-color: rgba(27,89,167,0.18);
+  box-shadow:
+    0 22px 56px rgba(11,30,58,0.12),
+    0 0 0 10px rgba(27,89,167,0.05);
+}
+.pe-card.is-ping{
+  animation: peCardPing 520ms ease-out 1;
+}
+@keyframes peCardPing{
+  0%{ transform: translateY(0) scale(0.995) rotateX(var(--rx)) rotateY(var(--ry)); }
+  55%{ transform: translateY(-2px) scale(1.01) rotateX(var(--rx)) rotateY(var(--ry)); }
+  100%{ transform: translateY(0) scale(1.00) rotateX(var(--rx)) rotateY(var(--ry)); }
+}
+
+.pe-card__row{ display:flex; align-items:center; gap:10px; }
+.pe-card__k{
+  font-size: 14px;
+  font-weight: 950;
+  color: rgba(11,30,58,0.84);
+  letter-spacing: -0.01em;
+}
+.pe-card__s{
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 750;
+  color: rgba(11,30,58,0.56);
+  line-height: 1.45;
+}
+
+.pe-badge{
+  margin-left:auto;
+  font-size: 11px;
+  font-weight: 900;
+  color: rgba(11,30,58,0.60);
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(11,30,58,0.10);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* mini visuals */
+.pe-card__mini{
+  margin-top: 12px;
+  display:flex;
+  gap: 8px;
+}
+.pe-card__mini span{
+  height: 6px;
+  flex: 1;
+  border-radius: 999px;
+  background: rgba(11,30,58,0.08);
+}
+.pe-card__mini span:nth-child(2){ background: rgba(27,89,167,0.16); }
+.pe-card__mini span:nth-child(3){ background: rgba(20,212,177,0.14); }
+.pe-card__mini span:nth-child(4){ background: rgba(141,15,214,0.10); }
+
+.pe-card__chips{ margin-top: 10px; display:flex; flex-wrap:wrap; gap:6px; }
+.pe-chip{
+  font-size: 11px;
+  font-weight: 850;
+  color: rgba(11,30,58,0.60);
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(11,30,58,0.10);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.pe-card__lanes{ margin-top: 12px; display:grid; gap: 10px; }
+.pe-card__lanes .lane{ display:flex; gap: 8px; }
+.pe-card__lanes .l{
+  height: 8px;
+  flex: 1;
+  border-radius: 999px;
+  background: rgba(11,30,58,0.07);
+}
+.pe-card__lanes .lane:nth-child(1) .l:nth-child(2){ background: rgba(27,89,167,0.16); }
+.pe-card__lanes .lane:nth-child(2) .l:nth-child(1){ background: rgba(20,212,177,0.14); }
+.pe-card__lanes .lane:nth-child(2) .l:nth-child(3){ background: rgba(141,15,214,0.10); }
+
+.pe-card__footer{
+  margin-top: 12px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(11,30,58,0.08);
+}
+.pe-foot{
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(11,30,58,0.48);
+}
+.pe-footDot{
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: rgba(20,212,177,0.60);
+  box-shadow: 0 0 0 8px rgba(20,212,177,0.08);
+}
+
+.pe-card__checks{ margin-top: 12px; display:flex; gap: 8px; }
+.pe-card__checks .c{
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: rgba(11,30,58,0.10);
+}
+.pe-card__checks .c:nth-child(2){ background: rgba(27,89,167,0.18); }
+.pe-card__checks .c:nth-child(3){ background: rgba(20,212,177,0.14); }
+
+.pe-card__spark{ margin-top: 12px; display:flex; gap: 8px; align-items:flex-end; }
+.pe-card__spark span{
+  width: 10px;
+  border-radius: 8px;
+  background: rgba(11,30,58,0.08);
+}
+.pe-card__spark span:nth-child(1){ height: 10px; background: rgba(27,89,167,0.14); }
+.pe-card__spark span:nth-child(2){ height: 16px; background: rgba(20,212,177,0.12); }
+.pe-card__spark span:nth-child(3){ height: 12px; background: rgba(141,15,214,0.10); }
+.pe-card__spark span:nth-child(4){ height: 18px; background: rgba(11,30,58,0.10); }
+
+/* SVG connector overlay */
+.pe-cards__svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* bottom "Now" pill */
+.pe-cards__now{
+  position:absolute;
+  min-height: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 1px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.70);
+  border: 1px solid rgba(11,30,58,0.10);
+  box-shadow: 0 12px 26px rgba(11,30,58,0.06);
+  backdrop-filter: blur(8px);
+  z-index: 4;
+  font-size: 12px;
+  font-weight: 850;
+  color: rgba(11,30,58,0.64);
+}
+
+/* Reduced motion: stop dash-fill visual (JS will park capsule) */
+@media (prefers-reduced-motion: reduce){
+  .pe-flowCap{ opacity: 0.85; }
 }

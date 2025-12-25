@@ -78,24 +78,24 @@ export function HeroAIStudio() {
   return (
     <section
       ref={wrapRef as any}
-      className="pravidhi-hero"
-      aria-label="Pravidhi Softtech hero"
+      className="zyposoft-hero"
+      aria-label="ZypoSoft hero"
     >
       {/* BACKGROUND LAYERS */}
-      <div className="pravidhi-hero__bg" aria-hidden="true">
-        <div className="pravidhi-hero__mesh" />
-        <div className="pravidhi-hero__aurora" />
-        <div className="pravidhi-hero__noise" />
-        <div className="pravidhi-hero__grid" />
-        <div className="pravidhi-hero__scan" />
+      <div className="zyposoft-hero__bg" aria-hidden="true">
+        <div className="zyposoft-hero__mesh" />
+        <div className="zyposoft-hero__aurora" />
+        <div className="zyposoft-hero__noise" />
+        <div className="zyposoft-hero__grid" />
+        <div className="zyposoft-hero__scan" />
 
-        <div className="pravidhi-hero__orb orb--a" />
-        <div className="pravidhi-hero__orb orb--b" />
-        <div className="pravidhi-hero__orb orb--c" />
+        <div className="zyposoft-hero__orb orb--a" />
+        <div className="zyposoft-hero__orb orb--b" />
+        <div className="zyposoft-hero__orb orb--c" />
 
         {/* Circuit layer */}
         <svg
-          className="pravidhi-hero__circuit"
+          className="zyposoft-hero__circuit"
           viewBox="0 0 100 70"
           preserveAspectRatio="none"
         >
@@ -122,47 +122,47 @@ export function HeroAIStudio() {
       </div>
 
       {/* CONTENT */}
-      <div className="pravidhi-hero__content">
+      <div className="zyposoft-hero__content">
         <Reveal>
-          <div className="pravidhi-hero__badge">
-            <span className="pravidhi-hero__dot" />
-            <span className="pravidhi-hero__badgeText">
+          <div className="zyposoft-hero__badge">
+            <span className="zyposoft-hero__dot" />
+            <span className="zyposoft-hero__badgeText">
               AI-Enabled Health Systems
             </span>
           </div>
 
-          <h1 className="pravidhi-hero__title">
-            Pravidhi SoftTech
+          <h1 className="zyposoft-hero__title">
+            ZypoSoft
             <H2 className="mt-4">
-                              <span className="studio-gradient-text font-extrabold">Building Intelligent Public Health Infrastructure</span>
-                            </H2>
-            {/* <span className="pravidhi-hero__titleAccent">
+              <span className="studio-gradient-text font-extrabold">Building Intelligent Public Health Infrastructure</span>
+            </H2>
+            {/* <span className="zyposoft-hero__titleAccent">
               Building Intelligent Public Health Infrastructure
             </span> */}
           </h1>
 
-          <p className="pravidhi-hero__subtitle">
+          <p className="zyposoft-hero__subtitle">
             Introducing <strong>ArogyaSara</strong> - An AI/ML-powered platform
             for EHR, HMS, disease surveillance, hotspot detection, and
             decision support.
           </p>
 
-          <div className="pravidhi-hero__ctaRow">
-            {/* <a className="pravidhi-btn-secondary" href="#features">
+          <div className="zyposoft-hero__ctaRow">
+            {/* <a className="zyposoft-btn-secondary" href="#features">
               Explore Capabilities
             </a> */}
           </div>
 
-          <div className="pravidhi-hero__miniGrid" role="list">
-            <div className="pravidhi-hero__miniCard" role="listitem">
+          <div className="zyposoft-hero__miniGrid" role="list">
+            <div className="zyposoft-hero__miniCard_V" role="listitem">
               <div className="miniK">AI Surveillance</div>
               <div className="miniV">Hotspot signals in near real-time</div>
             </div>
-            <div className="pravidhi-hero__miniCard" role="listitem">
+            <div className="zyposoft-hero__miniCard_G" role="listitem">
               <div className="miniK">State-scale HMS</div>
               <div className="miniV">Facilities, beds, queues, inventory</div>
             </div>
-            <div className="pravidhi-hero__miniCard" role="listitem">
+            <div className="zyposoft-hero__miniCard_O" role="listitem">
               <div className="miniK">EHR + Citizen Care</div>
               <div className="miniV">Longitudinal records + workflows</div>
             </div>
@@ -171,9 +171,9 @@ export function HeroAIStudio() {
 
         {/* PREMIUM DEVICE / SHOWCASE */}
         <Reveal delayMs={240}>
-          <div className="pravidhi-hero__showcaseWrap">
+          <div className="zyposoft-hero__showcaseWrap">
             <div
-              className="pravidhi-tilt"
+              className="zyposoft-tilt"
               onMouseMove={handleMouseMove}
               onMouseLeave={resetTilt}
               style={
@@ -185,8 +185,8 @@ export function HeroAIStudio() {
                 } as React.CSSProperties
               }
             >
-              <div className="pravidhi-device">
-                <div className="pravidhi-device__topbar">
+              <div className="zyposoft-device">
+                <div className="zyposoft-device__topbar">
                   <div className="dots">
                     <span className="d d1" />
                     <span className="d d2" />
@@ -196,7 +196,7 @@ export function HeroAIStudio() {
                   <div className="pill">LIVE</div>
                 </div>
 
-                <div className="pravidhi-device__body">
+                <div className="zyposoft-device__body">
                   <div className="leftnav">
                     <div className="navBrand">ArogyaSara</div>
                     <div className="navItem active">Command Center</div>
@@ -268,13 +268,13 @@ export function HeroAIStudio() {
                 </div>
 
                 {/* Sheen + rim + scanline inside device */}
-                <div className="pravidhi-device__sheen" aria-hidden="true" />
-                <div className="pravidhi-device__rim" aria-hidden="true" />
-                <div className="pravidhi-device__scanline" aria-hidden="true" />
+                <div className="zyposoft-device__sheen" aria-hidden="true" />
+                <div className="zyposoft-device__rim" aria-hidden="true" />
+                <div className="zyposoft-device__scanline" aria-hidden="true" />
               </div>
 
               {/* Floating callout */}
-              <div className="pravidhi-floatCard" aria-hidden="true">
+              <div className="zyposoft-floatCard" aria-hidden="true">
                 <div className="fcIcon">✓</div>
                 <div>
                   <div className="fcT">Actionable Insight</div>

@@ -8,7 +8,7 @@ export type Insight = { title: string; date: string; blurb: string; href: string
 export type FAQ = { q: string; a: string };
 
 export const site = {
-  company: "Pravidhi Softtech",
+  company: "ZypoSoft",
   product: "ArogyaSara",
   domain: "https://example.com",
   accent: "teal",
@@ -26,9 +26,9 @@ export const site = {
   } satisfies { primary: CTA; secondary: CTA },
   footer: {
     addressLabel: "Address (placeholder)",
-    address: "Pravidhi Softtech • India (add office address)",
+    address: "ZypoSoft • India (add office address)",
     emailLabel: "Contact",
-    email: "hello@pravidhi.example",
+    email: "contact@zyposoft.com",
     cityClockLabel: "India Standard Time",
     cityClockTz: "Asia/Kolkata",
     note:
@@ -41,7 +41,7 @@ export const home = {
     topLineSpaced: "B U I L D I N G  D I G I T A L  H E A L T H",
     headline: "Unlock statewide health outcomes through AI-powered platforms.",
     subhead:
-      "Pravidhi Softtech builds secure, scalable software for Indian State Governments and public hospitals—combining modern engineering with explainable AI for monitoring, operations, and care delivery.",
+      "ZypoSoft builds secure, scalable software for Indian State Governments and public hospitals—combining modern engineering with explainable AI for monitoring, operations, and care delivery.",
     ctas: [
       site.ctas.primary,
       { label: "Explore ArogyaSara", href: "/product" } satisfies CTA
@@ -219,8 +219,8 @@ export const home = {
   },
 
   finalCta: {
-    titleSpaced: "R E A D Y  T O  P L A N  Y O U R  D E M O ?",
-    title: "Discover how Pravidhi Softtech can support your health program.",
+    titleSpaced: "Accelerate your vision",
+    title: "Start Scaling with ZypoSoft.",
     cta: site.ctas.primary,
     bg: "/images/cta-bg.svg"
   }

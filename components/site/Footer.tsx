@@ -7,22 +7,22 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="pravidhi-footer" aria-label="Site footer">
-      <div className="pravidhi-footer__bg" aria-hidden>
-        <div className="pravidhi-footer__mesh" />
-        <div className="pravidhi-footer__grid" />
-        <div className="pravidhi-footer__noise" />
-        <div className="pravidhi-footer__halo" />
+    <footer className="zyposoft-footer" aria-label="Site footer">
+      <div className="zyposoft-footer__bg" aria-hidden>
+        <div className="zyposoft-footer__mesh" />
+        <div className="zyposoft-footer__grid" />
+        <div className="zyposoft-footer__noise" />
+        <div className="zyposoft-footer__halo" />
       </div>
 
-      <div className="pravidhi-footer__rule" aria-hidden />
+      <div className="zyposoft-footer__rule" aria-hidden />
 
       <Container className="relative z-[1] py-14">
         <div className="grid gap-10 md:grid-cols-12">
           {/* Brand */}
           <div className="md:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <span className="pravidhi-footer__dot" aria-hidden />
+              <span className="zyposoft-footer__dot" aria-hidden />
               <div>
                 <div className="text-sm font-semibold text-[rgba(11,30,58,0.92)]">
                   {site.company}
@@ -43,15 +43,15 @@ export default function Footer() {
             </p>
 
             {/* Subtle color rail (ties to the new theme system) */}
-            <div className="pravidhi-footer__rail" aria-hidden />
+            <div className="zyposoft-footer__rail" aria-hidden />
           </div>
 
           {/* Navigation */}
           <div className="md:col-span-3">
-            <div className="pravidhi-footer__kicker">Navigation</div>
+            <div className="zyposoft-footer__kicker">Navigation</div>
             <div className="mt-4 flex flex-col gap-2.5 text-sm">
               {site.nav.map((it) => (
-                <Link key={it.href} href={it.href} className="pravidhi-footer__link">
+                <Link key={it.href} href={it.href} className="zyposoft-footer__link">
                   {it.label}
                 </Link>
               ))}
@@ -61,17 +61,17 @@ export default function Footer() {
           {/* Contact */}
           <div className="md:col-span-3 space-y-6">
             <div>
-              <div className="pravidhi-footer__kicker">{site.footer.addressLabel}</div>
+              <div className="zyposoft-footer__kicker">{site.footer.addressLabel}</div>
               <div className="mt-2 text-sm text-[rgba(11,30,58,0.70)]">
                 {site.footer.address}
               </div>
             </div>
 
             <div>
-              <div className="pravidhi-footer__kicker">{site.footer.emailLabel}</div>
+              <div className="zyposoft-footer__kicker">{site.footer.emailLabel}</div>
               <div className="mt-2 text-sm">
                 <a
-                  className="pravidhi-footer__link"
+                  className="zyposoft-footer__link"
                   href={`mailto:${site.footer.email}`}
                 >
                   {site.footer.email}
@@ -83,7 +83,7 @@ export default function Footer() {
           {/* Time + Legal */}
           <div className="md:col-span-2 space-y-4">
             <div>
-              <div className="pravidhi-footer__kicker">{site.footer.cityClockLabel}</div>
+              <div className="zyposoft-footer__kicker">{site.footer.cityClockLabel}</div>
               <div className="mt-2 text-sm text-[rgba(11,30,58,0.72)]">
                 <Clock tz={site.footer.cityClockTz} />
               </div>
@@ -94,12 +94,12 @@ export default function Footer() {
             </div>
 
             {/* Micro-links if you add them later */}
-            <div className="pravidhi-footer__micro">
-              <Link href="/privacy" className="pravidhi-footer__microLink">
+            <div className="zyposoft-footer__micro">
+              <Link href="/privacy" className="zyposoft-footer__microLink">
                 Privacy
               </Link>
               <span className="sep" aria-hidden>•</span>
-              <Link href="/terms" className="pravidhi-footer__microLink">
+              <Link href="/terms" className="zyposoft-footer__microLink">
                 Terms
               </Link>
             </div>
@@ -107,7 +107,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom rule */}
-        <div className="pravidhi-footer__bottomRule" aria-hidden />
+        <div className="zyposoft-footer__bottomRule" aria-hidden />
       </Container>
     </footer>
   );

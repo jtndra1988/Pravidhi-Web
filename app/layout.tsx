@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.company}`
   },
   description:
-    "Pravidhi Softtech builds secure, scalable digital health platforms for Indian State Governments and public hospitals. Flagship product: ArogyaSara.",
+    "ZypoSoft builds secure, scalable digital health platforms for Indian State Governments and public hospitals. Flagship product: ArogyaSara.",
   openGraph: {
     title: `${site.company} Government grade software and AI health platforms`,
     description:

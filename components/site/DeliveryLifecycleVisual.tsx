@@ -6,16 +6,24 @@ type Station = { key: string; label: string; frac: number };
 
 const CYCLE_MS = 14000;
 
+const PHASE_META: Record<string, { color: string; tint: string }> = {
+  discover: { color: "rgba(27,89,167,0.92)", tint: "rgba(27,89,167,0.10)" },
+  design: { color: "rgba(20,212,177,0.92)", tint: "rgba(20,212,177,0.10)" },
+  build: { color: "rgba(141,15,214,0.86)", tint: "rgba(141,15,214,0.10)" },
+  test: { color: "rgba(20,212,177,0.88)", tint: "rgba(20,212,177,0.10)" },
+  launch: { color: "rgba(27,89,167,0.88)", tint: "rgba(27,89,167,0.10)" },
+  operate: { color: "rgba(141,15,214,0.84)", tint: "rgba(141,15,214,0.10)" },
+};
+
 export default function DeliveryLifecycleVisual() {
   const pathOuterRef = useRef<SVGPathElement | null>(null);
-  const pathInnerRef = useRef<SVGPathElement | null>(null);
   const capMainRef = useRef<SVGGElement | null>(null);
-  const capQaRef = useRef<SVGGElement | null>(null);
-  const capObsRef = useRef<SVGGElement | null>(null);
+  const fillRef = useRef<SVGUseElement | null>(null);
 
   const [pts, setPts] = useState<Array<{ x: number; y: number }>>([]);
   const [passed, setPassed] = useState<Record<string, boolean>>({});
   const [pingKey, setPingKey] = useState<string | null>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   const stations: Station[] = useMemo(
     () => [
@@ -31,30 +39,30 @@ export default function DeliveryLifecycleVisual() {
 
   useEffect(() => {
     const outer = pathOuterRef.current;
-    const inner = pathInnerRef.current;
-    if (!outer || !inner) return;
+    if (!outer) return;
 
     const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
     const reduced = !!mq?.matches;
 
     const outerLen = outer.getTotalLength();
-    const innerLen = inner.getTotalLength();
 
-    // Station points on outer loop
+    // Precompute station positions
     const stationPts = stations.map((s) => {
       const p = outer.getPointAtLength(outerLen * s.frac);
       return { x: p.x, y: p.y };
     });
     setPts(stationPts);
 
+    // Initial fill state (avoid flicker)
+    if (fillRef.current) {
+      fillRef.current.setAttribute("stroke-dasharray", `0 ${outerLen}`);
+      fillRef.current.setAttribute("stroke-dashoffset", `${outerLen}`);
+    }
+
     if (reduced) {
-      // static placement
-      const p0 = outer.getPointAtLength(outerLen * 0.02);
+      const p0 = outer.getPointAtLength(outerLen * stations[0].frac);
       capMainRef.current?.setAttribute("transform", `translate(${p0.x} ${p0.y}) rotate(0)`);
-      const p1 = inner.getPointAtLength(innerLen * 0.15);
-      capQaRef.current?.setAttribute("transform", `translate(${p1.x} ${p1.y}) rotate(0)`);
-      const p2 = inner.getPointAtLength(innerLen * 0.62);
-      capObsRef.current?.setAttribute("transform", `translate(${p2.x} ${p2.y}) rotate(0)`);
+      setActiveIdx(0);
       return;
     }
 
@@ -64,38 +72,47 @@ export default function DeliveryLifecycleVisual() {
     const step = (now: number) => {
       const prog = (now % CYCLE_MS) / CYCLE_MS; // 0..1
       const a = outerLen * prog;
-      const b = innerLen * ((prog * 1.25) % 1); // QA stream slightly faster
-      const c = innerLen * ((prog * 0.92 + 0.28) % 1); // Obs stream offset
 
-      // Main capsule (outer)
+      // Capsule transform
       const p = outer.getPointAtLength(a);
-      const p2 = outer.getPointAtLength(Math.min(outerLen, a + 0.9));
+      const p2 = outer.getPointAtLength(Math.min(outerLen, a + 1.1));
       const ang = (Math.atan2(p2.y - p.y, p2.x - p.x) * 180) / Math.PI;
       capMainRef.current?.setAttribute("transform", `translate(${p.x} ${p.y}) rotate(${ang})`);
 
-      // QA capsule (inner)
-      const q = inner.getPointAtLength(b);
-      const q2 = inner.getPointAtLength(Math.min(innerLen, b + 0.9));
-      const angQ = (Math.atan2(q2.y - q.y, q2.x - q.x) * 180) / Math.PI;
-      capQaRef.current?.setAttribute("transform", `translate(${q.x} ${q.y}) rotate(${angQ})`);
-
-      // Observability capsule (inner)
-      const r = inner.getPointAtLength(c);
-      const r2 = inner.getPointAtLength(Math.min(innerLen, c + 0.9));
-      const angR = (Math.atan2(r2.y - r.y, r2.x - r.x) * 180) / Math.PI;
-      capObsRef.current?.setAttribute("transform", `translate(${r.x} ${r.y}) rotate(${angR})`);
-
-      // Gate logic
+      // Current station index
       const idx = stations.reduce((acc, s, i) => (prog >= s.frac ? i : acc), 0);
 
-      if (idx < lastIdx) setPassed({}); // new loop
+      // Reset passed flags when loop wraps
+      if (idx < lastIdx) setPassed({});
 
+      // Station-to-station fill (point-to-point)
+      const startFrac = stations[idx]?.frac ?? 0;
+      const nextRaw = stations[(idx + 1) % stations.length]?.frac ?? 1;
+      const nextFrac = nextRaw <= startFrac ? nextRaw + 1 : nextRaw;
+
+      let prog2 = prog;
+      if (prog2 < startFrac) prog2 += 1; // wrap-safe for last segment
+
+      const segStartLen = outerLen * startFrac;
+      const segTotalLen = outerLen * (nextFrac - startFrac);
+      const curLen = outerLen * prog2;
+
+      const filled = Math.max(0, Math.min(segTotalLen, curLen - segStartLen));
+
+      if (fillRef.current) {
+        // A dash that begins exactly at current station and grows to current position
+        fillRef.current.setAttribute("stroke-dasharray", `${filled} ${outerLen}`);
+        fillRef.current.setAttribute("stroke-dashoffset", `${outerLen - segStartLen}`);
+      }
+
+      // Update active station + ping
       if (idx !== lastIdx) {
+        setActiveIdx(idx);
         const k = stations[idx]?.key;
         if (k) {
           setPassed((prev) => ({ ...prev, [k]: true }));
           setPingKey(k);
-          window.setTimeout(() => setPingKey((cur) => (cur === k ? null : cur)), 620);
+          window.setTimeout(() => setPingKey((cur) => (cur === k ? null : cur)), 560);
         }
         lastIdx = idx;
       }
@@ -109,16 +126,20 @@ export default function DeliveryLifecycleVisual() {
     };
   }, [stations]);
 
+  const activeKey = stations[activeIdx]?.key ?? "discover";
+  const activeLabel = stations[activeIdx]?.label ?? "Discover";
+  const meta = PHASE_META[activeKey] ?? PHASE_META.discover;
+
   return (
     <div className="del-life" aria-hidden>
       <div className="del-life__bg" />
 
-      <svg className="del-life__svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <svg className="del-life__svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="dlStroke" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="rgba(27,89,167,0.36)" />
-            <stop offset="0.5" stopColor="rgba(20,184,166,0.26)" />
-            <stop offset="1" stopColor="rgba(139,92,246,0.26)" />
+            <stop offset="0" stopColor="rgba(27,89,167,0.40)" />
+            <stop offset="0.55" stopColor="rgba(20,212,177,0.30)" />
+            <stop offset="1" stopColor="rgba(141,15,214,0.24)" />
             <animateTransform
               attributeName="gradientTransform"
               type="rotate"
@@ -129,161 +150,244 @@ export default function DeliveryLifecycleVisual() {
             />
           </linearGradient>
 
-          <filter id="dlGlow" x="-35%" y="-35%" width="170%" height="170%">
-            <feGaussianBlur stdDeviation="0.7" result="b" />
+          <filter id="dlGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="0.75" result="b" />
             <feMerge>
               <feMergeNode in="b" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
 
-          {/* Outer lifecycle loop (fills the panel) */}
+          <filter id="dlSoftGlow" x="-70%" y="-70%" width="240%" height="240%">
+            <feGaussianBlur stdDeviation="1.35" result="bb" />
+            <feColorMatrix
+              in="bb"
+              type="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.55 0"
+              result="g"
+            />
+            <feMerge>
+              <feMergeNode in="g" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <radialGradient id="dlCoreFill" cx="50%" cy="38%" r="70%">
+            <stop offset="0" stopColor="rgba(255,255,255,0.96)" />
+            <stop offset="0.55" stopColor="rgba(255,255,255,0.84)" />
+            <stop offset="1" stopColor="rgba(190,195,203,0.18)" />
+          </radialGradient>
+
+          <filter id="dlCoreShadow" x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow
+              dx="0"
+              dy="0.8"
+              stdDeviation="0.8"
+              floodColor="rgba(11,30,58,0.18)"
+              floodOpacity="0.22"
+            />
+          </filter>
+
+          {/* Single lifecycle loop */}
           <path
             id="outerLoop"
-            d="M 14 52
-               a 36 26 0 1 0 72 0
-               a 36 26 0 1 0 -72 0"
+            d="M 10 52
+               a 40 40 0 1 0 80 0
+               a 40 40 0 1 0 -80 0"
           />
 
-          {/* Inner control loop (quality/ops streams) */}
-          <path
-            id="innerLoop"
-            d="M 22 52
-               a 28 20 0 1 0 56 0
-               a 28 20 0 1 0 -56 0"
-          />
+          {/* Mask: prevents ring strokes from overlapping station points */}
+          <mask id="dlRingMask">
+            <rect x="0" y="0" width="100" height="100" fill="white" />
+            {pts.length === stations.length &&
+              stations.map((s, i) => {
+                const p = pts[i];
+                return <circle key={s.key} cx={p.x} cy={p.y} r="3.35" fill="black" />;
+              })}
+          </mask>
         </defs>
 
-        {/* faint inner grid rings to occupy negative space */}
-        <g opacity="0.85">
-          <ellipse cx="50" cy="52" rx="40" ry="30" fill="none" stroke="rgba(11,30,58,0.04)" strokeWidth="1" />
-          <ellipse cx="50" cy="52" rx="32" ry="24" fill="none" stroke="rgba(11,30,58,0.035)" strokeWidth="1" />
-          <ellipse cx="50" cy="52" rx="24" ry="18" fill="none" stroke="rgba(11,30,58,0.03)" strokeWidth="1" />
-        </g>
-
-        {/* outer base rail */}
+        {/* Base rail (masked) */}
         <path
           ref={pathOuterRef}
-          d="M 14 52
-             a 36 26 0 1 0 72 0
-             a 36 26 0 1 0 -72 0"
+          d="M 10 52
+             a 40 40 0 1 0 80 0
+             a 40 40 0 1 0 -80 0"
+          mask="url(#dlRingMask)"
           fill="none"
-          stroke="rgba(11,30,58,0.08)"
-          strokeWidth="4.0"
+          stroke="rgba(11,30,58,0.10)"
+          strokeWidth="3.2"
           strokeLinecap="round"
+          opacity="0.78"
         />
 
-        {/* outer active overlay */}
+        {/* Point-to-point fill (masked) */}
         <use
+          ref={fillRef}
           href="#outerLoop"
+          mask="url(#dlRingMask)"
           fill="none"
           stroke="url(#dlStroke)"
-          strokeWidth="1.35"
+          strokeWidth="5.0"
           strokeLinecap="round"
-          strokeDasharray="7 16"
+          opacity="0.72"
+          filter="url(#dlSoftGlow)"
+        />
+
+        {/* Subtle micro dashes (masked) */}
+        <use
+          href="#outerLoop"
+          mask="url(#dlRingMask)"
+          fill="none"
+          stroke="url(#dlStroke)"
+          strokeWidth="1.15"
+          strokeLinecap="round"
+          strokeDasharray="3 14"
           className="del-life__dash"
-          opacity="0.95"
+          opacity="0.50"
         />
 
-        {/* inner base rail */}
-        <path
-          ref={pathInnerRef}
-          d="M 22 52
-             a 28 20 0 1 0 56 0
-             a 28 20 0 1 0 -56 0"
-          fill="none"
-          stroke="rgba(11,30,58,0.06)"
-          strokeWidth="2.6"
-          strokeLinecap="round"
-        />
-
-        {/* inner stream overlays */}
-        <use
-          href="#innerLoop"
-          fill="none"
-          stroke="rgba(20,184,166,0.18)"
-          strokeWidth="1.05"
-          strokeLinecap="round"
-          strokeDasharray="6 14"
-          className="del-life__dash2"
-        />
-        <use
-          href="#innerLoop"
-          fill="none"
-          stroke="rgba(139,92,246,0.14)"
-          strokeWidth="0.95"
-          strokeLinecap="round"
-          strokeDasharray="4 18"
-          className="del-life__dash3"
-        />
-
-        {/* stage gate stations */}
+        {/* Stations */}
         {pts.length === stations.length &&
           stations.map((s, i) => {
             const p = pts[i];
             const isPassed = !!passed[s.key];
             const isPing = pingKey === s.key;
+            const isActive = activeIdx === i;
+            const sm = PHASE_META[s.key] ?? PHASE_META.discover;
 
             return (
               <g
                 key={s.key}
-                className={["dl-st", isPassed ? "is-passed" : "", isPing ? "is-ping" : ""].join(" ")}
+                className={[
+                  "dl-st",
+                  isPassed ? "is-passed" : "",
+                  isPing ? "is-ping" : "",
+                  isActive ? "is-active" : "",
+                ].join(" ")}
                 transform={`translate(${p.x} ${p.y})`}
               >
-                <circle className="dl-st__halo" r="5.0" />
-                <circle className="dl-st__ring" r="2.6" />
-                <circle className="dl-st__core" r="1.25" />
+                <circle className="dl-st__halo" r="5.2" />
+                <circle
+                  className="dl-st__ring"
+                  r="2.55"
+                  style={{ stroke: isActive ? sm.color : "rgba(11,30,58,0.14)" } as any}
+                />
+                <circle
+                  className="dl-st__core"
+                  r="1.15"
+                  style={{ fill: isActive ? sm.color : undefined } as any}
+                />
                 <path className="dl-st__check" d="M -1.1 0.1 L -0.2 1.1 L 1.5 -0.8" fill="none" />
-                <text className="dl-st__txt" x="0" y="7.5" textAnchor="middle">
+                <text className="dl-st__txt" x="0" y="7.6" textAnchor="middle">
                   {s.label}
                 </text>
               </g>
             );
           })}
 
-        {/* center label to use space and explain meaning */}
-        <g className="del-life__center">
-          <text x="50" y="48.5" textAnchor="middle" className="del-life__k">
-            DELIVERY LIFECYCLE
+        {/* Center dial */}
+        <g transform="translate(50 52)" filter="url(#dlCoreShadow)">
+          <circle r="18.8" fill="url(#dlCoreFill)" stroke="rgba(11,30,58,0.10)" strokeWidth="0.9" />
+
+          <circle
+            r="14.9"
+            fill="none"
+            stroke="rgba(11,30,58,0.10)"
+            strokeWidth="0.9"
+            strokeDasharray="2.6 4.1"
+            opacity="0.9"
+          >
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              from="0 0 0"
+              to="360 0 0"
+              dur="14s"
+              repeatCount="indefinite"
+            />
+          </circle>
+
+          <text x="0" y="-4.0" textAnchor="middle" className="del-life__coreK">
+            DELIVERY
           </text>
-          <text x="50" y="54.0" textAnchor="middle" className="del-life__s">
-            Stage gates • Release flow • Operate & improve
+          <text x="0" y="0.6" textAnchor="middle" className="del-life__coreT">
+            lifecycle
           </text>
+
+          {/* Micro metrics */}
+          <g transform="translate(0 5.0)" className="del-life__meters">
+            <g transform="translate(-12.0 0)">
+              <circle cx="0" cy="0" r="1.0" fill="rgba(27,89,167,0.82)" />
+              <text x="2.0" y="1.0" className="del-life__meterTxt">
+                Release
+              </text>
+            </g>
+            <g transform="translate(-1.5 0)">
+              <circle cx="0" cy="0" r="1.0" fill="rgba(20,212,177,0.80)" />
+              <text x="2.0" y="1.0" className="del-life__meterTxt">
+                SLOs
+              </text>
+            </g>
+            <g transform="translate(8.5 0)">
+              <circle cx="0" cy="0" r="1.0" fill="rgba(141,15,214,0.74)" />
+              <text x="2.0" y="1.0" className="del-life__meterTxt">
+                Audit
+              </text>
+            </g>
+          </g>
+
+          {/* Now pill OUTSIDE the inner circle */}
+          <g transform="translate(0 22.8)">
+            <rect
+              x="-12.2"
+              y="-2.6"
+              width="24.4"
+              height="5.2"
+              rx="2.6"
+              fill={meta.tint}
+              stroke={meta.color}
+              strokeOpacity="0.26"
+              strokeWidth="0.6"
+            />
+            <circle cx="-9.3" cy="0" r="0.9" fill={meta.color} />
+            <text x="1.0" y="1.15" textAnchor="middle" className="del-life__phaseTxt">
+              Now: {activeLabel}
+            </text>
+          </g>
         </g>
 
-        {/* Main moving capsule (release item) */}
+        {/* Moving capsule */}
         <g ref={capMainRef} filter="url(#dlGlow)" className="dl-cap dl-cap--main">
-          <circle r="3.6" fill="url(#dlStroke)" opacity="0.16" />
-          <rect x="-3.0" y="-1.55" width="6.0" height="3.1" rx="1.55" fill="url(#dlStroke)" opacity="0.92" />
-          <circle r="0.8" fill="rgba(255,255,255,0.86)" />
-        </g>
-
-        {/* Inner capsules (QA + Observability streams) */}
-        <g ref={capQaRef} filter="url(#dlGlow)" className="dl-cap dl-cap--qa">
-          <circle r="2.8" fill="rgba(20,184,166,0.18)" />
-          <rect x="-2.3" y="-1.2" width="4.6" height="2.4" rx="1.2" fill="rgba(20,184,166,0.74)" />
-        </g>
-
-        <g ref={capObsRef} filter="url(#dlGlow)" className="dl-cap dl-cap--obs">
-          <circle r="2.8" fill="rgba(139,92,246,0.16)" />
-          <rect x="-2.3" y="-1.2" width="4.6" height="2.4" rx="1.2" fill="rgba(139,92,246,0.70)" />
+          <circle r="3.7" fill="url(#dlStroke)" opacity="0.14" />
+          <rect x="-3.1" y="-1.6" width="6.2" height="3.2" rx="1.6" fill="url(#dlStroke)" opacity="0.92" />
+          <circle r="0.85" fill="rgba(255,255,255,0.88)" />
         </g>
       </svg>
 
-      {/* HUD micro-panels (fills empty space with meaning, not noise) */}
-      <div className="del-life__hud del-life__hud--tl">
-        <div className="k">Release health</div>
-        <div className="v">Green gates • Predictable rollouts</div>
+      {/* Note cards */}
+      <div className="del-life__note del-life__note--tl">
+        <span className="del-life__dot del-life__dot--blue" aria-hidden />
+        <div>
+          <div className="t">Release confidence</div>
+          <div className="s">Staging parity • rollout strategy • rollback readiness</div>
+        </div>
       </div>
 
-      <div className="del-life__hud del-life__hud--tr">
-        <div className="k">Quality loop</div>
-        <div className="v">Tests • Reviews • Compliance checks</div>
+      <div className="del-life__note del-life__note--tr">
+        <span className="del-life__dot del-life__dot--teal" aria-hidden />
+        <div>
+          <div className="t">Reliability targets</div>
+          <div className="s">SLOs • performance budgets • predictable throughput</div>
+        </div>
       </div>
 
-      <div className="del-life__hud del-life__hud--br">
-        <div className="k">Operate & improve</div>
-        <div className="v">Telemetry • Incidents • Continuous change</div>
+      <div className="del-life__note del-life__note--br">
+        <span className="del-life__dot del-life__dot--violet" aria-hidden />
+        <div>
+          <div className="t">Operate with visibility</div>
+          <div className="s">Telemetry • audit-ready logs • incident workflows</div>
+        </div>
       </div>
     </div>
   );

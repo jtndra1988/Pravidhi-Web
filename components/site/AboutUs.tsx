@@ -16,16 +16,16 @@ import AutoRotatingGlobe from "@/components/site/AutoRotatingGlobe";
 export default function AboutUs() {
 
   return (
-    <section id="about" className="pravidhi-section theme--violet">
-      <div className="pravidhi-section__bg" aria-hidden>
-        <div className="pravidhi-section__mesh" />
-        <div className="pravidhi-section__grid" />
-        <div className="pravidhi-section__noise" />
-        <div className="pravidhi-section__sweep" />
+    <section id="about" className="zyposoft-section theme--violet">
+      <div className="zyposoft-section__bg" aria-hidden>
+        <div className="zyposoft-section__mesh" />
+        <div className="zyposoft-section__grid" />
+        <div className="zyposoft-section__noise" />
+        <div className="zyposoft-section__sweep" />
       </div>
 
       <div className="relative z-[1]">
-        <div className="pravidhi-container">
+        <div className="zyposoft-container">
           <Reveal threshold={0.35} rootMargin="0px 0px -35% 0px">
             <div className="grid gap-10 md:grid-cols-12 md:items-start">
               {/* Left: statement + numbers (no cards) */}
@@ -36,11 +36,11 @@ export default function AboutUs() {
               <div className="md:col-span-6">
                 <div className="eco-tech__eyebrow">
                   <span className="eco-tech__dot" aria-hidden />
-                  <Eyebrow>About Pravidhi Softtech</Eyebrow>
+                  <Eyebrow>About ZypoSoft</Eyebrow>
                 </div>
-                {/* <Eyebrow>About Pravidhi Softtech</Eyebrow> */}
+                {/* <Eyebrow>About ZypoSoft</Eyebrow> */}
                 <div className="mt-3 text-xs text-spaced text-[rgba(11,30,58,0.55)]">
-                  ENGINEERING • AI • GOVERNMENT-GRADE DELIVERY
+                  ENGINEERING • AI • PRECISION DELIVERY
                 </div>
 
                 <H2 className="mt-4">
@@ -50,16 +50,21 @@ export default function AboutUs() {
                 </H2>
 
                 <P className="mt-4 max-w-xl">
-                  Pravidhi Softtech is a software development company focused on delivering
-                  reliable platforms for public-sector and enterprise programs where availability,
-                  data governance, and measurable outcomes matter.
+                  ZypoSoft is a product engineering company focused on delivering reliable, scalable software platforms. We replace the chaos of custom development with a disciplined approach to availability, data governance, and user experience. We help businesses design, build, and scale software that drives measurable outcomes.
                 </P>
-
+                {/* Subtle colored tags (pills, not boxes) */}
+                <div className="mt-7 flex flex-wrap gap-2">
+                  <span className="zyposoft-pill pill--blue">Public-sector systems</span>
+                  <span className="zyposoft-pill pill--teal">Secure data flows</span>
+                  <span className="zyposoft-pill pill--violet">AI enablement</span>
+                  <span className="zyposoft-pill pill--amber">Long-term maintainability</span>
+                </div>
                 {/* Minimal, colorful “principles” (no cards) */}
                 <div className="mt-8">
-                  <div className="pravidhi-rule" />
-                  <div className="pravidhi-lines">
-                    <div className="pravidhi-line">
+                  <div className="zyposoft-rule" />
+                  <div className="zyposoft-lines mt-4">
+                    <div className="eco-lines">
+                    <div className="eco-line">
                       <span className="dot dot--blue" aria-hidden />
                       <div>
                         <div className="t">Delivery discipline</div>
@@ -67,7 +72,7 @@ export default function AboutUs() {
                       </div>
                     </div>
 
-                    <div className="pravidhi-line">
+                    <div className="eco-line-green">
                       <span className="dot dot--teal" aria-hidden />
                       <div>
                         <div className="t">Security-first architecture</div>
@@ -75,7 +80,7 @@ export default function AboutUs() {
                       </div>
                     </div>
 
-                    <div className="pravidhi-line">
+                    <div className="eco-line-orange">
                       <span className="dot dot--violet" aria-hidden />
                       <div>
                         <div className="t">Practical AI</div>
@@ -83,15 +88,10 @@ export default function AboutUs() {
                       </div>
                     </div>
                   </div>
+                  </div>
                 </div>
 
-                {/* Subtle colored tags (pills, not boxes) */}
-                <div className="mt-7 flex flex-wrap gap-2">
-                  <span className="pravidhi-pill pill--blue">Public-sector systems</span>
-                  <span className="pravidhi-pill pill--teal">Secure data flows</span>
-                  <span className="pravidhi-pill pill--violet">AI enablement</span>
-                  <span className="pravidhi-pill pill--amber">Long-term maintainability</span>
-                </div>
+                
 
 
               </div>

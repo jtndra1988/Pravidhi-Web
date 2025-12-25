@@ -32,23 +32,23 @@ export function Nav() {
   };
 
   return (
-    <header className="pravidhi-navWrap" role="banner">
-      <div className="pravidhi-navContainer">
-        <div className="pravidhi-navBar">
+    <header className="zyposoft-navWrap" role="banner">
+      <div className="zyposoft-navContainer">
+        <div className="zyposoft-navBar">
           {/* Left: Logo */}
-          <div className="pravidhi-navLeft">
-            <Link href="/" className="pravidhi-navLogo" aria-label="Pravidhi Softtech home">
+          <div className="zyposoft-navLeft">
+            <Link href="/" className="zyposoft-navLogo" aria-label="ZypoSoft home">
               <Logo />
             </Link>
           </div>
 
           {/* Center: Links */}
-          <nav className="pravidhi-navLinks" aria-label="Primary">
+          <nav className="zyposoft-navLinks" aria-label="Primary">
             {items.map((it) => (
               <Link
                 key={it.href}
                 href={it.href}
-                className={cn("pravidhi-navLink", isActive(it.href) && "is-active")}
+                className={cn("zyposoft-navLink", isActive(it.href) && "is-active")}
               >
                 {it.label}
               </Link>
@@ -56,9 +56,9 @@ export function Nav() {
           </nav>
 
           {/* Right: CTA + mobile toggle */}
-          <div className="pravidhi-navRight">
+          <div className="zyposoft-navRight">
             <div className="hidden md:block">
-              <Button href={site.ctas.primary.href} className="pravidhi-navBtn" size="sm">
+              <Button href={site.ctas.primary.href} className="zyposoft-navBtn" size="sm">
                 {site.ctas.primary.label}
               </Button>
             </div>
@@ -77,14 +77,14 @@ export function Nav() {
         </div>
 
         {/* Mobile dropdown */}
-        <div className={cn("pravidhi-navMobile", open ? "open" : "")}>
-          <div className="pravidhi-navMobilePanel">
+        <div className={cn("zyposoft-navMobile", open ? "open" : "")}>
+          <div className="zyposoft-navMobilePanel">
             {items.map((it) => (
               <Link
                 key={it.href}
                 href={it.href}
                 onClick={() => setOpen(false)}
-                className={cn("pravidhi-navMobileLink", isActive(it.href) && "is-active")}
+                className={cn("zyposoft-navMobileLink", isActive(it.href) && "is-active")}
               >
                 {it.label}
               </Link>
@@ -93,7 +93,7 @@ export function Nav() {
               <Button
                 href={site.ctas.primary.href}
                 onClick={() => setOpen(false)}
-                className="pravidhi-navBtn w-full justify-center"
+                className="zyposoft-navBtn w-full justify-center"
               >
                 {site.ctas.primary.label}
               </Button>

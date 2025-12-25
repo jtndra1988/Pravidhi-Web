@@ -1,7 +1,7 @@
-# Pravidhi Softtech — ArogyaSara Website (Next.js + Tailwind)
+# ZypoSoft Website (Next.js + Tailwind)
 
 Premium, Apple-inspired (design principles only) marketing website for:
-- Company: Pravidhi Softtech
+- Company: ZypoSoft
 - Product: ArogyaSara (AI/ML assistive medical care platform)
 
 ## Tech
