@@ -366,7 +366,7 @@ export default function DeliveryLifecycleVisual() {
       </svg>
 
       {/* Note cards */}
-      <div className="del-life__note del-life__note--tl">
+      {/* <div className="del-life__note del-life__note--tl">
         <span className="del-life__dot del-life__dot--blue" aria-hidden />
         <div>
           <div className="t">Release confidence</div>
@@ -389,6 +389,13 @@ export default function DeliveryLifecycleVisual() {
           <div className="s">Telemetry • audit-ready logs • incident workflows</div>
         </div>
       </div>
+      <div className="del-life__note del-life__note--bl">
+        <span className="del-life__dot del-life__dot--amber" aria-hidden />
+        <div>
+          <div className="t">Quality gates</div>
+          <div className="s">Automated checks • approvals • predictable delivery</div>
+        </div>
+      </div> */}
     </div>
   );
 }

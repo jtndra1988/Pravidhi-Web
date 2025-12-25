@@ -222,7 +222,7 @@ export default function ProductEngineeringVisual() {
         <div className="pe-cards__grid">
           <div className="tilt-wrap pe-cardSlot pe-cardSlot--signals">
             <div
-              ref={(el) => (cardRefs.current.signals = el)}
+              ref={(el) => { cardRefs.current.signals = el; }}
               className={[
                 "tilt-card pe-card",
                 `pe-tone--${meta.signals.dot}`,
@@ -249,7 +249,7 @@ export default function ProductEngineeringVisual() {
 
           <div className="tilt-wrap pe-cardSlot pe-cardSlot--features">
             <div
-              ref={(el) => (cardRefs.current.features = el)}
+              ref={(el) => { cardRefs.current.features = el; }}
               className={[
                 "tilt-card pe-card",
                 `pe-tone--${meta.features.dot}`,
@@ -275,7 +275,7 @@ export default function ProductEngineeringVisual() {
 
           <div className="tilt-wrap pe-cardSlot pe-cardSlot--train">
             <div
-              ref={(el) => (cardRefs.current.train = el)}
+              ref={(el) => { cardRefs.current.train = el; }}
               className={[
                 "tilt-card pe-card pe-card--hero",
                 `pe-tone--${meta.train.dot}`,
@@ -315,7 +315,7 @@ export default function ProductEngineeringVisual() {
 
           <div className="tilt-wrap pe-cardSlot pe-cardSlot--eval">
             <div
-              ref={(el) => (cardRefs.current.eval = el)}
+              ref={(el) => { cardRefs.current.eval = el; }}
               className={[
                 "tilt-card pe-card",
                 `pe-tone--${meta.eval.dot}`,
@@ -341,7 +341,7 @@ export default function ProductEngineeringVisual() {
 
           <div className="tilt-wrap pe-cardSlot pe-cardSlot--release">
             <div
-              ref={(el) => (cardRefs.current.release = el)}
+              ref={(el) => { cardRefs.current.release = el; }}
               className={[
                 "tilt-card pe-card",
                 `pe-tone--${meta.release.dot}`,

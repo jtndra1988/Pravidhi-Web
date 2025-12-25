@@ -16,6 +16,9 @@ html, body {
   color: rgb(var(--fg));
   color-scheme: light;
   scroll-behavior: smooth;
+  overflow-x: hidden; 
+  width: 100%;
+  position: relative;
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -3482,7 +3485,7 @@ input::placeholder, textarea::placeholder {
 .eco-map{
   position: relative;
   width: 100%;
-  min-width: 670px;
+  /* min-width: 670px; */
   max-width: 740px;
   margin: 0 auto;
   aspect-ratio: 1 / 1;
@@ -3761,6 +3764,7 @@ input::placeholder, textarea::placeholder {
   .eco-map{
     aspect-ratio: 4 / 5;
     border-radius: 22px;
+    min-width: 100%;
   }
 
   /* Core: smaller and centered nicely */
@@ -4626,10 +4630,25 @@ input::placeholder, textarea::placeholder {
 .del-life__dot--blue{ background: rgba(27,89,167,0.95); box-shadow: 0 0 0 7px rgba(27,89,167,0.10); }
 .del-life__dot--teal{ background: rgba(20,212,177,0.92); box-shadow: 0 0 0 7px rgba(20,212,177,0.10); }
 .del-life__dot--violet{ background: rgba(141,15,214,0.86); box-shadow: 0 0 0 7px rgba(141,15,214,0.10); }
+.del-life__dot--amber{
+  background: rgba(245,158,11,0.92);
+  box-shadow: 0 0 0 7px rgba(245,158,11,0.10);
+}
+.del-life__note--bl{ left: 16px; bottom: 20px; }
+
+/* connector line (subtle) for bottom-left */
+.del-life__note--bl::after{
+  left: 100%;
+  top: 46%;
+  transform: translateY(-50%) rotate(16deg);
+}
+
+/* hover tilt variables */
+.del-life__note--bl{ --tilt: -1.0deg; --lift: -6px; }
 
 .del-life__note--tl{ left: 16px; top: 30px; }
 .del-life__note--tr{ right: 16px; top: 20px; }
-.del-life__note--br{ right: 450px; bottom: 20px; }
+.del-life__note--br{ right: 15px; bottom: 20px; }
 
 /* Tilt on hover (premium) */
 .del-life__note{
@@ -5045,4 +5064,120 @@ input::placeholder, textarea::placeholder {
 /* Reduced motion: stop dash-fill visual (JS will park capsule) */
 @media (prefers-reduced-motion: reduce){
   .pe-flowCap{ opacity: 0.85; }
+}
+/* =========================
+   MOBILE RESPONSIVENESS FIXES
+   ========================= */
+
+/* =========================
+   MOBILE RESPONSIVENESS FIXES (ProductEngineeringVisual)
+   ========================= */
+
+@media (max-width: 768px) {
+  /* 1. Reset the container height to fit content */
+  .pe-cards {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    background: rgba(255,255,255,0.74); /* Maintain glass look */
+  }
+
+  .pe-cards__wrap {
+    position: relative !important;
+    inset: auto !important;
+  }
+
+  /* 2. Convert grid to a vertical flex stack */
+  .pe-cards__grid {
+    position: relative !important; /* Stop absolute positioning */
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    padding: 80px 16px 30px 16px; /* Top padding for the header label */
+    gap: 16px !important;
+    height: auto !important;
+  }
+
+  /* 3. Reset individual slot positioning */
+  .pe-cardSlot,
+  .pe-cardSlot--signals,
+  .pe-cardSlot--features,
+  .pe-cardSlot--train,
+  .pe-cardSlot--eval,
+  .pe-cardSlot--release {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100%;
+  }
+
+  /* 4. Hide the SVG lines & floating "Now" pill on mobile 
+        (The vertical stack implies the flow naturally) */
+  .pe-cards__svg,
+  .pe-cards__now {
+    display: none !important;
+  }
+
+  /* 5. Adjust card sizing for mobile touch targets */
+  .pe-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .pe-card--hero {
+    min-height: auto;
+  }
+}
+/* =========================
+   MOBILE RESPONSIVENESS: AutoRotatingGlobe
+   ========================= */
+
+@media (max-width: 900px) {
+  /* 1. Reset the container to a vertical flex column */
+  .aboutg {
+    min-height: auto !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    padding: 30px 20px !important;
+    gap: 16px; /* Space between cards */
+  }
+
+  /* 2. Reset the Label/Header positioning */
+  .aboutg__label {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 0 10px 0 !important;
+    transform: none !important;
+  }
+
+  /* 3. Force cards to stack and ignore inline top/left styles */
+  .aboutg__card {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important; /* Disable floating animation */
+    width: 100% !important;
+    margin: 0 !important;
+    animation: none !important;
+  }
+
+  /* 4. Hide the 3D connector lines (they won't match the stack) */
+  .aboutg__canvas {
+    display: none !important;
+  }
+
+  /* 5. Adjust the background globe to sit quietly behind */
+  .aboutg__stage {
+    position: absolute !important;
+    inset: 0 !important;
+    opacity: 0.4; /* Dim it slightly so text is readable */
+    z-index: 0;
+  }
+  
+  /* Optional: Ensure text remains readable */
+  .aboutg__label, .aboutg__card {
+    z-index: 2; 
+  }
 }

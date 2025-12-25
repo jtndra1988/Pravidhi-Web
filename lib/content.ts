@@ -10,7 +10,7 @@ export type FAQ = { q: string; a: string };
 export const site = {
   company: "ZypoSoft",
   product: "ArogyaSara",
-  domain: "https://example.com",
+  domain: "https://zyposoft.com",
   accent: "teal",
   nav: [
     { label: "Home", href: "/" },
@@ -25,14 +25,12 @@ export const site = {
     secondary: { label: "View Product Modules", href: "/product#modules" }
   } satisfies { primary: CTA; secondary: CTA },
   footer: {
-    addressLabel: "Address (placeholder)",
+    addressLabel: "Address",
     address: "ZypoSoft • India (add office address)",
     emailLabel: "Contact",
     email: "contact@zyposoft.com",
     cityClockLabel: "India Standard Time",
     cityClockTz: "Asia/Kolkata",
-    note:
-      "All content and visuals are placeholders. Replace everything in lib/content.ts and public/images."
   }
 };
 
