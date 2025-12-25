@@ -39,7 +39,7 @@ export default function Footer() {
             </p>
 
             <p className="text-xs text-[rgba(11,30,58,0.50)] max-w-sm">
-              {site.footer.note}
+              
             </p>
 
             {/* Subtle color rail (ties to the new theme system) */}
