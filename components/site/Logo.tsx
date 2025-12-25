@@ -10,7 +10,7 @@ export function Logo() {
          3. object-contain ensures it doesn't get cut off.
       */}
       <Image 
-        src="/icons/Zyposoft.svg" 
+        src="/icons/Zyposoft.png" 
         alt="ZypoSoft Logo" 
         width={200} 
         height={120} 

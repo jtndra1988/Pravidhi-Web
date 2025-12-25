@@ -625,7 +625,7 @@ export default function ProductPage() {
           <H2 className="mt-4">A modular platform delivered as one governable system.</H2>
 
           <P className="mt-4">
-            Each module is designed to work independently, but delivers best when unified—one
+            Each module is designed to work independently, but delivers best when unified one
             identity layer, one governance model, and one operational view. This keeps delivery
             predictable and operations calm as adoption grows.
           </P>
