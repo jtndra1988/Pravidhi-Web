@@ -327,9 +327,9 @@ export const contact = {
       { name: "name", label: "Full name", type: "text", required: true },
       { name: "email", label: "Official email", type: "email", required: true },
       { name: "phone", label: "Phone (optional)", type: "tel", required: false },
-      { name: "department", label: "Department / Directorate", type: "text", required: true },
+      { name: "department", label: "Department", type: "text", required: true },
       { name: "state", label: "State / UT", type: "text", required: true },
-      { name: "org", label: "Organization / Hospital", type: "text", required: true },
+      { name: "org", label: "Organization", type: "text", required: true },
       { name: "scope", label: "Project scope (brief)", type: "text", required: true },
       { name: "message", label: "Additional details (optional)", type: "textarea", required: false }
     ] as const

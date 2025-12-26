@@ -2,7 +2,8 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { site } from "@/lib/content";
 import Clock from "./Clock";
-
+import Image from "next/image";
+import { Logo } from "@/components/site/Logo";
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -21,35 +22,31 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-12">
           {/* Brand */}
           <div className="md:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="zyposoft-footer__dot" aria-hidden />
-              <div>
-                <div className="text-sm font-semibold text-[rgba(11,30,58,0.92)]">
-                  {site.company}
-                </div>
-                <div className="text-xs text-spaced text-[rgba(11,30,58,0.55)]">
-                  SOFTWARE • AI • DELIVERY
-                </div>
-              </div>
+            <Link href="/" className="inline-flex items-center gap-1">
+              <Logo />
+            </Link>
+
+            <div className="text-xs text-spaced text-[rgba(167, 55, 27, 0.77)] sm:font-bold">
+              Innovation • Intelligence • Impact
             </div>
 
+
             <p className="text-sm leading-relaxed text-[rgba(11,30,58,0.66)] max-w-sm">
-              Government-grade software engineering with security-first architecture,
-              modern cloud delivery, and measurable AI enablement.
+              ZypoSoft is a software engineering firm dedicated to building resilient, high-performance platforms. We combine rapid delivery cycles with architectural rigor and strategic AI integration to create software that scales effortlessly.
             </p>
 
             <p className="text-xs text-[rgba(11,30,58,0.50)] max-w-sm">
-              
+
             </p>
 
             {/* Subtle color rail (ties to the new theme system) */}
-            <div className="zyposoft-footer__rail" aria-hidden />
+            {/* <div className="zyposoft-footer__rail" aria-hidden /> */}
           </div>
 
           {/* Navigation */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <div className="zyposoft-footer__kicker">Navigation</div>
-            <div className="mt-4 flex flex-col gap-2.5 text-sm">
+            <div className="mt-8 flex flex-col gap-2.5 text-sm">
               {site.nav.map((it) => (
                 <Link key={it.href} href={it.href} className="zyposoft-footer__link">
                   {it.label}
@@ -81,10 +78,10 @@ export default function Footer() {
           </div>
 
           {/* Time + Legal */}
-          <div className="md:col-span-2 space-y-4">
+          <div className="md:col-span-3 space-y-4">
             <div>
               <div className="zyposoft-footer__kicker">{site.footer.cityClockLabel}</div>
-              <div className="mt-2 text-sm text-[rgba(11,30,58,0.72)]">
+              <div className="mt-2 text-sm text-[rgba(11,30,58,0.72)] sm:font-bold">
                 <Clock tz={site.footer.cityClockTz} />
               </div>
             </div>

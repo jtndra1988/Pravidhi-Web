@@ -27,7 +27,7 @@ const PRODUCT = {
     body:
       "ArogyaCore is an AI-enabled health infrastructure platform designed for state governments and regulated healthcare ecosystems. It unifies EHR, hospital operations, and citizen care into one governable system built for uptime, auditability, and long-term maintainability.",
     ctas: {
-      primary: { label: "Request a demo", href: "/contact" },
+      primary: { label: "Contact Us", href: "/contact" },
       secondary: { label: "Explore modules", href: "#modules" },
     },
     proof: [

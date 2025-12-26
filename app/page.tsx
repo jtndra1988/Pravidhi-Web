@@ -59,7 +59,7 @@ export default function HomePage() {
                     <Link href="/services" className="zyposoft-linkAccent">
                       See delivery capabilities
                     </Link>
-                    <Link href="#contact" className="zyposoft-linkMuted">
+                    <Link href="/contact" className="zyposoft-linkMuted">
                       Start a conversation
                     </Link>
                   </div>
