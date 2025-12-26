@@ -10,7 +10,7 @@ export type FAQ = { q: string; a: string };
 export const site = {
   company: "ZypoSoft",
   product: "ArogyaSara",
-  domain: "https://zyposoft.com",
+  domain: "https://zyposoft.netlify.app",
   accent: "teal",
   nav: [
     { label: "Home", href: "/" },

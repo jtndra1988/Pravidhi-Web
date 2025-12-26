@@ -7,7 +7,7 @@ type LogoProps = {
 export function Logo({ className }: LogoProps) {
   return (
     <Image
-      src="/icons/Zyposoft.png"
+      src="/icons/Zyposoft.svg"
       alt="ZypoSoft Logo"
       width={360}
       height={180}
