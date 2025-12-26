@@ -26,7 +26,7 @@ export const site = {
   } satisfies { primary: CTA; secondary: CTA },
   footer: {
     addressLabel: "Address",
-    address: "ZypoSoft • India (add office address)",
+    address: "ZypoSoft • India",
     emailLabel: "Contact",
     email: "contact@zyposoft.com",
     cityClockLabel: "India Standard Time",
