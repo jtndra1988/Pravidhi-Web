@@ -5947,3 +5947,83 @@ input::placeholder, textarea::placeholder {
     height: 170%;
   }
 }
+/* =========================
+   MOBILE FIX: MISSION INFOGRAPHIC
+   Switches horizontal timeline to vertical stack on mobile
+   ========================= */
+
+@media (max-width: 768px) {
+  /* 1. Stack the main track vertically */
+  .mv-track {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Space between Mission, Core, and Vision */
+    padding: 30px 10px !important;
+    position: relative;
+  }
+
+  /* 2. Rotate the connecting line to be vertical */
+  .mv-line {
+    width: 4px !important;
+    height: auto !important;
+    /* Position it to run from top to bottom through the center */
+    left: 50% !important;
+    right: auto !important;
+    top: 20px !important;
+    bottom: 20px !important;
+    transform: translateX(-50%) !important;
+    
+    /* Change gradient direction to vertical */
+    background: linear-gradient(180deg,
+      rgba(27,89,167,0.55),
+      rgba(20,212,177,0.45),
+      rgba(141,15,214,0.45)
+    ) !important;
+  }
+
+  /* 3. Center the endpoints (Mission / Vision groups) */
+  .mv-end {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 12px;
+    z-index: 2; /* Ensure they sit on top of the line */
+    background: rgba(255,255,255,0.6); /* Slight background to separate text from line if needed */
+    backdrop-filter: blur(4px);
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  /* 4. Fix the order for "Vision" so the Dot touches the line first */
+  /* Desktop was [Text] [Node], we want [Node] [Text] on mobile stack */
+  .mv-right {
+    flex-direction: column-reverse !important;
+  }
+
+  /* 5. Reset text alignment */
+  .mv-endText--right {
+    text-align: center !important;
+  }
+  
+  /* 6. Adjust spacing for labels */
+  .mv-endK { font-size: 14px; }
+  .mv-endS { margin-top: 4px; font-size: 11px; }
+
+  /* 7. Ensure the Core (Engineering Standards) pill is centered and visible */
+  .mv-core {
+    width: auto !important;
+    max-width: 240px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.9); /* More opacity to hide the line behind it */
+  }
+
+  /* 8. Adjust Pillars (bottom grid) to single column if not already */
+  .mv-pillars {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  
+  .mv-pillar {
+    min-height: auto;
+  }
+}
