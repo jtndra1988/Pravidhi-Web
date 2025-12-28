@@ -72,15 +72,15 @@ const CONTENT = {
       "We work best on platforms that must remain stable under real adoption: high availability, controlled data access, measurable performance, and long-term maintainability.",
     mission: {
       k: "Mission",
-      t: "End the cycle of “launch and rewrite.” Build platforms that last for years.",
+      t: "Turn Innovation into Intelligence and Intelligence into Impact.",
       s:
-        "We exist to end the cycle of “launch and rewrite.” Our mission is to provide the rigorous architecture, automated governance, and engineering standards required to build platforms that survive success. We don’t just deliver code; we deliver operational confidence systems that stay reliable, audit-ready, and ownership-friendly in production.",
+        "Our mission is to build software platforms that remain dependable as they grow through rigorous architecture, governed data flows, and production-grade engineering standards. We deliver operational confidence: systems that stay reliable, auditable, and easy to maintain in real environments.",
     },
     vision: {
       k: "Vision",
-      t: "Make software engineering as predictable as civil engineering.",
+      t: "Innovation that endures. Intelligence that scales. Impact that compounds.",
       s:
-        "We envision a world where “maintenance” means improvement, not repair where reliability, observability, and security are default. We are building the practices and delivery discipline to make high-availability, product-grade software the standard for every organization we partner with.",
+        "We envision a future where software grows without fragility where reliability, auditability, and maintainability are defaults, not upgrades. By advancing disciplined architecture, governed data practices, and production grade engineering, we aim to help organizations operate with confidence and continuously improve their systems over time.",
     },
     principles: [
       {

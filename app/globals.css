@@ -6027,3 +6027,102 @@ input::placeholder, textarea::placeholder {
     min-height: auto;
   }
 }
+/* ==============================
+   HERO — FUTURISTIC NEURAL MESH
+   ============================== */
+
+.zyposoft-hero--futuristic {
+  position: relative;
+  overflow: hidden;
+  --vpx: 60%;
+  --vpy: 40%;
+}
+
+.zyposoft-hero--futuristic .zyposoft-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.zyposoft-hero--futuristic .zyposoft-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Aurora wash — follows --vpx/--vpy */
+.zyposoft-hero--futuristic .zyposoft-hero__aurora {
+  position: absolute;
+  inset: -12%;
+  background:
+    radial-gradient(900px 560px at var(--vpx) var(--vpy), rgba(20,212,177,0.18), rgba(20,212,177,0) 60%),
+    radial-gradient(820px 520px at 78% 22%, rgba(27,89,167,0.14), rgba(27,89,167,0) 64%),
+    radial-gradient(720px 520px at 20% 70%, rgba(245,158,11,0.07), rgba(245,158,11,0) 62%),
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.94));
+  transform: translateZ(0);
+  animation: auroraDrift 18s ease-in-out infinite;
+}
+
+@keyframes auroraDrift {
+  0%   { transform: translate3d(-0.8%, -0.4%, 0) scale(1.02); }
+  50%  { transform: translate3d( 0.9%,  0.6%, 0) scale(1.03); }
+  100% { transform: translate3d(-0.8%, -0.4%, 0) scale(1.02); }
+}
+
+/* Subtle grid (futuristic, not noisy) */
+.zyposoft-hero--futuristic .zyposoft-hero__grid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(27,89,167,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20,212,177,0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(60% 55% at var(--vpx) var(--vpy), rgba(0,0,0,0.85), rgba(0,0,0,0) 70%);
+  opacity: 0.55;
+  transform: translateZ(0);
+}
+
+/* Neural mesh canvas */
+.zyposoft-hero--futuristic .zyposoft-hero__meshCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.95;
+}
+
+/* Vignette keeps content readable */
+.zyposoft-hero--futuristic .zyposoft-hero__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(85% 70% at 50% 45%, rgba(255,255,255,0), rgba(255,255,255,0.62));
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+/* Fine noise (premium texture) */
+.zyposoft-hero--futuristic .zyposoft-hero__noise {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-radial-gradient(circle at 10% 20%, rgba(0,0,0,0.018), rgba(0,0,0,0.018) 1px, rgba(0,0,0,0) 2px, rgba(0,0,0,0) 6px);
+  opacity: 0.22;
+  animation: heroNoise 10s steps(6) infinite;
+  mix-blend-mode: multiply;
+}
+
+@keyframes heroNoise {
+  0%   { transform: translate3d(0, 0, 0); }
+  25%  { transform: translate3d(-1%, 0.6%, 0); }
+  50%  { transform: translate3d(0.6%, -0.8%, 0); }
+  75%  { transform: translate3d(1.0%, 0.2%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .zyposoft-hero--futuristic .zyposoft-hero__aurora,
+  .zyposoft-hero--futuristic .zyposoft-hero__noise {
+    animation: none !important;
+  }
+}

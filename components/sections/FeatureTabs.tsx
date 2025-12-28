@@ -102,7 +102,7 @@ export function FeatureTabs({ items }: { items: Item[] }) {
         </div>
 
         <p className="mt-4 text-sm text-[rgba(11,30,58,.62)]">
-          Tip: replace images later — structure and interactions stay the same.
+          Tip: replace images later structure and interactions stay the same.
         </p>
       </div>
     </div>

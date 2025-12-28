@@ -50,7 +50,7 @@ export default function AboutUs() {
                 </H2>
 
                 <P className="mt-4 max-w-xl">
-                  ZypoSoft is a product engineering company focused on delivering reliable, scalable software platforms. We replace the chaos of custom development with a disciplined approach to availability, data governance, and user experience. We help businesses design, build, and scale software that drives measurable outcomes.
+                  ZypoSoft is a product engineering company built on Innovation, Intelligence, and Impact. We innovate with modern architecture and design, engineer intelligence through governed data flows and automation, and deliver impact through reliable, scalable platforms that perform in real-world conditions. The result is software that scales cleanly and drives measurable outcomes.
                 </P>
                 {/* Subtle colored tags (pills, not boxes) */}
                 <div className="mt-7 flex flex-wrap gap-2">

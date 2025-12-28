@@ -1,59 +1,28 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { H2 } from "../ui/Typography";
+import { H2, H3 } from "../ui/Typography";
 
 type Tilt = { rx: number; ry: number; mx: number; my: number };
 
-
 function cellStyle(i: number): React.CSSProperties {
-  // Deterministic color assignment (no random)
   const mod = i % 6;
-
   const variants = [
-    // Blue → Teal
-    {
-      bg: `linear-gradient(135deg, rgba(27,89,167,0.26), rgba(20,212,177,0.22))`,
-      glow: `0 0 0 1px rgba(27,89,167,0.22), 0 10px 30px rgba(27,89,167,0.08)`,
-    },
-    // Teal → Amber
-    {
-      bg: `linear-gradient(135deg, rgba(20,212,177,0.24), rgba(245,158,11,0.18))`,
-      glow: `0 0 0 1px rgba(20,212,177,0.20), 0 10px 30px rgba(20,212,177,0.07)`,
-    },
-    // Blue only
-    {
-      bg: `radial-gradient(circle at 30% 30%, rgba(27,89,167,0.34), rgba(27,89,167,0.10))`,
-      glow: `0 0 0 1px rgba(27,89,167,0.18), 0 10px 26px rgba(27,89,167,0.06)`,
-    },
-    // Teal only
-    {
-      bg: `radial-gradient(circle at 30% 30%, rgba(20,212,177,0.34), rgba(20,212,177,0.10))`,
-      glow: `0 0 0 1px rgba(20,212,177,0.18), 0 10px 26px rgba(20,212,177,0.06)`,
-    },
-    // Amber only
-    {
-      bg: `radial-gradient(circle at 30% 30%, rgba(245,158,11,0.26), rgba(245,158,11,0.10))`,
-      glow: `0 0 0 1px rgba(245,158,11,0.16), 0 10px 24px rgba(245,158,11,0.05)`,
-    },
-    // Blue → Amber
-    {
-      bg: `linear-gradient(135deg, rgba(27,89,167,0.22), rgba(245,158,11,0.16))`,
-      glow: `0 0 0 1px rgba(27,89,167,0.16), 0 10px 24px rgba(245,158,11,0.05)`,
-    },
+    { bg: `linear-gradient(135deg, rgba(27,89,167,0.26), rgba(20,212,177,0.22))`, glow: `0 0 0 1px rgba(27,89,167,0.18), 0 12px 34px rgba(27,89,167,0.08)` },
+    { bg: `linear-gradient(135deg, rgba(20,212,177,0.22), rgba(245,158,11,0.16))`, glow: `0 0 0 1px rgba(20,212,177,0.16), 0 12px 34px rgba(20,212,177,0.07)` },
+    { bg: `radial-gradient(circle at 30% 30%, rgba(27,89,167,0.34), rgba(27,89,167,0.10))`, glow: `0 0 0 1px rgba(27,89,167,0.14), 0 12px 30px rgba(27,89,167,0.06)` },
+    { bg: `radial-gradient(circle at 30% 30%, rgba(20,212,177,0.34), rgba(20,212,177,0.10))`, glow: `0 0 0 1px rgba(20,212,177,0.14), 0 12px 30px rgba(20,212,177,0.06)` },
+    { bg: `radial-gradient(circle at 30% 30%, rgba(245,158,11,0.26), rgba(245,158,11,0.10))`, glow: `0 0 0 1px rgba(245,158,11,0.12), 0 12px 28px rgba(245,158,11,0.05)` },
+    { bg: `linear-gradient(135deg, rgba(27,89,167,0.22), rgba(245,158,11,0.14))`, glow: `0 0 0 1px rgba(27,89,167,0.12), 0 12px 28px rgba(245,158,11,0.05)` },
   ];
-
   const v = variants[mod];
-
-  return {
-    background: v.bg,
-    boxShadow: v.glow,
-    animationDelay: `${i * 70}ms`,
-  };
+  return { background: v.bg, boxShadow: v.glow, animationDelay: `${i * 70}ms` };
 }
+
+/** Premium auto-loop highlight for background. */
 function useAutoLoopVpxVpy(containerRef: React.RefObject<HTMLElement | null>) {
-  const target = useRef({ x: 0.6, y: 0.4 });   // normalized 0..1
-  const current = useRef({ x: 0.6, y: 0.4 });  // normalized 0..1
+  const target = useRef({ x: 0.6, y: 0.4 });
+  const current = useRef({ x: 0.6, y: 0.4 });
   const lastPointerTs = useRef<number>(0);
 
   useEffect(() => {
@@ -63,7 +32,6 @@ function useAutoLoopVpxVpy(containerRef: React.RefObject<HTMLElement | null>) {
     const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
     const reduced = !!mq?.matches;
 
-    // If reduced motion, keep it static but still set a good center.
     if (reduced) {
       el.style.setProperty("--vpx", "60%");
       el.style.setProperty("--vpy", "40%");
@@ -74,8 +42,7 @@ function useAutoLoopVpxVpy(containerRef: React.RefObject<HTMLElement | null>) {
       const rect = el.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / Math.max(1, rect.width);
       const ny = (e.clientY - rect.top) / Math.max(1, rect.height);
-      // Clamp to avoid extreme edges (keeps it minimal/premium)
-      target.current.x = Math.min(0.85, Math.max(0.15, nx));
+      target.current.x = Math.min(0.86, Math.max(0.14, nx));
       target.current.y = Math.min(0.80, Math.max(0.20, ny));
       lastPointerTs.current = performance.now();
     };
@@ -87,20 +54,17 @@ function useAutoLoopVpxVpy(containerRef: React.RefObject<HTMLElement | null>) {
 
     const tick = () => {
       const now = performance.now();
-      const t = (now - start) / 1000; // seconds
+      const t = (now - start) / 1000;
 
-      // Auto-loop path (slow, “designer” motion)
-      // Lissajous-like movement around a calm center.
-      const autoX = 0.56 + 0.10 * Math.sin(t * 0.35) + 0.05 * Math.sin(t * 0.90);
-      const autoY = 0.42 + 0.08 * Math.cos(t * 0.30) + 0.05 * Math.cos(t * 0.75);
+      // Futuristic, calm “living” path
+      const autoX = 0.56 + 0.12 * Math.sin(t * 0.28) + 0.05 * Math.sin(t * 0.9);
+      const autoY = 0.44 + 0.10 * Math.cos(t * 0.24) + 0.05 * Math.cos(t * 0.72);
 
-      // If pointer moved recently, follow pointer target, otherwise follow auto-loop.
       const pointerActive = now - lastPointerTs.current < 1200;
       const desiredX = pointerActive ? target.current.x : autoX;
       const desiredY = pointerActive ? target.current.y : autoY;
 
-      // Smooth interpolation (keeps it minimal, no “jitter”)
-      const ease = pointerActive ? 0.10 : 0.06;
+      const ease = pointerActive ? 0.11 : 0.055;
       current.current.x += (desiredX - current.current.x) * ease;
       current.current.y += (desiredY - current.current.y) * ease;
 
@@ -118,33 +82,268 @@ function useAutoLoopVpxVpy(containerRef: React.RefObject<HTMLElement | null>) {
     };
   }, [containerRef]);
 }
+
+/** Deterministic PRNG */
+function mulberry32(seed: number) {
+  return () => {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Neural mesh canvas background */
+function useNeuralMesh(canvasRef: React.RefObject<HTMLCanvasElement | null>, hostRef: React.RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const host = hostRef.current;
+    if (!canvas || !host) return;
+
+    const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    const reduced = !!mq?.matches;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let raf = 0;
+
+    const rand = mulberry32(1337);
+
+    const state = {
+      w: 0,
+      h: 0,
+      dpr: 1,
+      points: [] as Array<{
+        x: number; y: number; vx: number; vy: number;
+        r: number; c: number; tw: number;
+      }>,
+      pulses: [] as Array<{ a: number; b: number; t: number; sp: number; life: number; }>,
+      lastPulseAt: 0,
+    };
+
+    const theme = {
+      // keep it on-brand
+      blue: "27,89,167",
+      teal: "20,212,177",
+      amber: "245,158,11",
+      ink: "8,12,20",
+    };
+
+    const resize = () => {
+      const rect = host.getBoundingClientRect();
+      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      state.w = Math.max(1, Math.floor(rect.width));
+      state.h = Math.max(1, Math.floor(rect.height));
+      state.dpr = dpr;
+
+      canvas.width = Math.floor(state.w * dpr);
+      canvas.height = Math.floor(state.h * dpr);
+      canvas.style.width = `${state.w}px`;
+      canvas.style.height = `${state.h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const isMobile = state.w < 740;
+      const density = isMobile ? 0.00008 : 0.00006; // points per px²
+      const count = Math.max(26, Math.min(70, Math.floor(state.w * state.h * density)));
+
+      state.points = Array.from({ length: count }).map(() => {
+        const x = rand() * state.w;
+        const y = rand() * state.h;
+        const speed = (isMobile ? 0.12 : 0.14) + rand() * (isMobile ? 0.18 : 0.22);
+        const ang = rand() * Math.PI * 2;
+        return {
+          x, y,
+          vx: Math.cos(ang) * speed,
+          vy: Math.sin(ang) * speed,
+          r: 1.1 + rand() * 1.6,
+          c: rand() < 0.52 ? 0 : (rand() < 0.85 ? 1 : 2), // 0 blue, 1 teal, 2 amber
+          tw: rand() * Math.PI * 2,
+        };
+      });
+
+      state.pulses = [];
+      state.lastPulseAt = 0;
+    };
+
+    const colorFor = (idx: number, a: number) => {
+      const rgb = idx === 0 ? theme.blue : idx === 1 ? theme.teal : theme.amber;
+      return `rgba(${rgb},${a})`;
+    };
+
+    const draw = (time: number) => {
+      const t = time / 1000;
+
+      // Background clear (transparent; CSS handles wash)
+      ctx.clearRect(0, 0, state.w, state.h);
+
+      // Pull highlight position from CSS vars (for “smart” lighting)
+      const cs = getComputedStyle(host);
+      const vpx = parseFloat(cs.getPropertyValue("--vpx")) || 60;
+      const vpy = parseFloat(cs.getPropertyValue("--vpy")) || 40;
+      const hx = (vpx / 100) * state.w;
+      const hy = (vpy / 100) * state.h;
+
+      // Soft “spotlight” to unify everything
+      const grad = ctx.createRadialGradient(hx, hy, 0, hx, hy, Math.max(state.w, state.h) * 0.65);
+      grad.addColorStop(0, `rgba(${theme.teal},0.08)`);
+      grad.addColorStop(0.45, `rgba(${theme.blue},0.04)`);
+      grad.addColorStop(1, `rgba(${theme.ink},0)`);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, state.w, state.h);
+
+      if (reduced) {
+        // Static crisp nodes + a few lines (no motion)
+        const maxDist = Math.min(220, Math.max(160, state.w * 0.18));
+        for (let i = 0; i < state.points.length; i++) {
+          const p = state.points[i];
+          for (let j = i + 1; j < state.points.length; j++) {
+            const q = state.points[j];
+            const dx = p.x - q.x;
+            const dy = p.y - q.y;
+            const d = Math.hypot(dx, dy);
+            if (d < maxDist) {
+              const a = (1 - d / maxDist) * 0.12;
+              ctx.strokeStyle = `rgba(${theme.blue},${a})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (const p of state.points) {
+          ctx.fillStyle = colorFor(p.c, 0.34);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        return;
+      }
+
+      // Update points
+      for (const p of state.points) {
+        // slight drift modulation to avoid “screensaver” feel
+        p.tw += 0.015;
+        p.x += p.vx + Math.sin(p.tw + t * 0.6) * 0.08;
+        p.y += p.vy + Math.cos(p.tw + t * 0.6) * 0.08;
+
+        // wrap edges
+        if (p.x < -20) p.x = state.w + 20;
+        if (p.x > state.w + 20) p.x = -20;
+        if (p.y < -20) p.y = state.h + 20;
+        if (p.y > state.h + 20) p.y = -20;
+      }
+
+      // Connection threshold scales with size
+      const maxDist = Math.min(260, Math.max(170, state.w * 0.20));
+
+      // Lines
+      for (let i = 0; i < state.points.length; i++) {
+        const p = state.points[i];
+        for (let j = i + 1; j < state.points.length; j++) {
+          const q = state.points[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const d = Math.hypot(dx, dy);
+          if (d >= maxDist) continue;
+
+          const baseA = (1 - d / maxDist);
+          // subtle “breathing” brightness
+          const wave = 0.55 + 0.45 * Math.sin(t * 0.9 + (i + j) * 0.07);
+          const a = baseA * 0.10 * wave;
+
+          // Gradient line (blue->teal bias)
+          const lg = ctx.createLinearGradient(p.x, p.y, q.x, q.y);
+          lg.addColorStop(0, `rgba(${theme.blue},${a})`);
+          lg.addColorStop(1, `rgba(${theme.teal},${a})`);
+          ctx.strokeStyle = lg;
+          ctx.lineWidth = 1;
+
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.stroke();
+        }
+      }
+
+      // Pulses (energy packets)
+      if (time - state.lastPulseAt > 750 + rand() * 700) {
+        state.lastPulseAt = time;
+        const a = Math.floor(rand() * state.points.length);
+        let b = Math.floor(rand() * state.points.length);
+        if (b === a) b = (b + 7) % state.points.length;
+        state.pulses.push({ a, b, t: 0, sp: 0.010 + rand() * 0.014, life: 1.0 });
+        if (state.pulses.length > 10) state.pulses.shift();
+      }
+
+      for (const pulse of state.pulses) {
+        pulse.t += pulse.sp;
+        pulse.life *= 0.995;
+      }
+      state.pulses = state.pulses.filter((p) => p.t < 1.0 && p.life > 0.12);
+
+      for (const pulse of state.pulses) {
+        const a = state.points[pulse.a];
+        const b = state.points[pulse.b];
+        const px = a.x + (b.x - a.x) * pulse.t;
+        const py = a.y + (b.y - a.y) * pulse.t;
+
+        // glow dot
+        const glow = ctx.createRadialGradient(px, py, 0, px, py, 26);
+        glow.addColorStop(0, `rgba(${theme.teal},0.22)`);
+        glow.addColorStop(0.4, `rgba(${theme.blue},0.10)`);
+        glow.addColorStop(1, `rgba(${theme.blue},0)`);
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(px, py, 18, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = `rgba(${theme.teal},${0.62 * pulse.life})`;
+        ctx.beginPath();
+        ctx.arc(px, py, 2.3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Nodes on top
+      for (const p of state.points) {
+        const tw = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(p.tw + t * 1.1));
+        const a = 0.22 + 0.18 * tw;
+        ctx.fillStyle = colorFor(p.c === 2 ? 2 : (p.c === 1 ? 1 : 0), a);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      raf = requestAnimationFrame(draw);
+    };
+
+    resize();
+    raf = requestAnimationFrame(draw);
+
+    const onResize = () => resize();
+    window.addEventListener("resize", onResize, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [canvasRef, hostRef]);
+}
+
 export function HeroAIStudio() {
+  // IMPORTANT: background auto-loop MUST be attached to section ref
   const heroRef = useRef<HTMLElement | null>(null);
   useAutoLoopVpxVpy(heroRef);
-  const wrapRef = useRef<HTMLElement | null>(null);
+
+  const meshCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  useNeuralMesh(meshCanvasRef, heroRef);
+
   const [tilt, setTilt] = useState<Tilt>({ rx: 0, ry: 0, mx: 50, my: 50 });
 
-  // Deterministic “node” positions for the circuit layer (no runtime random flicker)
-  const nodes = useMemo(
-    () => [
-      { x: 8, y: 22, r: 3 },
-      { x: 18, y: 42, r: 2.5 },
-      { x: 26, y: 18, r: 2.5 },
-      { x: 38, y: 34, r: 3 },
-      { x: 52, y: 20, r: 2.5 },
-      { x: 64, y: 38, r: 3 },
-      { x: 72, y: 18, r: 2.5 },
-      { x: 84, y: 30, r: 3 },
-      { x: 90, y: 54, r: 2.5 },
-      { x: 66, y: 62, r: 2.5 },
-      { x: 46, y: 58, r: 3 },
-      { x: 24, y: 64, r: 2.5 },
-    ],
-    []
-  );
-
   const setVars = (xPct: number, yPct: number) => {
-    const el = wrapRef.current;
+    const el = heroRef.current;
     if (!el) return;
     el.style.setProperty("--px", `${xPct}%`);
     el.style.setProperty("--py", `${yPct}%`);
@@ -158,9 +357,8 @@ export function HeroAIStudio() {
     const xPct = Math.max(0, Math.min(100, (x / rect.width) * 100));
     const yPct = Math.max(0, Math.min(100, (y / rect.height) * 100));
 
-    // Slightly restrained “premium” tilt
-    const rx = ((yPct - 50) / 50) * 6; // -6..6
-    const ry = ((50 - xPct) / 50) * 8; // -8..8
+    const rx = ((yPct - 50) / 50) * 6;
+    const ry = ((50 - xPct) / 50) * 8;
 
     setTilt({ rx, ry, mx: xPct, my: yPct });
     setVars(xPct, yPct);
@@ -171,116 +369,25 @@ export function HeroAIStudio() {
     setVars(50, 50);
   };
 
-  // Drive subtle parallax in background using viewport mouse
   useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-
-    // Ensure vars are set even if the user never hovers the device.
+    // Ensure these exist even if user never hovers.
     setVars(50, 50);
-    el.style.setProperty("--vpx", "60%");
-    el.style.setProperty("--vpy", "40%");
-
-    const onMove = (ev: MouseEvent) => {
-      const vw = window.innerWidth || 1;
-      const vh = window.innerHeight || 1;
-      const xPct = (ev.clientX / vw) * 100;
-      const yPct = (ev.clientY / vh) * 100;
-      el.style.setProperty("--vpx", `${xPct}%`);
-      el.style.setProperty("--vpy", `${yPct}%`);
-    };
-
-    window.addEventListener("mousemove", onMove, { passive: true });
-    return () => window.removeEventListener("mousemove", onMove);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const el = heroRef.current;
+    if (!el) return;
+    if (!el.style.getPropertyValue("--vpx")) el.style.setProperty("--vpx", "60%");
+    if (!el.style.getPropertyValue("--vpy")) el.style.setProperty("--vpy", "40%");
   }, []);
-  
+
   return (
-    <section ref={wrapRef as any} className="zyposoft-hero" aria-label="Hero">
-      {/* BACKGROUND LAYERS (auto-loop, minimal futuristic) */}
-<div className="zyposoft-hero__bg" aria-hidden="true">
-  <svg
-    className="zyposoft-hero__quantum"
-    viewBox="0 0 1200 600"
-    preserveAspectRatio="xMidYMid slice"
-  >
-    <defs>
-      <radialGradient id="qWashA" cx="50%" cy="45%" r="70%">
-        <stop offset="0%" stopColor="rgba(20,212,177,0.18)" />
-        <stop offset="55%" stopColor="rgba(20,212,177,0.00)" />
-      </radialGradient>
-      <radialGradient id="qWashB" cx="75%" cy="25%" r="70%">
-        <stop offset="0%" stopColor="rgba(27,89,167,0.16)" />
-        <stop offset="60%" stopColor="rgba(27,89,167,0.00)" />
-      </radialGradient>
-      <radialGradient id="qWashC" cx="20%" cy="20%" r="60%">
-        <stop offset="0%" stopColor="rgba(245,158,11,0.10)" />
-        <stop offset="55%" stopColor="rgba(245,158,11,0.00)" />
-      </radialGradient>
-
-      <linearGradient id="qStrokeA" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="rgba(27,89,167,0.00)" />
-        <stop offset="35%" stopColor="rgba(27,89,167,0.55)" />
-        <stop offset="70%" stopColor="rgba(20,212,177,0.55)" />
-        <stop offset="100%" stopColor="rgba(20,212,177,0.00)" />
-      </linearGradient>
-
-      <linearGradient id="qStrokeB" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="rgba(245,158,11,0.00)" />
-        <stop offset="40%" stopColor="rgba(245,158,11,0.45)" />
-        <stop offset="75%" stopColor="rgba(20,212,177,0.45)" />
-        <stop offset="100%" stopColor="rgba(27,89,167,0.00)" />
-      </linearGradient>
-    </defs>
-
-    {/* Soft wash (very minimal) */}
-    <rect width="1200" height="600" fill="rgba(255,255,255,0.96)" />
-    <rect width="1200" height="600" fill="url(#qWashA)" />
-    <rect width="1200" height="600" fill="url(#qWashB)" />
-    <rect width="1200" height="600" fill="url(#qWashC)" />
-
-    {/* Slow orbital rings */}
-    <g className="q-orbits">
-      <ellipse className="q-ring" cx="600" cy="300" rx="520" ry="210" />
-      <ellipse className="q-ring q-ring--thin" cx="600" cy="300" rx="360" ry="150" />
-      <ellipse className="q-ring q-ring--thin" cx="600" cy="300" rx="210" ry="90" />
-    </g>
-
-    {/* Quantum weave paths (dash energy travels along them) */}
-    <g className="q-weave">
-      <path
-        className="q-path q-path--a"
-        d="M-40,360 C140,210 300,410 480,290 C660,170 820,360 980,250 C1080,180 1140,140 1240,220"
-        stroke="url(#qStrokeA)"
-      />
-      <path
-        className="q-path q-path--b"
-        d="M-60,260 C120,340 280,140 450,240 C620,340 760,160 930,260 C1080,350 1180,320 1260,300"
-        stroke="url(#qStrokeB)"
-      />
-      <path
-        className="q-path q-path--c"
-        d="M-40,430 C160,520 320,300 510,390 C700,480 830,260 1010,350 C1120,405 1180,440 1260,410"
-        stroke="url(#qStrokeA)"
-      />
-    </g>
-
-    {/* Minimal nodes (twinkle gently) */}
-    <g className="q-nodes">
-      <circle className="q-node" cx="240" cy="240" r="2.2" />
-      <circle className="q-node q-node--b" cx="420" cy="310" r="2.0" />
-      <circle className="q-node" cx="610" cy="260" r="2.2" />
-      <circle className="q-node q-node--b" cx="780" cy="330" r="2.0" />
-      <circle className="q-node" cx="980" cy="260" r="2.2" />
-      <circle className="q-node q-node--b" cx="720" cy="210" r="1.8" />
-      <circle className="q-node" cx="520" cy="420" r="1.8" />
-    </g>
-  </svg>
-
-  <div className="zyposoft-hero__quantumVignette" />
-  <div className="zyposoft-hero__quantumNoise" />
-</div>
-
+    <section ref={heroRef as any} className="zyposoft-hero zyposoft-hero--futuristic" aria-label="Hero">
+      {/* FUTURISTIC BACKGROUND */}
+      <div className="zyposoft-hero__bg" aria-hidden="true">
+        <div className="zyposoft-hero__aurora" />
+        <div className="zyposoft-hero__grid" />
+        <canvas ref={meshCanvasRef} className="zyposoft-hero__meshCanvas" />
+        <div className="zyposoft-hero__vignette" />
+        <div className="zyposoft-hero__noise" />
+      </div>
 
       {/* CONTENT */}
       <div className="zyposoft-hero__content">
@@ -292,20 +399,14 @@ export function HeroAIStudio() {
 
           <h1 className="zyposoft-hero__title">
             ZypoSoft
-            <H2 className="mt-6">
-              <span className="studio-gradient-text font-extrabold">
-                Turning Complex Data into Decisive Action
-              </span>
-            </H2>
+            <H3 className="mt-6">
+              <span className="studio-gradient-text font-extrabold">Innovation that ships. Intelligence that performs. Impact that lasts.</span>
+            </H3>
           </h1>
 
           <p className="zyposoft-hero__subtitle mt-4">
-            We build AI-powered software systems that stay reliable after launch—secure foundations,
-            governed data flows, and operational intelligence designed for real-world adoption.
+            <b>ArogyaSara</b> - A next-generation health platform that unifies clinical workflows, hospital operations, and citizen services with secure foundations and decision-ready intelligence.
           </p>
-
-          {/* Keep CTA row empty if your page injects buttons elsewhere */}
-          <div className="zyposoft-hero__ctaRow" />
 
           <div className="zyposoft-hero__miniGrid" role="list">
             <div className="zyposoft-hero__miniCard_V" role="listitem">
@@ -323,7 +424,7 @@ export function HeroAIStudio() {
           </div>
         </div>
 
-        {/* PREMIUM DEVICE / SHOWCASE */}
+        {/* DEVICE / SHOWCASE */}
         <div className="zyposoft-hero__showcaseWrap">
           <div
             className="zyposoft-tilt"
@@ -394,7 +495,6 @@ export function HeroAIStudio() {
                         />
                       </svg>
 
-                      {/* Use the chip* classes that already exist in your globals.css */}
                       <div className="chips">
                         <span className="chip1">Outbreak early-warning</span>
                         <span className="chip2">Bed load forecast</span>
@@ -417,13 +517,11 @@ export function HeroAIStudio() {
                 </div>
               </div>
 
-              {/* Sheen + rim + scanline inside device */}
               <div className="zyposoft-device__sheen" aria-hidden="true" />
               <div className="zyposoft-device__rim" aria-hidden="true" />
               <div className="zyposoft-device__scanline" aria-hidden="true" />
             </div>
 
-            {/* Floating callout */}
             <div className="zyposoft-floatCard" aria-hidden="true">
               <div className="fcIcon">✓</div>
               <div>

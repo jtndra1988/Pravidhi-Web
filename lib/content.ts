@@ -10,7 +10,7 @@ export type FAQ = { q: string; a: string };
 export const site = {
   company: "ZypoSoft",
   product: "ArogyaSara",
-  domain: "https://zyposoft.netlify.app",
+  domain: "https://zyposoft.com",
   accent: "teal",
   nav: [
     { label: "Home", href: "/" },
@@ -26,11 +26,16 @@ export const site = {
   } satisfies { primary: CTA; secondary: CTA },
   footer: {
     addressLabel: "Address",
-    address: "ZypoSoft • India",
+    address: "ZypoSoft Technologies Pvt Ltd",
+    addressLine: "#7, Nisarga Layout, Chikkalsandra, Bangalore-560061",
     emailLabel: "Contact",
     email: "contact@zyposoft.com",
-    cityClockLabel: "India Standard Time",
-    cityClockTz: "Asia/Kolkata",
+    // NEW: Social links
+    socialLabel: "Socials",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/zyposofttech/",
+      x: "https://x.com/ZyposoftTech"
+    }
   }
 };
 

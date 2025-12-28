@@ -213,7 +213,7 @@ export default function TechnologySection() {
                   );
                 })}
 
-                {/* Nodes (MOBILE: small dots on map — no overlap) */}
+                {/* Nodes (MOBILE: small dots on map no overlap) */}
                 {nodes.map((n, idx) => (
                   <button
                     key={`${n.key}-dot`}
